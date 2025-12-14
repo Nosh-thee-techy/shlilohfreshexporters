@@ -317,6 +317,17 @@
   }
 }
 
+@keyframes floatUp {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-30px) rotate(5deg);
+    opacity: 0.9;
+  }
+}
+
 /* Scroll-triggered animations */
 .scroll-fade-in {
   opacity: 0;
@@ -345,4 +356,41 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary) / 0.6);
+}
+
+/* Accessibility Styles */
+.high-contrast {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 0%;
+  --primary: 220 100% 40%;
+  --muted-foreground: 0 0% 20%;
+  --border: 0 0% 30%;
+}
+
+.high-contrast * {
+  border-color: hsl(0 0% 30%) !important;
+}
+
+.large-text {
+  font-size: 118%;
+}
+
+.large-text h1 { font-size: 2.8rem; }
+.large-text h2 { font-size: 2.2rem; }
+.large-text h3 { font-size: 1.6rem; }
+.large-text p, .large-text span, .large-text li { font-size: 1.15rem; }
+
+.reduced-motion,
+.reduced-motion * {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+.dyslexic-font,
+.dyslexic-font * {
+  font-family: 'OpenDyslexic', 'Comic Sans MS', cursive, sans-serif !important;
+  letter-spacing: 0.05em;
+  word-spacing: 0.1em;
+  line-height: 1.8;
 }

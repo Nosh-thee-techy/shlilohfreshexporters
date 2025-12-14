@@ -85,12 +85,17 @@ export default {
           "0%, 100%": { transform: "rotate(-3deg)" },
           "50%": { transform: "rotate(3deg)" },
         },
+        float: {
+          "0%, 100%": { transform: "translateY(0) rotate(0deg)", opacity: "0.7" },
+          "50%": { transform: "translateY(-30px) rotate(5deg)", opacity: "0.9" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         shimmer: "shimmer 2s infinite",
         wiggle: "wiggle 0.5s ease-in-out infinite",
+        float: "float 6s ease-in-out infinite",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
