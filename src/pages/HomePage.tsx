@@ -33,6 +33,12 @@ import packagingImg from '@/assets/process/packaging.jpg';
 import coldchainImg from '@/assets/process/coldchain.jpg';
 import seaLogisticsImg from '@/assets/process/sea-logistics.jpg';
 import airLogisticsImg from '@/assets/process/air-logistics.jpg';
+// Partner logos
+import kebsLogo from '@/assets/logos/kebs-logo.png';
+import hcdaLogo from '@/assets/logos/hcda-logo.png';
+import keittLogo from '@/assets/logos/keitt-logo.png';
+import globalgapLogo from '@/assets/logos/globalgap-logo.png';
+import phytoLogo from '@/assets/logos/phyto-logo.png';
 import {
   Dialog,
   DialogContent,
@@ -460,11 +466,11 @@ const testimonialsData = [
 ];
 
 const partnerLogos = [
-  { name: 'KEBS', initials: 'KEBS' },
-  { name: 'HCDA', initials: 'HCDA' },
-  { name: 'GlobalG.A.P', initials: 'G.A.P' },
-  { name: 'Kenya Export', initials: 'KE' },
-  { name: 'Fresh Produce', initials: 'FP' },
+  { name: 'KEBS', logo: kebsLogo },
+  { name: 'HCDA', logo: hcdaLogo },
+  { name: 'Keitt', logo: keittLogo },
+  { name: 'GlobalG.A.P', logo: globalgapLogo },
+  { name: 'Phytosanitary', logo: phytoLogo },
 ];
 
 function ProcessNode({ 
@@ -952,10 +958,14 @@ function TestimonialsSection() {
             {partnerLogos.map((partner, index) => (
               <div
                 key={partner.name}
-                className="w-20 h-20 rounded-xl bg-card border border-border flex items-center justify-center hover-lift transition-all"
+                className="w-24 h-24 rounded-xl bg-card border border-border flex items-center justify-center hover-lift transition-all p-2 overflow-hidden"
                 style={{ transitionDelay: `${(index + 3) * 100}ms` }}
               >
-                <span className="text-lg font-bold text-primary">{partner.initials}</span>
+                <img 
+                  src={partner.logo} 
+                  alt={`${partner.name} certification`} 
+                  className="w-full h-full object-contain"
+                />
               </div>
             ))}
           </div>
