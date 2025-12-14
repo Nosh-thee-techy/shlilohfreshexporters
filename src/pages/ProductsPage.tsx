@@ -124,7 +124,7 @@ function ProductCard({ product, onViewDetails }: { product: Product; onViewDetai
             View Details
           </Button>
           <a
-            href={`https://wa.me/254700000000?text=Hello%20Shiloh%20Fresh%2C%20I%27m%20interested%20in%20${encodeURIComponent(product.name)}.%20Please%20send%20me%20a%20quote.`}
+            href={`https://wa.me/254716171778?text=Hello%20Shiloh%20Fresh%2C%20I%27m%20interested%20in%20${encodeURIComponent(product.name)}.%20Please%20send%20me%20a%20quote.`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1"
@@ -182,7 +182,7 @@ function ProductModal({ product, isOpen, onClose }: { product: Product | null; i
           </div>
 
           <a
-            href={`https://wa.me/254700000000?text=Hello%20Shiloh%20Fresh%2C%20I%27m%20interested%20in%20${encodeURIComponent(product.name)}.%20Please%20send%20me%20a%20quote.`}
+            href={`https://wa.me/254716171778?text=Hello%20Shiloh%20Fresh%2C%20I%27m%20interested%20in%20${encodeURIComponent(product.name)}.%20Please%20send%20me%20a%20quote.`}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -248,7 +248,7 @@ export default function ProductsPage() {
             We can source and supply a wide variety of fresh produce. Contact us with your requirements.
           </p>
           <a
-            href="https://wa.me/254700000000?text=Hello%20Shiloh%20Fresh%2C%20I%27m%20looking%20for%20specific%20products.%20Can%20you%20help?"
+            href="https://wa.me/254716171778?text=Hello%20Shiloh%20Fresh%2C%20I%27m%20looking%20for%20specific%20products.%20Can%20you%20help?"
             target="_blank"
             rel="noopener noreferrer"
           >
