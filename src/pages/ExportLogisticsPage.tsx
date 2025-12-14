@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Search, Filter, Package, Truck, Snowflake, CheckCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
+import heroImage from '@/assets/hero-farm.jpg';
 
 interface ProcessStep {
   id: string;
@@ -201,12 +202,16 @@ export default function ExportLogisticsPage() {
   return (
     <div className="pt-24">
       {/* Hero */}
-      <section className="py-16 bg-primary">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img src={heroImage} alt="Export logistics" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-primary/85" />
+        </div>
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4 animate-fade-in-down">
             Export & Logistics
           </h1>
-          <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto">
+          <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto animate-fade-in-up">
             From farm to global markets — discover our streamlined export process.
           </p>
         </div>

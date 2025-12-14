@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/dialog';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
+import heroImage from '@/assets/hero-farm.jpg';
 
 interface Certification {
   id: string;
@@ -158,12 +159,16 @@ export default function CertificationsPage() {
   return (
     <div className="pt-24">
       {/* Hero */}
-      <section className="py-16 bg-primary">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img src={heroImage} alt="Certifications" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-primary/85" />
+        </div>
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4 animate-fade-in-down">
             Certifications
           </h1>
-          <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto">
+          <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto animate-fade-in-up">
             Meeting the highest international standards for quality and safety.
           </p>
         </div>

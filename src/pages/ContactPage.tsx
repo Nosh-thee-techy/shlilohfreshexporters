@@ -12,6 +12,7 @@ import {
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
+import heroImage from '@/assets/hero-farm.jpg';
 
 interface FAQ {
   question: string;
@@ -143,12 +144,16 @@ export default function ContactPage() {
   return (
     <div className="pt-24">
       {/* Hero */}
-      <section className="py-16 bg-primary">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img src={heroImage} alt="Contact Shiloh Fresh" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-primary/85" />
+        </div>
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4 animate-fade-in-down">
             Contact Us
           </h1>
-          <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto">
+          <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto animate-fade-in-up">
             Get in touch with our team for inquiries, quotes, or partnerships.
           </p>
         </div>
@@ -224,8 +229,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground">Phone</h3>
-                    <a href="tel:+254716171778" className="text-muted-foreground hover:text-primary transition-colors">
-                      +254 716 171 778
+                    <a href="tel:+254702339421" className="text-muted-foreground hover:text-primary transition-colors">
+                      +254 702 339 421
                     </a>
                   </div>
                 </div>
@@ -266,7 +271,7 @@ export default function ContactPage() {
               {/* Quick Actions */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <a
-                  href="https://wa.me/254716171778?text=Hello%20Shiloh%20Fresh%20Exporters%2C%20I%27d%20like%20to%20inquire."
+                  href="https://wa.me/254702339421?text=Hello%20Shiloh%20Fresh%20Exporters%2C%20I%27d%20like%20to%20inquire."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1"
