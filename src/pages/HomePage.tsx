@@ -16,12 +16,23 @@ import {
   Award,
   CheckCircle2,
   MessageCircle,
-  Mail
+  Mail,
+  Quote,
+  Star
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useScrollAnimation, useParallax } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
 import heroImage from '@/assets/hero-farm.jpg';
+// Process flow images
+import varietyImg from '@/assets/process/variety-selection.jpg';
+import propagationImg from '@/assets/process/propagation.jpg';
+import agronomyImg from '@/assets/process/agronomy.jpg';
+import sortingImg from '@/assets/process/sorting.jpg';
+import packagingImg from '@/assets/process/packaging.jpg';
+import coldchainImg from '@/assets/process/coldchain.jpg';
+import seaLogisticsImg from '@/assets/process/sea-logistics.jpg';
+import airLogisticsImg from '@/assets/process/air-logistics.jpg';
 import {
   Dialog,
   DialogContent,
@@ -408,20 +419,53 @@ function StatsSection() {
 // 5️⃣ SHILOH'S WAY - Interactive Process Flow
 const processFlowData = {
   grower: [
-    { id: 'variety', title: 'Variety Selection & Trials', description: 'Careful selection and testing of crop varieties best suited for export markets and local growing conditions.' },
-    { id: 'propagation', title: 'Propagation & Planting', description: 'Professional propagation techniques ensuring healthy seedlings and optimal planting practices.' },
-    { id: 'agronomy', title: 'Good Agronomy Practices', description: 'Implementation of sustainable farming methods, soil management, and responsible pest control.' },
+    { id: 'variety', title: 'Variety Selection & Trials', description: 'Careful selection and testing of crop varieties best suited for export markets and local growing conditions.', image: varietyImg },
+    { id: 'propagation', title: 'Propagation & Planting', description: 'Professional propagation techniques ensuring healthy seedlings and optimal planting practices.', image: propagationImg },
+    { id: 'agronomy', title: 'Good Agronomy Practices', description: 'Implementation of sustainable farming methods, soil management, and responsible pest control.', image: agronomyImg },
   ],
   packhouse: [
-    { id: 'sorting', title: 'Sorting & Quality Checks', description: 'Rigorous inspection and grading of produce to meet international quality standards.' },
-    { id: 'packaging', title: 'Export Packaging', description: 'Professional packaging designed to maintain freshness and meet destination market requirements.' },
+    { id: 'sorting', title: 'Sorting & Quality Checks', description: 'Rigorous inspection and grading of produce to meet international quality standards.', image: sortingImg },
+    { id: 'packaging', title: 'Export Packaging', description: 'Professional packaging designed to maintain freshness and meet destination market requirements.', image: packagingImg },
   ],
   logistics: [
-    { id: 'coldchain', title: 'Cold Chain Management', description: 'Temperature-controlled storage and handling from packhouse to final destination.' },
-    { id: 'sea', title: 'Sea Logistics', description: 'Cost-effective ocean freight for large volume shipments with maintained cold chain.' },
-    { id: 'air', title: 'Air Logistics', description: 'Rapid air freight for time-sensitive produce ensuring maximum freshness on arrival.' },
+    { id: 'coldchain', title: 'Cold Chain Management', description: 'Temperature-controlled storage and handling from packhouse to final destination.', image: coldchainImg },
+    { id: 'sea', title: 'Sea Logistics', description: 'Cost-effective ocean freight for large volume shipments with maintained cold chain.', image: seaLogisticsImg },
+    { id: 'air', title: 'Air Logistics', description: 'Rapid air freight for time-sensitive produce ensuring maximum freshness on arrival.', image: airLogisticsImg },
   ],
 };
+
+// Testimonials data
+const testimonialsData = [
+  {
+    quote: "Shiloh Fresh has consistently delivered premium quality avocados. Their reliability and professionalism make them our preferred supplier.",
+    author: "James van der Berg",
+    role: "Import Manager",
+    company: "European Fresh Produce Ltd.",
+    rating: 5,
+  },
+  {
+    quote: "The traceability and food safety standards at Shiloh Fresh exceed our expectations. A trusted partner for our supply chain.",
+    author: "Sarah Mitchell",
+    role: "Procurement Director",
+    company: "Global Foods Distribution",
+    rating: 5,
+  },
+  {
+    quote: "Excellent cold chain management and timely deliveries. Shiloh Fresh understands the importance of freshness in our business.",
+    author: "Ahmed Hassan",
+    role: "Operations Head",
+    company: "Middle East Fresh Markets",
+    rating: 5,
+  },
+];
+
+const partnerLogos = [
+  { name: 'KEBS', initials: 'KEBS' },
+  { name: 'HCDA', initials: 'HCDA' },
+  { name: 'GlobalG.A.P', initials: 'G.A.P' },
+  { name: 'Kenya Export', initials: 'KE' },
+  { name: 'Fresh Produce', initials: 'FP' },
+];
 
 function ProcessNode({ 
   item, 
@@ -432,7 +476,7 @@ function ProcessNode({
   onClick, 
   isHovered 
 }: { 
-  item: { id: string; title: string; description: string }; 
+  item: { id: string; title: string; description: string; image: string }; 
   index: number; 
   isVisible: boolean; 
   onHover: () => void; 
@@ -452,15 +496,14 @@ function ProcessNode({
       onClick={onClick}
     >
       <div className={cn(
-        'w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-primary/20 to-primary/40 border-2 border-dashed border-primary/50 flex items-center justify-center mx-auto transition-all duration-300',
+        'w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-dashed border-primary/50 flex items-center justify-center mx-auto transition-all duration-300 overflow-hidden p-1',
         isHovered && 'border-solid border-accent shadow-[0_0_30px_rgba(255,200,87,0.4)] scale-110'
       )}>
-        <div className={cn(
-          'w-14 h-14 md:w-16 md:h-16 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-xs md:text-sm text-center p-2 transition-all duration-300',
-          isHovered && 'bg-accent text-accent-foreground'
-        )}>
-          {item.title.split(' ')[0]}
-        </div>
+        <img 
+          src={item.image} 
+          alt={item.title}
+          className="w-full h-full rounded-full object-cover"
+        />
       </div>
       <p className={cn(
         'text-xs md:text-sm text-center mt-3 text-primary-foreground/80 font-medium max-w-[120px] mx-auto transition-colors duration-300',
@@ -840,6 +883,88 @@ function CertificationsSection() {
   );
 }
 
+// TESTIMONIALS SECTION
+function TestimonialsSection() {
+  const { ref, isVisible } = useScrollAnimation<HTMLElement>();
+
+  return (
+    <section ref={ref} className="py-24 bg-secondary">
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <span className={cn(
+            'inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4 transition-all duration-500',
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          )}>
+            Testimonials
+          </span>
+          <h2 className={cn(
+            'text-3xl md:text-4xl font-bold text-foreground mb-4 transition-all duration-700',
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          )}>
+            What Our <span className="text-primary">Partners Say</span>
+          </h2>
+        </div>
+
+        {/* Testimonials Grid */}
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+          {testimonialsData.map((testimonial, index) => (
+            <div
+              key={testimonial.author}
+              className={cn(
+                'relative p-8 bg-card rounded-2xl border border-border hover-lift transition-all duration-500',
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+              )}
+              style={{ transitionDelay: `${index * 150}ms` }}
+            >
+              {/* Quote Icon */}
+              <Quote className="w-10 h-10 text-primary/20 absolute top-6 right-6" />
+              
+              {/* Rating */}
+              <div className="flex gap-1 mb-4">
+                {Array.from({ length: testimonial.rating }).map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-accent text-accent" />
+                ))}
+              </div>
+              
+              {/* Quote */}
+              <p className="text-muted-foreground mb-6 leading-relaxed italic">
+                "{testimonial.quote}"
+              </p>
+              
+              {/* Author */}
+              <div className="border-t border-border pt-4">
+                <p className="font-semibold text-foreground">{testimonial.author}</p>
+                <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                <p className="text-sm text-primary">{testimonial.company}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Partner Logos */}
+        <div className={cn(
+          'transition-all duration-700 delay-300',
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        )}>
+          <p className="text-center text-muted-foreground mb-8">Trusted by industry leaders and certified by</p>
+          <div className="flex flex-wrap justify-center gap-6">
+            {partnerLogos.map((partner, index) => (
+              <div
+                key={partner.name}
+                className="w-20 h-20 rounded-xl bg-card border border-border flex items-center justify-center hover-lift transition-all"
+                style={{ transitionDelay: `${(index + 3) * 100}ms` }}
+              >
+                <span className="text-lg font-bold text-primary">{partner.initials}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // 8️⃣ CALL TO ACTION SECTION
 function CTASection() {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>();
@@ -892,6 +1017,7 @@ export default function HomePage() {
       <ShilohWaySection />
       <BusinessOperationsSection />
       <CertificationsSection />
+      <TestimonialsSection />
       <CTASection />
     </>
   );
