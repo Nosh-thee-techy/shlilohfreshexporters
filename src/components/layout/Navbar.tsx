@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'About Us', href: '/about' },
-  { name: 'Our Products', href: '/products' },
+  { name: 'Business Segments', href: '/products' },
   { name: 'Export & Logistics', href: '/export-logistics' },
   { name: 'Certifications', href: '/certifications' },
   { name: 'Contact Us', href: '/contact' },
@@ -168,7 +168,7 @@ export function Navbar() {
           {/* Mobile CTA */}
           <div className="mt-auto pt-6 border-t border-border">
             <a
-              href="https://wa.me/254716171778?text=Hello%20Shiloh%20Fresh%20Exporters%2C%20I%27d%20like%20to%20inquire."
+              href="https://wa.me/254702339421?text=Hello%20Shiloh%20Fresh%20Exporters%2C%20I%27d%20like%20to%20inquire."
               target="_blank"
               rel="noopener noreferrer"
             >
