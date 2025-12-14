@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Leaf, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Leaf, Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
 
 const quickLinks = [
   { name: 'Home', href: '/' },
@@ -14,10 +14,9 @@ const supportLinks = [
 ];
 
 const socialLinks = [
-  { icon: Facebook, href: '#', label: 'Facebook' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
+  { icon: Facebook, href: 'https://facebook.com/shilohfreshexporters', label: 'Facebook' },
+  { icon: Instagram, href: 'https://instagram.com/shilohfreshexporters', label: 'Instagram' },
+  { icon: Linkedin, href: 'https://linkedin.com/company/shilohfreshexporters', label: 'LinkedIn' },
 ];
 
 export function Footer() {
