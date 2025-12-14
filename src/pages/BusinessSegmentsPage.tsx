@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
 import { getWhatsAppLink, whatsAppMessages } from '@/data/products';
+import { ProduceIconsBackground } from '@/components/decorative/ProduceIconsBackground';
+import { FloatingFruits } from '@/components/decorative/FloatingFruits';
 import heroImage from '@/assets/hero-farm.jpg';
 
 const segments = [
@@ -57,9 +59,12 @@ export default function BusinessSegmentsPage() {
         </div>
       </section>
 
-      {/* Segments Grid */}
-      <section ref={ref} className="py-20 bg-background">
-        <div className="container mx-auto px-4">
+      {/* Segments Grid with Icons Background */}
+      <section ref={ref} className="relative py-20 bg-background overflow-hidden">
+        {/* Decorative Icons Background */}
+        <ProduceIconsBackground />
+        
+        <div className="relative z-10 container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Our Business Segments
@@ -77,7 +82,7 @@ export default function BusinessSegmentsPage() {
                   key={segment.id}
                   to={segment.href}
                   className={cn(
-                    'group relative bg-card rounded-2xl border border-border p-8 shadow-card transition-all duration-500 hover:shadow-xl hover:-translate-y-2',
+                    'group relative bg-card/95 backdrop-blur-sm rounded-2xl border border-border p-8 shadow-card transition-all duration-500 hover:shadow-xl hover:-translate-y-2',
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
                   )}
                   style={{ transitionDelay: `${index * 150}ms` }}
@@ -111,9 +116,12 @@ export default function BusinessSegmentsPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-secondary">
-        <div className="container mx-auto px-4 text-center">
+      {/* CTA Section with Floating Fruits */}
+      <section className="relative py-16 bg-secondary overflow-hidden">
+        {/* Floating Fruits */}
+        <FloatingFruits className="absolute inset-x-0 bottom-0 h-32 pointer-events-none" />
+        
+        <div className="relative z-10 container mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
             Need Help Finding Products?
           </h2>
