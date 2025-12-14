@@ -508,8 +508,8 @@ function ProcessNode({
       onClick={onClick}
     >
       <div className={cn(
-        'w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-dashed border-primary/50 flex items-center justify-center mx-auto transition-all duration-300 overflow-hidden p-1',
-        isHovered && 'border-solid border-accent shadow-[0_0_30px_rgba(255,200,87,0.4)] scale-110'
+        'w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 rounded-full border-3 border-dashed border-primary/50 flex items-center justify-center mx-auto transition-all duration-300 overflow-hidden p-1.5',
+        isHovered && 'border-solid border-accent shadow-[0_0_40px_rgba(255,200,87,0.5)] scale-110'
       )}>
         <img 
           src={item.image} 
@@ -518,7 +518,7 @@ function ProcessNode({
         />
       </div>
       <p className={cn(
-        'text-xs md:text-sm text-center mt-3 text-primary-foreground/80 font-medium max-w-[120px] mx-auto transition-colors duration-300',
+        'text-sm md:text-base text-center mt-4 text-primary-foreground/80 font-medium max-w-[160px] mx-auto transition-colors duration-300',
         isHovered && 'text-accent'
       )}>
         {item.title}
