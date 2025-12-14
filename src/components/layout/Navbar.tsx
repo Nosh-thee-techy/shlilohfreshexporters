@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Leaf } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { DarkModeToggle } from '@/components/theme/DarkModeToggle';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
@@ -89,31 +90,34 @@ export function Navbar() {
                 {link.name}
               </Link>
             ))}
+            <DarkModeToggle className="ml-2" />
           </nav>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="lg:hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            <div className="relative w-6 h-6">
-              <Menu
-                className={cn(
-                  'absolute inset-0 transition-all duration-300',
-                  isMobileMenuOpen ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'
-                )}
-              />
-              <X
-                className={cn(
-                  'absolute inset-0 transition-all duration-300',
-                  isMobileMenuOpen ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-90'
-                )}
-              />
-            </div>
-          </Button>
+          {/* Mobile Actions */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <DarkModeToggle />
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              <div className="relative w-6 h-6">
+                <Menu
+                  className={cn(
+                    'absolute inset-0 transition-all duration-300',
+                    isMobileMenuOpen ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'
+                  )}
+                />
+                <X
+                  className={cn(
+                    'absolute inset-0 transition-all duration-300',
+                    isMobileMenuOpen ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-90'
+                  )}
+                />
+              </div>
+            </Button>
+          </div>
         </div>
       </header>
 

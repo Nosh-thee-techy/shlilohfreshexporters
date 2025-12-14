@@ -7,6 +7,7 @@ import { Layout } from "@/components/layout/Layout";
 import { AccessibilityProvider } from "@/contexts/AccessibilityContext";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
+import SocialImpactPage from "./pages/SocialImpactPage";
 import BusinessSegmentsPage from "./pages/BusinessSegmentsPage";
 import FruitsPage from "./pages/FruitsPage";
 import VegetablesPage from "./pages/VegetablesPage";
@@ -29,6 +30,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/about/social-impact" element={<SocialImpactPage />} />
             <Route path="/products" element={<BusinessSegmentsPage />} />
             <Route path="/products/fruits" element={<FruitsPage />} />
             <Route path="/products/vegetables" element={<VegetablesPage />} />
