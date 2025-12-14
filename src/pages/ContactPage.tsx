@@ -234,10 +234,10 @@ export default function ContactPage() {
                   <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center flex-shrink-0">
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
-                  <div>
+                <div>
                     <h3 className="font-semibold text-foreground">Email</h3>
-                    <a href="mailto:info@shilohfresh.com" className="text-muted-foreground hover:text-primary transition-colors">
-                      info@shilohfresh.com
+                    <a href="mailto:info@shilohfresh.co.ke" className="text-muted-foreground hover:text-primary transition-colors">
+                      info@shilohfresh.co.ke
                     </a>
                   </div>
                 </div>
