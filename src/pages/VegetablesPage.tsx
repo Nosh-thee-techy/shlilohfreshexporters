@@ -13,12 +13,25 @@ import {
   whatsAppMessages,
 } from '@/data/products';
 import heroImage from '@/assets/hero-farm.jpg';
+import frenchBeansImg from '@/assets/products/french-beans.jpg';
+import carrotsImg from '@/assets/products/carrots.jpg';
+import chiliPeppersImg from '@/assets/products/chili-peppers.jpg';
+import springOnionsImg from '@/assets/products/spring-onions.jpg';
+import snowPeasImg from '@/assets/products/snow-peas.jpg';
 import vegetablesImg from '@/assets/products/vegetables.jpg';
 
-// Default image for vegetables
+// Map images to products
+const vegetableImages: Record<string, string> = {
+  'french-beans': frenchBeansImg,
+  'carrots': carrotsImg,
+  'chili-peppers': chiliPeppersImg,
+  'spring-onions': springOnionsImg,
+  'snow-peas': snowPeasImg,
+};
+
 const vegetables: Product[] = vegetablesData.map(veg => ({
   ...veg,
-  image: vegetablesImg,
+  image: vegetableImages[veg.id] || vegetablesImg,
 }));
 
 // Get unique varieties for filter
