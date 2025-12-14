@@ -1,7 +1,4 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Users, Target, Heart, ArrowRight, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Users, Target, Heart } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -21,10 +18,8 @@ const timeline = [
 ];
 
 const teamMembers = [
-  { name: 'John Mwangi', role: 'Chief Executive Officer', bio: 'Over 15 years of experience in agricultural exports and business development.' },
-  { name: 'Sarah Wanjiku', role: 'Operations Director', bio: 'Expert in supply chain management and quality control systems.' },
-  { name: 'David Ochieng', role: 'Export Manager', bio: 'Specialist in international trade regulations and logistics.' },
-  { name: 'Grace Njeri', role: 'Farmer Relations Manager', bio: 'Passionate about sustainable farming and community development.' },
+  { name: 'Sarah Mugo', role: 'Founder & CEO', bio: 'Visionary leader with deep expertise in agricultural exports and a passion for empowering Kenyan farmers.' },
+  { name: 'Easter Wega', role: 'Managing Director', bio: 'Experienced operations leader driving excellence in quality control and international market expansion.' },
 ];
 
 const stats = [
@@ -33,37 +28,6 @@ const stats = [
   { number: '10+', label: 'Export Partners' },
   { number: '5+', label: 'Years Experience' },
 ];
-
-function TeamModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-foreground">
-            Meet Our Team
-          </DialogTitle>
-        </DialogHeader>
-        
-        <div className="grid sm:grid-cols-2 gap-6 mt-4">
-          {teamMembers.map((member, index) => (
-            <div
-              key={member.name}
-              className="p-6 bg-secondary rounded-xl animate-fade-in-up"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-4">
-                <Users className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="text-lg font-semibold text-foreground">{member.name}</h3>
-              <p className="text-sm text-primary font-medium mb-2">{member.role}</p>
-              <p className="text-sm text-muted-foreground">{member.bio}</p>
-            </div>
-          ))}
-        </div>
-      </DialogContent>
-    </Dialog>
-  );
-}
 
 function AnimatedCounter({ value, label }: { value: string; label: string }) {
   return (
@@ -75,7 +39,6 @@ function AnimatedCounter({ value, label }: { value: string; label: string }) {
 }
 
 export default function AboutPage() {
-  const [isTeamModalOpen, setIsTeamModalOpen] = useState(false);
   const { ref: missionRef, isVisible: missionVisible } = useScrollAnimation<HTMLElement>();
   const { ref: timelineRef, isVisible: timelineVisible } = useScrollAnimation<HTMLElement>();
   const { ref: statsRef, isVisible: statsVisible } = useScrollAnimation<HTMLElement>();
@@ -203,27 +166,42 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Meet the Team CTA */}
-      <section className="py-16 bg-primary">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-primary-foreground mb-4">
-            The People Behind Shiloh Fresh
-          </h2>
-          <p className="text-primary-foreground/80 mb-8 max-w-xl mx-auto">
-            Our dedicated team works tirelessly to ensure quality and excellence in everything we do.
-          </p>
-          <Button
-            variant="glass"
-            size="lg"
-            onClick={() => setIsTeamModalOpen(true)}
-          >
-            Meet the Team
-            <ArrowRight className="w-5 h-5" />
-          </Button>
+      {/* Meet the Team Section */}
+      <section className="py-20 bg-primary">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full text-primary-foreground text-sm font-medium mb-4 border border-primary-foreground/20">
+              Our Leadership
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
+              Meet the Team
+            </h2>
+            <p className="text-primary-foreground/80 max-w-xl mx-auto">
+              The dedicated leaders driving Shiloh Fresh Exporters' mission forward.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            {teamMembers.map((member, index) => (
+              <div
+                key={member.name}
+                className="bg-primary-foreground/10 backdrop-blur-sm rounded-2xl p-8 border-2 border-primary-foreground/20 hover:border-accent transition-all duration-300 hover:scale-105"
+              >
+                <div className="w-24 h-24 rounded-full bg-accent/20 border-4 border-accent flex items-center justify-center mb-6 mx-auto">
+                  <Users className="w-12 h-12 text-accent" />
+                </div>
+                <div className="text-center">
+                  <h3 className="text-2xl font-bold text-primary-foreground mb-2">{member.name}</h3>
+                  <span className="inline-block px-4 py-1.5 bg-accent text-primary rounded-full text-sm font-semibold mb-4">
+                    {member.role}
+                  </span>
+                  <p className="text-primary-foreground/80 leading-relaxed">{member.bio}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
-
-      <TeamModal isOpen={isTeamModalOpen} onClose={() => setIsTeamModalOpen(false)} />
     </div>
   );
 }

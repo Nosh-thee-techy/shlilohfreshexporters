@@ -17,6 +17,7 @@ import passionFruitImg from '@/assets/products/passion-fruit.jpg';
 import pineappleImg from '@/assets/products/pineapple.jpg';
 import herbsImg from '@/assets/products/herbs.jpg';
 import vegetablesImg from '@/assets/products/vegetables.jpg';
+import heroImage from '@/assets/hero-farm.jpg';
 
 interface Product {
   id: string;
@@ -124,7 +125,7 @@ function ProductCard({ product, onViewDetails }: { product: Product; onViewDetai
             View Details
           </Button>
           <a
-            href={`https://wa.me/254716171778?text=Hello%20Shiloh%20Fresh%2C%20I%27m%20interested%20in%20${encodeURIComponent(product.name)}.%20Please%20send%20me%20a%20quote.`}
+            href={`https://wa.me/254702339421?text=Hello%20Shiloh%20Fresh%2C%20I%27m%20interested%20in%20${encodeURIComponent(product.name)}.%20Please%20send%20me%20a%20quote.`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1"
@@ -182,7 +183,7 @@ function ProductModal({ product, isOpen, onClose }: { product: Product | null; i
           </div>
 
           <a
-            href={`https://wa.me/254716171778?text=Hello%20Shiloh%20Fresh%2C%20I%27m%20interested%20in%20${encodeURIComponent(product.name)}.%20Please%20send%20me%20a%20quote.`}
+            href={`https://wa.me/254702339421?text=Hello%20Shiloh%20Fresh%2C%20I%27m%20interested%20in%20${encodeURIComponent(product.name)}.%20Please%20send%20me%20a%20quote.`}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -204,12 +205,16 @@ export default function ProductsPage() {
   return (
     <div className="pt-24">
       {/* Hero */}
-      <section className="py-16 bg-primary">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img src={heroImage} alt="Fresh produce farm" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-primary/85" />
+        </div>
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4 animate-fade-in-down">
             Our Products
           </h1>
-          <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto">
+          <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto animate-fade-in-up">
             Premium fresh produce sourced from Kenya's finest farms, ready for global export.
           </p>
         </div>
@@ -248,7 +253,7 @@ export default function ProductsPage() {
             We can source and supply a wide variety of fresh produce. Contact us with your requirements.
           </p>
           <a
-            href="https://wa.me/254716171778?text=Hello%20Shiloh%20Fresh%2C%20I%27m%20looking%20for%20specific%20products.%20Can%20you%20help?"
+            href="https://wa.me/254702339421?text=Hello%20Shiloh%20Fresh%2C%20I%27m%20looking%20for%20specific%20products.%20Can%20you%20help?"
             target="_blank"
             rel="noopener noreferrer"
           >

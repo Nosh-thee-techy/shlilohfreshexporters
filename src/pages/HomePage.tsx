@@ -46,8 +46,14 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/ui/dialog';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
-const WHATSAPP_LINK = "https://wa.me/254716171778?text=Hello%20Shiloh%20Fresh%20Exporters%2C%20I%27d%20like%20to%20inquire.";
+const WHATSAPP_LINK = "https://wa.me/254702339421?text=Hello%20Shiloh%20Fresh%20Exporters%2C%20I%27d%20like%20to%20inquire.";
 
 const valueHighlights = [
   {
@@ -975,6 +981,109 @@ function TestimonialsSection() {
   );
 }
 
+// FAQ DATA
+const faqData = [
+  {
+    question: 'What products does Shiloh Fresh export?',
+    answer: 'We export premium fresh produce including Hass avocados, Kent mangoes, passion fruits, MD2 pineapples, fresh herbs (basil, mint, cilantro), and vegetables (French beans, snow peas, baby corn, bell peppers).',
+  },
+  {
+    question: 'What are your minimum order quantities (MOQ)?',
+    answer: 'Our MOQ varies by product. For avocados, it\'s typically 1,000 kg. For other products, please contact us for specific requirements. We can accommodate smaller trial orders for new clients.',
+  },
+  {
+    question: 'Which countries do you export to?',
+    answer: 'We export to over 10 international destinations including countries in Europe, the Middle East, and Asia. Our logistics network supports both air and sea freight to reach global markets.',
+  },
+  {
+    question: 'How do you ensure product quality and freshness?',
+    answer: 'We maintain strict quality control at every stage: careful sourcing from certified farmers, rigorous sorting and grading, professional packaging, and unbroken cold chain management from packhouse to destination.',
+  },
+  {
+    question: 'What certifications does Shiloh Fresh have?',
+    answer: 'We hold KEBS (Kenya Bureau of Standards), HCDA (Horticultural Crops Directorate), GlobalG.A.P, and Phytosanitary certifications. These ensure our products meet international food safety and quality standards.',
+  },
+  {
+    question: 'How long does shipping take?',
+    answer: 'Air freight to Europe takes 24-48 hours. Sea freight takes 3-4 weeks depending on destination. We provide real-time tracking for all shipments and keep you updated throughout the process.',
+  },
+  {
+    question: 'What payment methods do you accept?',
+    answer: 'We accept bank transfers (T/T), Letters of Credit (L/C), and other secure payment methods. Payment terms are typically 30% advance and 70% against shipping documents.',
+  },
+  {
+    question: 'Can I request custom packaging?',
+    answer: 'Yes! We offer custom branding and packaging options. Our packaging is designed to maintain freshness and can be tailored to meet your market requirements and branding needs.',
+  },
+];
+
+// FAQ SECTION
+function FAQSection() {
+  const { ref, isVisible } = useScrollAnimation<HTMLElement>();
+
+  return (
+    <section ref={ref} className="py-24 bg-background">
+      <div className="container mx-auto px-4">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <span className={cn(
+            'inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4 transition-all duration-500',
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          )}>
+            FAQ
+          </span>
+          <h2 className={cn(
+            'text-3xl md:text-4xl font-bold text-foreground mb-4 transition-all duration-700',
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          )}>
+            Frequently Asked <span className="text-primary">Questions</span>
+          </h2>
+          <p className={cn(
+            'text-muted-foreground transition-all duration-700 delay-100',
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          )}>
+            Find answers to common questions about our products and export services.
+          </p>
+        </div>
+
+        <div className={cn(
+          'max-w-3xl mx-auto transition-all duration-700',
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+        )}>
+          <Accordion type="single" collapsible className="space-y-4">
+            {faqData.map((faq, index) => (
+              <AccordionItem 
+                key={index} 
+                value={`item-${index}`}
+                className="bg-card rounded-xl border border-border px-6 data-[state=open]:border-primary transition-colors"
+              >
+                <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary py-5">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground pb-5">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+
+        <div className={cn(
+          'text-center mt-12 transition-all duration-700 delay-200',
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        )}>
+          <p className="text-muted-foreground mb-4">Still have questions?</p>
+          <Link to="/contact">
+            <Button variant="outline" size="lg" className="group">
+              Contact Us
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // 8️⃣ CALL TO ACTION SECTION
 function CTASection() {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>();
@@ -1028,6 +1137,7 @@ export default function HomePage() {
       <BusinessOperationsSection />
       <CertificationsSection />
       <TestimonialsSection />
+      <FAQSection />
       <CTASection />
     </>
   );
