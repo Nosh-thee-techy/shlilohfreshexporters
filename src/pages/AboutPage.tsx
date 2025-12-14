@@ -1,4 +1,6 @@
-import { Users, Target, Heart } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Users, Target, Heart, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -93,6 +95,27 @@ export default function AboutPage() {
               <p className="text-muted-foreground leading-relaxed text-lg">
                 Service goes beyond transactions—it's about commitment. Dedication means working tirelessly to provide fresh, high-quality fruits while prioritizing customer satisfaction and long-term relationships. We believe in going the extra mile for every partner we serve.
               </p>
+            </div>
+          </div>
+
+          {/* CSR CTA */}
+          <div className={cn(
+            'mt-16 text-center transition-all duration-700 delay-300',
+            missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          )}>
+            <div className="inline-block p-8 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl border border-border">
+              <h3 className="text-xl font-semibold text-foreground mb-3">
+                Our Impact Goes Beyond Business
+              </h3>
+              <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
+                Discover how we're driving positive change in communities and protecting our environment.
+              </p>
+              <Link to="/about/social-impact">
+                <Button size="lg" className="gap-2 group">
+                  Corporate Social Responsibility
+                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
