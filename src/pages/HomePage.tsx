@@ -191,26 +191,26 @@ function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/60 to-primary/90" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-32 text-center">
-        <div className="max-w-4xl mx-auto space-y-8">
+      <div className="relative z-10 container mx-auto px-4 py-20 sm:py-32 text-center">
+        <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
           <div className="space-y-4 animate-fade-in-down">
-            <span className="inline-block px-4 py-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full text-primary-foreground text-sm font-medium border border-primary-foreground/20">
+            <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full text-primary-foreground text-xs sm:text-sm font-medium border border-primary-foreground/20">
               Premium Fresh Produce from Kenya
             </span>
           </div>
           
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-primary-foreground leading-tight animate-fade-in-up">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-primary-foreground leading-tight animate-fade-in-up">
             From Africa{' '}
             <span className="text-accent">to the World</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-primary-foreground/90 max-w-3xl mx-auto animate-fade-in-up delay-200 leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-primary-foreground/90 max-w-3xl mx-auto animate-fade-in-up delay-200 leading-relaxed px-2">
             Our promise, <strong>From Africa to the World</strong>, represents Shiloh Fresh Exporters' commitment to delivering premium, ethically sourced produce from Kenyan farms to global markets. Through sustainable farming practices and modern export systems, we ensure that every shipment reflects the quality, freshness, and authenticity of African agriculture.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4 animate-fade-in-up delay-300">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-4 animate-fade-in-up delay-300 px-4 sm:px-0">
             <Link to="/products">
-              <Button variant="hero" size="lg" className="group">
+              <Button variant="hero" size="lg" className="group w-full sm:w-auto">
                 Explore Our Produce
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
@@ -220,7 +220,7 @@ function HeroSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button variant="whatsapp" size="lg">
+              <Button variant="whatsapp" size="lg" className="w-full sm:w-auto">
                 <MessageCircle className="w-5 h-5" />
                 Chat with Us on WhatsApp
               </Button>
@@ -239,22 +239,22 @@ function ValueHighlights() {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>();
 
   return (
-    <section ref={ref} className="py-16 bg-secondary">
+    <section ref={ref} className="py-12 sm:py-16 bg-secondary">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           {valueHighlights.map((item, index) => (
             <div
               key={item.title}
               className={cn(
-                'group flex items-center gap-4 p-6 rounded-2xl bg-card border border-border hover-lift transition-all duration-500',
+                'group flex items-center gap-3 sm:gap-4 p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-card border border-border hover-lift transition-all duration-500',
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               )}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
-                <item.icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                <item.icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary group-hover:text-primary-foreground transition-colors" />
               </div>
-              <p className="text-muted-foreground font-medium">{item.description}</p>
+              <p className="text-sm sm:text-base text-muted-foreground font-medium">{item.description}</p>
             </div>
           ))}
         </div>
@@ -378,7 +378,7 @@ function AnimatedCounter({ target, suffix = '' }: { target: number; suffix?: str
   }, [isVisible, hasAnimated, target]);
 
   return (
-    <span ref={ref} className="text-3xl md:text-4xl font-bold text-primary tabular-nums">
+    <span ref={ref} className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary tabular-nums">
       {isVisible ? count : 0}{suffix}
     </span>
   );
@@ -388,38 +388,38 @@ function StatsSection() {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>();
 
   return (
-    <section ref={ref} className="py-24 bg-secondary">
+    <section ref={ref} className="py-16 sm:py-24 bg-secondary">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <span className={cn(
-            'inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4 transition-all duration-500',
+            'inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-4 transition-all duration-500',
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           )}>
             Where We Stand Now
           </span>
           <h2 className={cn(
-            'text-3xl md:text-4xl font-bold text-foreground transition-all duration-700',
+            'text-2xl sm:text-3xl md:text-4xl font-bold text-foreground transition-all duration-700',
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           )}>
             Our Growth <span className="text-primary">in Numbers</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 max-w-5xl mx-auto">
           {statsData.map((stat, index) => (
             <div
               key={stat.label}
               className={cn(
-                'p-6 bg-card rounded-2xl shadow-card text-center hover-lift transition-all duration-500',
+                'p-4 sm:p-6 bg-card rounded-xl sm:rounded-2xl shadow-card text-center hover-lift transition-all duration-500',
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
               )}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <stat.icon className="w-6 h-6 text-primary" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
               </div>
               <AnimatedCounter target={stat.number} suffix={stat.suffix} />
-              <div className="text-sm text-muted-foreground mt-2">{stat.label}</div>
+              <div className="text-xs sm:text-sm text-muted-foreground mt-1 sm:mt-2">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -508,7 +508,7 @@ function ProcessNode({
       onClick={onClick}
     >
       <div className={cn(
-        'w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 rounded-full border-3 border-dashed border-primary/50 flex items-center justify-center mx-auto transition-all duration-300 overflow-hidden p-1.5',
+        'w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 rounded-full border-2 sm:border-3 border-dashed border-primary/50 flex items-center justify-center mx-auto transition-all duration-300 overflow-hidden p-1 sm:p-1.5',
         isHovered && 'border-solid border-accent shadow-[0_0_40px_rgba(255,200,87,0.5)] scale-110'
       )}>
         <img 
@@ -518,18 +518,18 @@ function ProcessNode({
         />
       </div>
       <p className={cn(
-        'text-sm md:text-base text-center mt-4 text-primary-foreground/80 font-medium max-w-[160px] mx-auto transition-colors duration-300',
+        'text-xs sm:text-sm md:text-base text-center mt-2 sm:mt-4 text-primary-foreground/80 font-medium max-w-[100px] sm:max-w-[160px] mx-auto transition-colors duration-300 leading-tight',
         isHovered && 'text-accent'
       )}>
         {item.title}
       </p>
       
-      {/* Hover tooltip */}
+      {/* Hover tooltip - hidden on mobile, show on tap */}
       <div className={cn(
-        'absolute z-20 left-1/2 -translate-x-1/2 top-full mt-2 w-48 p-3 bg-card rounded-lg shadow-xl border border-border transition-all duration-300 pointer-events-none',
+        'absolute z-20 left-1/2 -translate-x-1/2 top-full mt-2 w-40 sm:w-48 p-2 sm:p-3 bg-card rounded-lg shadow-xl border border-border transition-all duration-300 pointer-events-none hidden sm:block',
         isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'
       )}>
-        <p className="text-xs text-muted-foreground">{item.description}</p>
+        <p className="text-[10px] sm:text-xs text-muted-foreground">{item.description}</p>
       </div>
     </div>
   );
@@ -671,11 +671,11 @@ function ShilohWaySection() {
         </div>
 
         {/* Process Flow - Mobile */}
-        <div className="lg:hidden space-y-8">
+        <div className="lg:hidden space-y-6 sm:space-y-8">
           {/* Grower */}
           <div>
-            <h3 className="text-center text-lg font-semibold text-accent mb-6">🌱 Grower</h3>
-            <div className="flex justify-center gap-4 flex-wrap">
+            <h3 className="text-center text-base sm:text-lg font-semibold text-accent mb-4 sm:mb-6">🌱 Grower</h3>
+            <div className="flex justify-center gap-2 sm:gap-4 flex-wrap">
               {processFlowData.grower.map((item, index) => (
                 <ProcessNode
                   key={item.id}
@@ -692,13 +692,13 @@ function ShilohWaySection() {
           </div>
           
           <div className="flex justify-center">
-            <div className="w-0.5 h-8 border-l-2 border-dashed border-primary-foreground/30" />
+            <div className="w-0.5 h-6 sm:h-8 border-l-2 border-dashed border-primary-foreground/30" />
           </div>
 
           {/* Packhouse */}
           <div>
-            <h3 className="text-center text-lg font-semibold text-accent mb-6">🏭 Packhouse</h3>
-            <div className="flex justify-center gap-4 flex-wrap">
+            <h3 className="text-center text-base sm:text-lg font-semibold text-accent mb-4 sm:mb-6">🏭 Packhouse</h3>
+            <div className="flex justify-center gap-2 sm:gap-4 flex-wrap">
               {processFlowData.packhouse.map((item, index) => (
                 <ProcessNode
                   key={item.id}
@@ -715,13 +715,13 @@ function ShilohWaySection() {
           </div>
 
           <div className="flex justify-center">
-            <div className="w-0.5 h-8 border-l-2 border-dashed border-primary-foreground/30" />
+            <div className="w-0.5 h-6 sm:h-8 border-l-2 border-dashed border-primary-foreground/30" />
           </div>
 
           {/* Logistics */}
           <div>
-            <h3 className="text-center text-lg font-semibold text-accent mb-6">🚢 Logistics</h3>
-            <div className="flex justify-center gap-4 flex-wrap">
+            <h3 className="text-center text-base sm:text-lg font-semibold text-accent mb-4 sm:mb-6">🚢 Logistics</h3>
+            <div className="flex justify-center gap-2 sm:gap-4 flex-wrap">
               {processFlowData.logistics.map((item, index) => (
                 <ProcessNode
                   key={item.id}

@@ -91,35 +91,35 @@ export function AIAssistant() {
 
   return (
     <>
-      {/* Toggle Button */}
+      {/* Toggle Button - relative positioning for stacked layout */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          'fixed right-4 bottom-24 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110',
+          'w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110',
           'bg-gradient-to-br from-primary to-primary/80 text-primary-foreground',
           isOpen && 'scale-0 opacity-0'
         )}
         aria-label="Open AI Assistant"
       >
-        <Bot className="w-7 h-7" />
+        <Bot className="w-6 h-6 sm:w-7 sm:h-7" />
       </button>
 
       {/* Chat Panel */}
       <div
         className={cn(
-          'fixed right-4 bottom-4 z-50 w-96 max-w-[calc(100vw-2rem)] h-[500px] max-h-[80vh] bg-card border border-border rounded-2xl shadow-2xl flex flex-col transition-all duration-300',
+          'fixed right-2 sm:right-4 bottom-2 sm:bottom-4 z-[60] w-[calc(100vw-1rem)] sm:w-96 max-w-md h-[70vh] sm:h-[500px] max-h-[80vh] bg-card border border-border rounded-2xl shadow-2xl flex flex-col transition-all duration-300',
           isOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95 pointer-events-none'
         )}
       >
         {/* Header */}
-        <div className="p-4 border-b border-border flex items-center justify-between bg-gradient-to-r from-primary/10 to-transparent rounded-t-2xl">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <Bot className="w-5 h-5 text-primary-foreground" />
+        <div className="p-3 sm:p-4 border-b border-border flex items-center justify-between bg-gradient-to-r from-primary/10 to-transparent rounded-t-2xl">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary flex items-center justify-center">
+              <Bot className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground" />
             </div>
             <div>
-              <h3 className="font-semibold text-foreground">Shiloh Assistant</h3>
-              <p className="text-xs text-muted-foreground">Ask about our products & services</p>
+              <h3 className="font-semibold text-foreground text-sm sm:text-base">Shiloh Assistant</h3>
+              <p className="text-[10px] sm:text-xs text-muted-foreground">Ask about our products & services</p>
             </div>
           </div>
           <Button
@@ -133,10 +133,10 @@ export function AIAssistant() {
         </div>
 
         {/* Messages */}
-        <ScrollArea className="flex-1 p-4" ref={scrollRef}>
+        <ScrollArea className="flex-1 p-3 sm:p-4" ref={scrollRef}>
           {messages.length === 0 ? (
-            <div className="space-y-4">
-              <p className="text-center text-muted-foreground text-sm">
+            <div className="space-y-3 sm:space-y-4">
+              <p className="text-center text-muted-foreground text-xs sm:text-sm">
                 Hi! I'm your Shiloh Fresh assistant. How can I help you today?
               </p>
               <div className="grid grid-cols-2 gap-2">
@@ -144,7 +144,7 @@ export function AIAssistant() {
                   <button
                     key={action.label}
                     onClick={() => sendMessage(action.message)}
-                    className="p-3 text-xs text-left bg-secondary hover:bg-secondary/80 rounded-xl transition-colors"
+                    className="p-2 sm:p-3 text-[10px] sm:text-xs text-left bg-secondary hover:bg-secondary/80 rounded-xl transition-colors"
                   >
                     {action.label}
                   </button>
@@ -185,20 +185,20 @@ export function AIAssistant() {
         </ScrollArea>
 
         {/* Input */}
-        <form onSubmit={handleSubmit} className="p-4 border-t border-border">
+        <form onSubmit={handleSubmit} className="p-3 sm:p-4 border-t border-border">
           <div className="flex gap-2">
             <Input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type your message..."
               disabled={isLoading}
-              className="flex-1"
+              className="flex-1 h-10 text-sm"
             />
-            <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
+            <Button type="submit" size="icon" disabled={isLoading || !input.trim()} className="h-10 w-10">
               <Send className="w-4 h-4" />
             </Button>
           </div>
-          <p className="text-xs text-muted-foreground mt-2 text-center">
+          <p className="text-[10px] sm:text-xs text-muted-foreground mt-2 text-center">
             Or chat via{' '}
             <a
               href="https://wa.me/254702339421"
