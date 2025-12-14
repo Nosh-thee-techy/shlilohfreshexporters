@@ -224,8 +224,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground">Phone</h3>
-                    <a href="tel:+254700000000" className="text-muted-foreground hover:text-primary transition-colors">
-                      +254 700 000 000
+                    <a href="tel:+254716171778" className="text-muted-foreground hover:text-primary transition-colors">
+                      +254 716 171 778
                     </a>
                   </div>
                 </div>
@@ -266,7 +266,7 @@ export default function ContactPage() {
               {/* Quick Actions */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <a
-                  href="https://wa.me/254700000000?text=Hello%20Shiloh%20Fresh%20Exporters%2C%20I%27d%20like%20to%20inquire."
+                  href="https://wa.me/254716171778?text=Hello%20Shiloh%20Fresh%20Exporters%2C%20I%27d%20like%20to%20inquire."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1"
