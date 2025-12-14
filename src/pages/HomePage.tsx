@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ArrowRight, 
@@ -329,9 +329,12 @@ function JourneySection() {
 function AnimatedCounter({ target, suffix = '' }: { target: number; suffix?: string }) {
   const { ref, isVisible } = useScrollAnimation<HTMLSpanElement>();
   const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
-  useState(() => {
-    if (isVisible && count < target) {
+  // Use useEffect for proper animation triggering
+  React.useEffect(() => {
+    if (isVisible && !hasAnimated) {
+      setHasAnimated(true);
       const duration = 2000;
       const steps = 60;
       const increment = target / steps;
@@ -349,10 +352,10 @@ function AnimatedCounter({ target, suffix = '' }: { target: number; suffix?: str
 
       return () => clearInterval(timer);
     }
-  });
+  }, [isVisible, hasAnimated, target]);
 
   return (
-    <span ref={ref} className="text-3xl md:text-4xl font-bold text-primary">
+    <span ref={ref} className="text-3xl md:text-4xl font-bold text-primary tabular-nums">
       {isVisible ? count : 0}{suffix}
     </span>
   );

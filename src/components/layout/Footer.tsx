@@ -1,16 +1,12 @@
 import { Link } from 'react-router-dom';
 import { Leaf, Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
 
-const quickLinks = [
-  { name: 'Home', href: '/' },
+const usefulLinks = [
+  { name: 'Our Produce', href: '/products' },
   { name: 'About Us', href: '/about' },
-  { name: 'Our Products', href: '/products' },
   { name: 'Export & Logistics', href: '/export-logistics' },
-];
-
-const supportLinks = [
   { name: 'Certifications', href: '/certifications' },
-  { name: 'Contact Us', href: '/contact' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 const socialLinks = [
@@ -40,29 +36,11 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Useful Links */}
           <div>
-            <h4 className="font-semibold text-lg mb-6">Quick Links</h4>
+            <h4 className="font-semibold text-lg mb-6">Useful Links</h4>
             <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    to={link.href}
-                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors duration-300 text-sm flex items-center gap-2 group"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent group-hover:scale-125 transition-transform" />
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Support Links */}
-          <div>
-            <h4 className="font-semibold text-lg mb-6">Support</h4>
-            <ul className="space-y-3">
-              {supportLinks.map((link) => (
+              {usefulLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
@@ -98,10 +76,10 @@ export function Footer() {
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 flex-shrink-0" />
                 <a
-                  href="mailto:info@shilohfresh.com"
+                  href="mailto:info@shilohfresh.co.ke"
                   className="text-primary-foreground/80 hover:text-primary-foreground text-sm transition-colors"
                 >
-                  info@shilohfresh.com
+                  info@shilohfresh.co.ke
                 </a>
               </li>
             </ul>
