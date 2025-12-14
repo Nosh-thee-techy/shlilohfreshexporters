@@ -358,6 +358,16 @@
   background: hsl(var(--primary) / 0.6);
 }
 
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Accessibility Styles */
 .high-contrast {
   --background: 0 0% 100%;

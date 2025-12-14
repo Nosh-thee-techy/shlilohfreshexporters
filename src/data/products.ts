@@ -9,6 +9,7 @@ export interface Product {
   id: string;
   name: string;
   image: string;
+  images?: string[]; // Multiple images for gallery
   varieties: string[];
   sourceRegions: string[];
   availability: string;
