@@ -200,7 +200,7 @@ function HeroSection() {
 
   return (
     <section className="relative min-h-[100svh] overflow-hidden bg-primary">
-      {/* Background with dark overlay */}
+      {/* Background */}
       <div
         className="absolute inset-0 z-0"
         style={{ transform: `translateY(${parallaxOffset}px)` }}
@@ -208,12 +208,12 @@ function HeroSection() {
         <img
           src={heroImage}
           alt="Kenyan farmland"
-          className="w-full h-[120%] object-cover opacity-20"
+          className="w-full h-[120%] object-cover opacity-15"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/85 to-primary/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/90 via-primary/80 to-primary/95" />
       </div>
 
-      {/* Vertical text — right side (desktop only) */}
+      {/* Vertical label — xl+ only */}
       <div className="hidden xl:flex absolute right-0 top-0 bottom-0 w-24 2xl:w-32 z-[3] items-center justify-center">
         <div className="relative h-full flex items-center">
           <div className="absolute right-0 top-[15%] bottom-[15%] w-20 2xl:w-24 rounded-l-3xl bg-accent/10 backdrop-blur-sm" />
@@ -227,33 +227,39 @@ function HeroSection() {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 min-h-[100svh] flex items-center">
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center w-full pt-24 pb-16 sm:pt-28 sm:pb-20 lg:py-20">
-          
-          {/* Left: Typography & CTAs */}
-          <div className="space-y-5 sm:space-y-7 text-center lg:text-left">
-            <p className="text-accent font-semibold text-sm tracking-wider uppercase animate-fade-in-down">
-              Shiloh Fresh Exporters
+      <div className="relative z-10 container mx-auto px-5 sm:px-6 min-h-[100svh] flex items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center w-full pt-28 pb-20 sm:pt-32 sm:pb-24 lg:py-20">
+
+          {/* Left: Bold Typography & CTAs */}
+          <div className="space-y-6 text-center lg:text-left">
+            <p className="text-accent font-bold text-xs sm:text-sm tracking-[0.2em] uppercase animate-fade-in-down">
+              🌿 Shiloh Fresh Exporters
             </p>
 
             <h1 className="animate-fade-in-up">
-              <span className="block text-primary-foreground/90 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight">
+              <span className="block text-primary-foreground text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] tracking-tight">
                 Pure{' '}
-                <strong className="font-extrabold text-primary-foreground">Freshness</strong>
+                <span className="relative inline-block">
+                  Freshness
+                  <span className="absolute -bottom-1 left-0 right-0 h-1.5 bg-accent/60 rounded-full" />
+                </span>
               </span>
-              <span className="block text-primary-foreground/90 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight">
-                from{' '}
-                <span className="text-accent font-extrabold">Africa</span>
+              <span className="block text-primary-foreground text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] tracking-tight mt-1">
+                from <span className="text-accent">Africa</span>
               </span>
             </h1>
 
+            <p className="text-primary-foreground/70 text-base sm:text-lg max-w-lg mx-auto lg:mx-0 animate-fade-in-up delay-100">
+              Premium fruits, vegetables & herbs — ethically sourced from Kenya's finest farms and exported worldwide.
+            </p>
+
             {/* Badges */}
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start animate-fade-in-up delay-200">
-              <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-accent text-accent-foreground font-bold text-sm shadow-lg">
+              <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-accent-foreground font-bold text-sm shadow-lg">
                 <Globe2 className="w-4 h-4" />
                 10+ Markets
               </div>
-              <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground font-semibold text-sm border border-primary-foreground/20">
+              <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground font-semibold text-sm border border-primary-foreground/20">
                 <Truck className="w-4 h-4" />
                 Export Ready
               </div>
@@ -262,13 +268,13 @@ function HeroSection() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start animate-fade-in-up delay-300">
               <Link to="/products">
-                <Button variant="hero" size="lg" className="group w-full sm:w-auto">
+                <Button variant="hero" size="lg" className="group w-full sm:w-auto text-base px-8">
                   Explore Our Produce
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                <Button variant="whatsapp" size="lg" className="w-full sm:w-auto">
+                <Button variant="whatsapp" size="lg" className="w-full sm:w-auto text-base px-8">
                   <MessageCircle className="w-5 h-5" />
                   WhatsApp Us
                 </Button>
@@ -276,35 +282,35 @@ function HeroSection() {
             </div>
 
             {/* Product thumbnails */}
-            <div className="pt-2 animate-fade-in-up delay-400">
+            <div className="pt-3 animate-fade-in-up delay-400">
               <div className="flex gap-2.5 justify-center lg:justify-start">
                 {heroProducts.map((product, index) => (
                   <button
                     key={product.name}
                     onClick={() => setActiveThumb(index)}
                     className={cn(
-                      'w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden border-2 transition-all duration-300 hover:scale-110',
+                      'w-13 h-13 sm:w-14 sm:h-14 rounded-xl overflow-hidden border-2 transition-all duration-300 hover:scale-110',
                       activeThumb === index
-                        ? 'border-accent shadow-glow scale-110'
-                        : 'border-primary-foreground/20 opacity-60 hover:opacity-100'
+                        ? 'border-accent shadow-glow scale-110 ring-2 ring-accent/40'
+                        : 'border-primary-foreground/20 opacity-50 hover:opacity-100'
                     )}
                   >
                     <img src={product.src} alt={product.name} className="w-full h-full object-cover" />
                   </button>
                 ))}
               </div>
-              <p className="text-primary-foreground/40 text-xs mt-2 tracking-widest uppercase font-medium">
+              <p className="text-primary-foreground/35 text-[11px] mt-2 tracking-[0.25em] uppercase font-semibold">
                 Shiloh Fresh · Kenya
               </p>
             </div>
           </div>
 
-          {/* Right: Hero product image — hidden on mobile, shown from md */}
-          <div className="hidden md:flex relative items-center justify-center animate-fade-in">
-            <div className="absolute w-[300px] h-[300px] lg:w-[400px] lg:h-[400px] rounded-full bg-accent/10 blur-3xl" />
-            
+          {/* Right: Hero product showcase — visible from sm+ */}
+          <div className="hidden sm:flex relative items-center justify-center animate-fade-in">
+            <div className="absolute w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] lg:w-[400px] lg:h-[400px] rounded-full bg-accent/10 blur-3xl" />
+
             <div
-              className="relative w-[280px] h-[360px] lg:w-[380px] lg:h-[480px] xl:w-[420px] xl:h-[530px] rounded-3xl overflow-hidden shadow-2xl border-2 border-primary-foreground/10 transition-all duration-700"
+              className="relative w-[220px] h-[280px] sm:w-[260px] sm:h-[340px] md:w-[300px] md:h-[400px] lg:w-[380px] lg:h-[480px] xl:w-[420px] xl:h-[530px] rounded-3xl overflow-hidden shadow-2xl border-2 border-primary-foreground/10 transition-all duration-700"
               style={{ transform: 'rotate(2deg) perspective(800px) rotateY(-4deg)' }}
             >
               <img
@@ -312,17 +318,17 @@ function HeroSection() {
                 alt={heroProducts[activeThumb].name}
                 className="w-full h-full object-cover transition-all duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent" />
-              
-              <div className="absolute bottom-4 left-4 right-4">
-                <div className="bg-primary-foreground/10 backdrop-blur-md rounded-2xl px-4 py-3 border border-primary-foreground/20">
-                  <p className="text-primary-foreground font-bold text-lg">{heroProducts[activeThumb].name}</p>
-                  <p className="text-primary-foreground/70 text-xs">Premium Export Quality</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/50 via-transparent to-transparent" />
+
+              <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4">
+                <div className="bg-primary-foreground/10 backdrop-blur-md rounded-2xl px-3 py-2.5 sm:px-4 sm:py-3 border border-primary-foreground/20">
+                  <p className="text-primary-foreground font-bold text-base sm:text-lg">{heroProducts[activeThumb].name}</p>
+                  <p className="text-primary-foreground/70 text-[11px] sm:text-xs">Premium Export Quality</p>
                 </div>
               </div>
             </div>
 
-            <div className="absolute -bottom-4 -right-4 w-20 h-20 rounded-2xl bg-accent/20 backdrop-blur-sm rotate-12 animate-float" />
+            <div className="absolute -bottom-3 -right-3 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-accent/20 backdrop-blur-sm rotate-12 animate-float" />
           </div>
         </div>
       </div>
