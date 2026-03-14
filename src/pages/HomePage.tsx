@@ -24,6 +24,11 @@ import { Button } from '@/components/ui/button';
 import { useScrollAnimation, useParallax } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
 import heroImage from '@/assets/hero-farm.jpg';
+import avocadoImg from '@/assets/products/avocado.jpg';
+import mangoesImg from '@/assets/products/mangoes.jpg';
+import frenchBeansImg from '@/assets/products/french-beans.jpg';
+import basilImg from '@/assets/products/basil.jpg';
+import passionFruitImg from '@/assets/products/passion-fruit.jpg';
 // Process flow images
 import varietyImg from '@/assets/process/variety-selection.jpg';
 import propagationImg from '@/assets/process/propagation.jpg';
