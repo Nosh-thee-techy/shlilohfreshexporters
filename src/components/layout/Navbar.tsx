@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Leaf } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { DarkModeToggle } from '@/components/theme/DarkModeToggle';
 import { cn } from '@/lib/utils';
+import shilohLogo from '@/assets/logos/shiloh-fresh-logo.jpeg';
 
 const navLinks = [
   { name: 'Home', href: '/' },
