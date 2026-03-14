@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Users, Target, Heart, ArrowRight } from 'lucide-react';
+import { Users, Target, Heart, ArrowRight, MessageCircle, Mail } from 'lucide-react';
+import { PageCTA } from '@/components/layout/PageCTA';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
