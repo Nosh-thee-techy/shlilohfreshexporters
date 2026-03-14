@@ -199,8 +199,8 @@ function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-primary">
-      {/* Background image with blur overlay */}
+    <section className="relative min-h-[100svh] overflow-hidden bg-primary">
+      {/* Background with dark overlay */}
       <div
         className="absolute inset-0 z-0"
         style={{ transform: `translateY(${parallaxOffset}px)` }}
@@ -208,46 +208,40 @@ function HeroSection() {
         <img
           src={heroImage}
           alt="Kenyan farmland"
-          className="w-full h-[120%] object-cover opacity-30 blur-[2px]"
+          className="w-full h-[120%] object-cover opacity-20"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/80 to-primary/60" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/85 to-primary/70" />
       </div>
 
       {/* Vertical text — right side (desktop only) */}
-      <div className="hidden lg:flex absolute right-0 top-0 bottom-0 w-24 xl:w-32 z-[3] items-center justify-center">
+      <div className="hidden xl:flex absolute right-0 top-0 bottom-0 w-24 2xl:w-32 z-[3] items-center justify-center">
         <div className="relative h-full flex items-center">
-          {/* Accent stripe */}
-          <div className="absolute right-0 top-[15%] bottom-[15%] w-20 xl:w-24 rounded-l-3xl bg-accent/20 backdrop-blur-sm" />
+          <div className="absolute right-0 top-[15%] bottom-[15%] w-20 2xl:w-24 rounded-l-3xl bg-accent/10 backdrop-blur-sm" />
           <span
-            className="relative text-primary-foreground/20 font-bold text-5xl xl:text-7xl tracking-[0.3em] uppercase"
-            style={{
-              writingMode: 'vertical-rl',
-              textOrientation: 'mixed',
-            }}
+            className="relative text-primary-foreground/15 font-bold text-5xl 2xl:text-7xl tracking-[0.3em] uppercase"
+            style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
           >
             {heroProducts[activeThumb].label}
           </span>
         </div>
       </div>
 
-      {/* Main content grid */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 min-h-screen flex items-center">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-4 items-center w-full py-28 sm:py-32 lg:py-20">
+      {/* Main content */}
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 min-h-[100svh] flex items-center">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center w-full pt-24 pb-16 sm:pt-28 sm:pb-20 lg:py-20">
           
           {/* Left: Typography & CTAs */}
-          <div className="space-y-6 sm:space-y-8 text-center lg:text-left order-2 lg:order-1">
-            <div className="space-y-2 animate-fade-in-down">
-              <p className="text-accent font-semibold text-sm sm:text-base tracking-wider uppercase">
-                Shiloh Fresh Exporters is...
-              </p>
-            </div>
+          <div className="space-y-5 sm:space-y-7 text-center lg:text-left">
+            <p className="text-accent font-semibold text-sm tracking-wider uppercase animate-fade-in-down">
+              Shiloh Fresh Exporters
+            </p>
 
             <h1 className="animate-fade-in-up">
-              <span className="block text-primary-foreground/90 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light leading-tight">
+              <span className="block text-primary-foreground/90 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight">
                 Pure{' '}
                 <strong className="font-extrabold text-primary-foreground">Freshness</strong>
               </span>
-              <span className="block text-primary-foreground/90 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light leading-tight">
+              <span className="block text-primary-foreground/90 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight">
                 from{' '}
                 <span className="text-accent font-extrabold">Africa</span>
               </span>
@@ -282,14 +276,14 @@ function HeroSection() {
             </div>
 
             {/* Product thumbnails */}
-            <div className="pt-4 animate-fade-in-up delay-400">
-              <div className="flex gap-3 justify-center lg:justify-start">
+            <div className="pt-2 animate-fade-in-up delay-400">
+              <div className="flex gap-2.5 justify-center lg:justify-start">
                 {heroProducts.map((product, index) => (
                   <button
                     key={product.name}
                     onClick={() => setActiveThumb(index)}
                     className={cn(
-                      'w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden border-2 transition-all duration-300 hover:scale-110',
+                      'w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden border-2 transition-all duration-300 hover:scale-110',
                       activeThumb === index
                         ? 'border-accent shadow-glow scale-110'
                         : 'border-primary-foreground/20 opacity-60 hover:opacity-100'
@@ -299,33 +293,27 @@ function HeroSection() {
                   </button>
                 ))}
               </div>
-              <p className="text-primary-foreground/50 text-xs mt-2 tracking-widest uppercase font-medium">
+              <p className="text-primary-foreground/40 text-xs mt-2 tracking-widest uppercase font-medium">
                 Shiloh Fresh · Kenya
               </p>
             </div>
           </div>
 
-          {/* Right: Hero product image */}
-          <div className="relative flex items-center justify-center order-1 lg:order-2 animate-fade-in">
-            {/* Glow background circle */}
-            <div className="absolute w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] lg:w-[450px] lg:h-[450px] rounded-full bg-accent/10 blur-3xl" />
+          {/* Right: Hero product image — hidden on mobile, shown from md */}
+          <div className="hidden md:flex relative items-center justify-center animate-fade-in">
+            <div className="absolute w-[300px] h-[300px] lg:w-[400px] lg:h-[400px] rounded-full bg-accent/10 blur-3xl" />
             
-            {/* Main product image */}
             <div
-              className="relative w-[260px] h-[320px] sm:w-[320px] sm:h-[400px] lg:w-[400px] lg:h-[500px] xl:w-[440px] xl:h-[550px] rounded-3xl overflow-hidden shadow-2xl border-2 border-primary-foreground/10 transition-all duration-700"
-              style={{
-                transform: `rotate(3deg) perspective(800px) rotateY(-5deg)`,
-              }}
+              className="relative w-[280px] h-[360px] lg:w-[380px] lg:h-[480px] xl:w-[420px] xl:h-[530px] rounded-3xl overflow-hidden shadow-2xl border-2 border-primary-foreground/10 transition-all duration-700"
+              style={{ transform: 'rotate(2deg) perspective(800px) rotateY(-4deg)' }}
             >
               <img
                 src={heroProducts[activeThumb].src}
                 alt={heroProducts[activeThumb].name}
                 className="w-full h-full object-cover transition-all duration-700"
               />
-              {/* Glass overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-primary-foreground/5" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent" />
               
-              {/* Product label */}
               <div className="absolute bottom-4 left-4 right-4">
                 <div className="bg-primary-foreground/10 backdrop-blur-md rounded-2xl px-4 py-3 border border-primary-foreground/20">
                   <p className="text-primary-foreground font-bold text-lg">{heroProducts[activeThumb].name}</p>
@@ -334,8 +322,7 @@ function HeroSection() {
               </div>
             </div>
 
-            {/* Decorative floating accent */}
-            <div className="absolute -bottom-4 -right-4 w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-accent/20 backdrop-blur-sm rotate-12 animate-float hidden sm:block" />
+            <div className="absolute -bottom-4 -right-4 w-20 h-20 rounded-2xl bg-accent/20 backdrop-blur-sm rotate-12 animate-float" />
           </div>
         </div>
       </div>
