@@ -36,6 +36,10 @@ import mintImg from '@/assets/products/mint.jpg';
 import thymeImg from '@/assets/products/thyme.jpg';
 import corianderImg from '@/assets/products/coriander.jpg';
 import parsleyImg from '@/assets/products/parsley.jpg';
+import avocadoFuerteGrass from '@/assets/products/avocado-fuerte-grass.jpg';
+import avocadoFuerteBox from '@/assets/products/avocado-fuerte-box.jpg';
+import chiliBirdseyeBox from '@/assets/products/chili-birdseye-box.jpg';
+import chiliPackedPunnets from '@/assets/products/chili-packed-punnets.jpg';
 
 // === Data ===
 interface ProductItem {
