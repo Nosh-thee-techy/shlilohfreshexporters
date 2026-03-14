@@ -352,13 +352,6 @@
 .animate-scroll-strip {
   animation: scrollStrip 20s linear infinite;
 }
-    opacity: 0.7;
-  }
-  50% {
-    transform: translateY(-30px) rotate(5deg);
-    opacity: 0.9;
-  }
-}
 
 /* Scroll-triggered animations */
 .scroll-fade-in {
