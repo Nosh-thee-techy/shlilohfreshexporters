@@ -99,7 +99,7 @@ export default {
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "hero-pattern": "linear-gradient(135deg, hsl(153 71% 32%) 0%, hsl(160 60% 25%) 100%)",
+        "hero-pattern": "linear-gradient(135deg, hsl(145 55% 28%) 0%, hsl(150 45% 18%) 100%)",
       },
     },
   },

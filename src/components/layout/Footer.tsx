@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Leaf, Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
+import shilohLogo from '@/assets/logos/shiloh-fresh-logo.jpeg';
 
 const usefulLinks = [
   { name: 'Our Produce', href: '/products' },
@@ -23,9 +24,11 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-primary-foreground/20 flex items-center justify-center">
-                <Leaf className="w-6 h-6" />
-              </div>
+              <img
+                src={shilohLogo}
+                alt="Shiloh Fresh Exporters"
+                className="w-14 h-14 rounded-xl object-cover"
+              />
               <div>
                 <h3 className="font-bold text-xl">Shiloh Fresh</h3>
                 <p className="text-sm text-primary-foreground/70">Exporters</p>

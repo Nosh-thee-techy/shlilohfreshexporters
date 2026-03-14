@@ -6,51 +6,52 @@
 
 @layer base {
   :root {
-    /* Shiloh Fresh Exporters - Agritech Design System */
-    --background: 147 30% 98%;
-    --foreground: 150 10% 12%;
+    /* Shiloh Fresh Exporters - Logo-aligned Design System */
+    /* Dark rich background with gold & green accents */
+    --background: 40 10% 97%;
+    --foreground: 40 15% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 150 10% 12%;
+    --card-foreground: 40 15% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 150 10% 12%;
+    --popover-foreground: 40 15% 10%;
 
-    /* Rich Forest Green - Primary */
-    --primary: 153 71% 32%;
-    --primary-foreground: 0 0% 100%;
+    /* Deep Forest Green - Primary (from logo leaves) */
+    --primary: 145 55% 28%;
+    --primary-foreground: 40 30% 95%;
 
-    /* Light Mint - Secondary */
-    --secondary: 147 58% 92%;
-    --secondary-foreground: 153 71% 25%;
+    /* Light sage - Secondary */
+    --secondary: 140 25% 92%;
+    --secondary-foreground: 145 55% 22%;
 
-    /* Muted greens */
-    --muted: 147 30% 94%;
-    --muted-foreground: 150 10% 45%;
+    /* Muted warm tones */
+    --muted: 40 15% 93%;
+    --muted-foreground: 40 10% 45%;
 
-    /* Warm Amber - Accent for CTAs */
-    --accent: 38 92% 50%;
+    /* Rich Gold - Accent (from logo globe/text) */
+    --accent: 38 72% 42%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 147 20% 88%;
-    --input: 147 20% 88%;
-    --ring: 153 71% 32%;
+    --border: 40 15% 86%;
+    --input: 40 15% 86%;
+    --ring: 38 72% 42%;
 
     --radius: 1rem;
 
     /* Custom tokens */
-    --gradient-hero: linear-gradient(135deg, hsl(153 71% 32%) 0%, hsl(160 60% 25%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(147 58% 96%) 0%, hsl(0 0% 100%) 100%);
-    --gradient-cta: linear-gradient(135deg, hsl(38 92% 50%) 0%, hsl(30 90% 45%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(145 55% 28%) 0%, hsl(150 45% 18%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(140 25% 96%) 0%, hsl(0 0% 100%) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(38 72% 42%) 0%, hsl(32 68% 35%) 100%);
     --gradient-whatsapp: linear-gradient(135deg, hsl(142 70% 45%) 0%, hsl(145 65% 35%) 100%);
     
-    --shadow-soft: 0 4px 20px -4px hsl(153 71% 32% / 0.15);
-    --shadow-card: 0 8px 30px -8px hsl(153 71% 32% / 0.12);
-    --shadow-hover: 0 16px 40px -8px hsl(153 71% 32% / 0.2);
-    --shadow-glow: 0 0 30px hsl(153 71% 32% / 0.3);
+    --shadow-soft: 0 4px 20px -4px hsl(38 72% 42% / 0.15);
+    --shadow-card: 0 8px 30px -8px hsl(145 55% 28% / 0.12);
+    --shadow-hover: 0 16px 40px -8px hsl(38 72% 42% / 0.2);
+    --shadow-glow: 0 0 30px hsl(38 72% 42% / 0.3);
     --shadow-whatsapp: 0 8px 25px hsl(142 70% 45% / 0.4);
 
     --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
@@ -66,33 +67,33 @@
   }
 
   .dark {
-    --background: 150 15% 8%;
-    --foreground: 147 30% 95%;
+    --background: 40 10% 7%;
+    --foreground: 40 15% 92%;
 
-    --card: 150 15% 12%;
-    --card-foreground: 147 30% 95%;
+    --card: 40 10% 11%;
+    --card-foreground: 40 15% 92%;
 
-    --popover: 150 15% 12%;
-    --popover-foreground: 147 30% 95%;
+    --popover: 40 10% 11%;
+    --popover-foreground: 40 15% 92%;
 
-    --primary: 153 65% 45%;
+    --primary: 145 50% 38%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 150 20% 18%;
-    --secondary-foreground: 147 40% 85%;
+    --secondary: 40 10% 16%;
+    --secondary-foreground: 40 20% 80%;
 
-    --muted: 150 15% 18%;
-    --muted-foreground: 147 20% 60%;
+    --muted: 40 10% 16%;
+    --muted-foreground: 40 15% 55%;
 
-    --accent: 38 85% 55%;
+    --accent: 38 75% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 150 15% 22%;
-    --input: 150 15% 22%;
-    --ring: 153 65% 45%;
+    --border: 40 10% 20%;
+    --input: 40 10% 20%;
+    --ring: 38 75% 50%;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -204,11 +205,11 @@
 
   /* Glow effect */
   .glow-primary {
-    box-shadow: 0 0 20px hsl(153 71% 32% / 0.4);
+    box-shadow: 0 0 20px hsl(145 55% 28% / 0.4);
   }
 
   .glow-accent {
-    box-shadow: 0 0 20px hsl(38 92% 50% / 0.4);
+    box-shadow: 0 0 20px hsl(38 72% 42% / 0.4);
   }
 
   /* Parallax helper */
