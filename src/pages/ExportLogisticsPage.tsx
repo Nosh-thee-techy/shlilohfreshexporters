@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { PageCTA } from '@/components/layout/PageCTA';
+import pineappleCharacter from '@/assets/cta/pineapple-character.png';
 import { PageHero } from '@/components/layout/PageHero';
 import { Search, Filter, Package, Truck, Snowflake, CheckCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
