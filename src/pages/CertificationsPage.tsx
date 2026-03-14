@@ -14,6 +14,8 @@ import { getWhatsAppLink, whatsAppMessages } from '@/data/products';
 import heroImage from '@/assets/hero-farm.jpg';
 import companyRegCert from '@/assets/certifications/company-registration.jpg';
 import fpcMembershipCert from '@/assets/certifications/fpc-membership.jpg';
+import hcdaLicenseCert from '@/assets/certifications/hcda-license.jpg';
+import globalgapCert from '@/assets/certifications/globalgap-cert.jpg';
 
 // Blog images
 import exportWhyImg from '@/assets/blog/export-why.jpg';
@@ -84,6 +86,7 @@ const certifications: Certification[] = [
       'Market access facilitation',
       'Industry best practices',
     ],
+    certificateImage: hcdaLicenseCert,
   },
   {
     id: 'globalGap',
@@ -99,6 +102,7 @@ const certifications: Certification[] = [
       'Environmental sustainability',
       'Worker welfare standards',
     ],
+    certificateImage: globalgapCert,
   },
 ];
 

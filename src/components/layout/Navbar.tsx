@@ -171,7 +171,7 @@ export function Navbar() {
           {/* Mobile CTA */}
           <div className="mt-auto pt-6 border-t border-border">
             <a
-              href="https://wa.me/254702339421?text=Hello%20Shiloh%20Fresh%20Exporters%2C%20I%27d%20like%20to%20inquire."
+              href="https://wa.me/254735497573?text=Hello%20Shiloh%20Fresh%20Exporters%2C%20I%27d%20like%20to%20inquire."
               target="_blank"
               rel="noopener noreferrer"
             >

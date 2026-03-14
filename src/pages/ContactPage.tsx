@@ -230,8 +230,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground">Phone</h3>
-                    <a href="tel:+254702339421" className="text-muted-foreground hover:text-primary transition-colors">
-                      +254 702 339 421
+                    <a href="tel:+254735497573" className="text-muted-foreground hover:text-primary transition-colors">
+                      +254 735 497 573
                     </a>
                   </div>
                 </div>
@@ -242,8 +242,8 @@ export default function ContactPage() {
                   </div>
                 <div>
                     <h3 className="font-semibold text-foreground">Email</h3>
-                    <a href="mailto:info@shilohfresh.co.ke" className="text-muted-foreground hover:text-primary transition-colors">
-                      info@shilohfresh.co.ke
+                    <a href="mailto:shilohfexports@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                      shilohfexports@gmail.com
                     </a>
                   </div>
                 </div>
@@ -272,7 +272,7 @@ export default function ContactPage() {
               {/* Quick Actions */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <a
-                  href="https://wa.me/254702339421?text=Hello%20Shiloh%20Fresh%20Exporters%2C%20I%27d%20like%20to%20inquire."
+                  href="https://wa.me/254735497573?text=Hello%20Shiloh%20Fresh%20Exporters%2C%20I%27d%20like%20to%20inquire."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1"

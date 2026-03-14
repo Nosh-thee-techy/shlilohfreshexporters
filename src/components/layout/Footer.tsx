@@ -70,19 +70,19 @@ export function Footer() {
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 flex-shrink-0" />
                 <a
-                  href="tel:+254702339421"
+                  href="tel:+254735497573"
                   className="text-primary-foreground/80 hover:text-primary-foreground text-sm transition-colors"
                 >
-                  +254 702 339 421
+                  +254 735 497 573
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 flex-shrink-0" />
                 <a
-                  href="mailto:info@shilohfresh.co.ke"
+                  href="mailto:shilohfexports@gmail.com"
                   className="text-primary-foreground/80 hover:text-primary-foreground text-sm transition-colors"
                 >
-                  info@shilohfresh.co.ke
+                  shilohfexports@gmail.com
                 </a>
               </li>
             </ul>
