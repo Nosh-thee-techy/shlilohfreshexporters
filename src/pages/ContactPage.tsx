@@ -297,17 +297,12 @@ export default function ContactPage() {
       </section>
 
       {/* Map Placeholder */}
-      <section className="py-16 bg-secondary">
-        <div className="container mx-auto px-4">
-          <div className="bg-card rounded-2xl h-80 flex items-center justify-center border border-border">
-            <div className="text-center">
-              <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
-              <p className="text-muted-foreground">Map integration coming soon</p>
-              <p className="text-sm text-muted-foreground mt-2">Nairobi, Kenya</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Map placeholder removed, replaced by CTA */}
+      <PageCTA
+        title="Let's Do Business Together"
+        subtitle="From sourcing to delivery, we handle it all. Reach out and let's discuss how we can meet your fresh produce needs."
+        whatsappMessage="Hello Shiloh Fresh Exporters, I'd like to discuss a potential business partnership."
+      />
 
       <ThankYouModal isOpen={showThankYou} onClose={() => setShowThankYou(false)} />
       <FAQModal isOpen={showFAQ} onClose={() => setShowFAQ(false)} />
