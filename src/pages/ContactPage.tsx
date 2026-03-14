@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { PageCTA } from '@/components/layout/PageCTA';
+import { PageHero } from '@/components/layout/PageHero';
 import { Mail, Phone, MapPin, Clock, MessageCircle, Send, CheckCircle, HelpCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,7 +14,7 @@ import {
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
-import heroImage from '@/assets/hero-farm.jpg';
+import heroContactImg from '@/assets/hero/hero-contact.jpg';
 
 interface FAQ {
   question: string;
