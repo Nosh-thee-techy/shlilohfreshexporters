@@ -3,9 +3,10 @@ import { MessageCircle, MapPin, ChevronDown, ChevronUp, Tag, Hash, DollarSign, I
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { PageHero } from '@/components/layout/PageHero';
 import { cn } from '@/lib/utils';
 import { getWhatsAppLink, whatsAppMessages } from '@/data/products';
-import heroImage from '@/assets/hero-farm.jpg';
+import heroFruitsImg from '@/assets/hero/hero-fruits.jpg';
 
 // === Product Images ===
 import avocadoHarvest from '@/assets/products/avocado-hass-harvest.jpg';
