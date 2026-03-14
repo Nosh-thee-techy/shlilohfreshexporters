@@ -8,10 +8,11 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
+import { PageHero } from '@/components/layout/PageHero';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
 import { getWhatsAppLink, whatsAppMessages } from '@/data/products';
-import heroImage from '@/assets/hero-farm.jpg';
+import heroAboutImg from '@/assets/hero/hero-about.jpg';
 import companyRegCert from '@/assets/certifications/company-registration.jpg';
 import fpcMembershipCert from '@/assets/certifications/fpc-membership.jpg';
 import hcdaLicenseCert from '@/assets/certifications/hcda-license.jpg';
