@@ -6,6 +6,7 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { PageHero } from '@/components/layout/PageHero';
 import { PageCTA } from '@/components/layout/PageCTA';
 import { cn } from '@/lib/utils';
+import frenchbeanCharacter from '@/assets/cta/frenchbean-character.png';
 import { getWhatsAppLink, whatsAppMessages } from '@/data/products';
 import heroFruitsImg from '@/assets/hero/hero-fruits.jpg';
 
