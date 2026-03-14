@@ -15,7 +15,7 @@ import { getWhatsAppLink, whatsAppMessages } from '@/data/products';
 import heroAboutImg from '@/assets/hero/hero-about.jpg';
 import companyRegCert from '@/assets/certifications/company-registration.jpg';
 import fpcMembershipCert from '@/assets/certifications/fpc-membership.jpg';
-import hcdaLicenseCert from '@/assets/certifications/hcda-license.jpg';
+import hcdaLicenseCert from '@/assets/certifications/hcda-export-license.jpg';
 import globalgapCert from '@/assets/certifications/globalgap-cert.jpg';
 
 // Blog images
