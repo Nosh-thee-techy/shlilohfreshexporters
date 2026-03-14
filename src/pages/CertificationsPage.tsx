@@ -448,15 +448,18 @@ export default function CertificationsPage() {
                       <div className="w-16 h-1 bg-primary rounded-full mt-3" />
                     </div>
 
-                    {categoryCerts.length === 1 && categoryCerts[0].certificateImage ? (
-                      <CertificationCard cert={categoryCerts[0]} onViewDetails={() => setSelectedCert(categoryCerts[0])} featured />
-                    ) : (
-                      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {categoryCerts.map((cert) => (
-                          <CertificationCard key={cert.id} cert={cert} onViewDetails={() => setSelectedCert(cert)} />
-                        ))}
-                      </div>
-                    )}
+                    <div className="space-y-6">
+                      {categoryCerts.filter(c => c.certificateImage).map((cert) => (
+                        <CertificationCard key={cert.id} cert={cert} onViewDetails={() => setSelectedCert(cert)} featured />
+                      ))}
+                      {categoryCerts.filter(c => !c.certificateImage).length > 0 && (
+                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                          {categoryCerts.filter(c => !c.certificateImage).map((cert) => (
+                            <CertificationCard key={cert.id} cert={cert} onViewDetails={() => setSelectedCert(cert)} />
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 );
               })}
