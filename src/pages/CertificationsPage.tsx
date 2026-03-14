@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Award, Leaf, Building2, ExternalLink, CheckCircle2, Clock, ArrowRight, BookOpen, ChevronDown, MessageCircle } from 'lucide-react';
+import { PageCTA } from '@/components/layout/PageCTA';
+import avocadoCharacter from '@/assets/cta/avocado-character.png';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
