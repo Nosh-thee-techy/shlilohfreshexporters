@@ -242,8 +242,8 @@ export default function ContactPage() {
                   </div>
                 <div>
                     <h3 className="font-semibold text-foreground">Email</h3>
-                    <a href="mailto:info@shilohfresh.co.ke" className="text-muted-foreground hover:text-primary transition-colors">
-                      info@shilohfresh.co.ke
+                    <a href="mailto:shilohfexports@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                      shilohfexports@gmail.com
                     </a>
                   </div>
                 </div>
