@@ -55,6 +55,22 @@ const certifications: Certification[] = [
     certificateImage: companyRegCert,
   },
   {
+    id: 'fpc-kenya',
+    name: 'Fresh Produce Consortium of Kenya (FPC Kenya)',
+    shortName: 'FPC Kenya Membership',
+    icon: Leaf,
+    category: 'trade',
+    description: 'Registered member of the Fresh Produce Consortium of Kenya, promoting Kenya\'s fresh produce exports.',
+    fullDescription: 'Shiloh Fresh Exporters Limited is an Ordinary Member of the Fresh Produce Consortium of Kenya (FPC Kenya), valid from December 2023 to November 2024. FPC Kenya is the leading industry body promoting Kenya\'s fresh produce sector, providing market access support, advocacy, and networking opportunities for exporters.',
+    benefits: [
+      'Industry networking & advocacy',
+      'Market access support',
+      'Trade promotion & exhibitions',
+      'Best practice sharing',
+    ],
+    certificateImage: fpcMembershipCert,
+  },
+  {
     id: 'hcda',
     name: 'Horticultural Crops Directorate',
     shortName: 'HCDA',
