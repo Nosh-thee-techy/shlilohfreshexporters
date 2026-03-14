@@ -493,24 +493,13 @@ export default function CertificationsPage() {
       )}
 
       {/* CTA */}
-      <section className="py-14 bg-primary">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-3">
-            {activeTab === 'certifications' ? 'Your Assurance of Quality' : 'Ready to Start Exporting?'}
-          </h2>
-          <p className="text-primary-foreground/80 max-w-2xl mx-auto text-sm mb-6">
-            {activeTab === 'certifications'
-              ? 'Our certifications are regularly audited and renewed to ensure continuous compliance. When you choose Shiloh Fresh, you\'re choosing a partner committed to the highest standards.'
-              : 'Whether you\'re a first-time exporter or looking for a reliable sourcing partner, our team is ready to guide you through every step of the export process.'}
-          </p>
-          <a href={getWhatsAppLink(whatsAppMessages.general)} target="_blank" rel="noopener noreferrer">
-            <Button variant="whatsapp" size="lg" className="gap-2">
-              <MessageCircle className="w-5 h-5" />
-              Talk to Our Export Team
-            </Button>
-          </a>
-        </div>
-      </section>
+      <PageCTA
+        variant="gold"
+        characterImage={avocadoCharacter}
+        title="Your Assurance of Quality"
+        subtitle="Our certifications are regularly audited and renewed to ensure continuous compliance. When you choose Shiloh Fresh, you're choosing a partner committed to the highest standards."
+        whatsappMessage="Hello Shiloh Fresh Exporters, I'd like to learn more about your certifications and quality standards."
+      />
 
       <CertificationModal cert={selectedCert} isOpen={!!selectedCert} onClose={() => setSelectedCert(null)} />
     </div>
