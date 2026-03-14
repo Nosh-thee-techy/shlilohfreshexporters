@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Users, Target, Heart, ArrowRight, MessageCircle, Mail } from 'lucide-react';
 import { PageCTA } from '@/components/layout/PageCTA';
+import { PageHero } from '@/components/layout/PageHero';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -10,7 +11,11 @@ import {
 } from '@/components/ui/dialog';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
-import heroImage from '@/assets/hero-farm.jpg';
+import heroAboutImg from '@/assets/hero/hero-about.jpg';
+import avocadoImg from '@/assets/products/avocado.jpg';
+import frenchBeansImg from '@/assets/products/french-beans.jpg';
+import basilImg from '@/assets/products/basil.jpg';
+import mangoesImg from '@/assets/products/mangoes.jpg';
 
 const timeline = [
   { year: '2018', title: 'Company Founded', description: 'Shiloh Fresh Exporters was established with a vision to connect Kenyan farmers to global markets.' },
