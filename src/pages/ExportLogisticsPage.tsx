@@ -270,6 +270,12 @@ export default function ExportLogisticsPage() {
           </div>
         </div>
       </section>
+
+      <PageCTA
+        title="Ready to Ship Your Products?"
+        subtitle="Our logistics team ensures your fresh produce reaches global markets in perfect condition. Get started today."
+        whatsappMessage="Hello Shiloh Fresh, I'd like to discuss shipping and logistics for fresh produce exports."
+      />
     </div>
   );
 }
