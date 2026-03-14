@@ -1083,45 +1083,15 @@ function FAQSection() {
   );
 }
 
-// 8️⃣ CALL TO ACTION SECTION
-function CTASection() {
-  const { ref, isVisible } = useScrollAnimation<HTMLElement>();
+// 8️⃣ CALL TO ACTION SECTION — uses shared PageCTA
+import { PageCTA } from '@/components/layout/PageCTA';
 
+function CTASection() {
   return (
-    <section ref={ref} className="py-24 bg-primary">
-      <div className="container mx-auto px-4 text-center">
-        <div className={cn(
-          'max-w-3xl mx-auto space-y-8 transition-all duration-700',
-          isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-        )}>
-          <h2 className="text-3xl md:text-5xl font-bold text-primary-foreground">
-            Partner With Shiloh Fresh Exporters
-          </h2>
-          <p className="text-xl text-primary-foreground/80">
-            Whether you are an importer, distributor, or wholesaler, we are ready to supply premium produce that meets your market needs.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Link to="/contact">
-              <Button variant="hero" size="lg" className="group">
-                <Mail className="w-5 h-5" />
-                Request a Quote
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-            <a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="whatsapp" size="lg">
-                <MessageCircle className="w-5 h-5" />
-                WhatsApp Us Instantly
-              </Button>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <PageCTA
+      title="Partner With Shiloh Fresh Exporters"
+      subtitle="Whether you are an importer, distributor, or wholesaler, we are ready to supply premium produce that meets your market needs."
+    />
   );
 }
 
