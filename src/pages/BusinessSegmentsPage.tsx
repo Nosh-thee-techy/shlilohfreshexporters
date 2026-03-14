@@ -1,9 +1,10 @@
-import { useState } from 'react';
-import { MessageCircle, MapPin, ChevronDown, ChevronUp, Tag, Hash, DollarSign, Info } from 'lucide-react';
+import { useState, useMemo } from 'react';
+import { MessageCircle, MapPin, ChevronDown, ChevronUp, Tag, Hash, DollarSign, Info, Search, X, Filter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { PageHero } from '@/components/layout/PageHero';
+import { PageCTA } from '@/components/layout/PageCTA';
 import { cn } from '@/lib/utils';
 import { getWhatsAppLink, whatsAppMessages } from '@/data/products';
 import heroFruitsImg from '@/assets/hero/hero-fruits.jpg';
@@ -486,6 +487,56 @@ function CategorySection({ category, index }: { category: ProductCategory; index
 // === Page ===
 
 export default function BusinessSegmentsPage() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [activeAvailability, setActiveAvailability] = useState<string>('all');
+
+  // Gather all unique availability types
+  const availabilityOptions = useMemo(() => {
+    const set = new Set<string>();
+    categories.forEach(cat =>
+      cat.products.forEach(p => {
+        if (p.availability.toLowerCase().includes('year-round')) set.add('Year-round');
+        else set.add('Seasonal');
+      })
+    );
+    return ['all', ...Array.from(set)];
+  }, []);
+
+  // Filter logic
+  const filteredCategories = useMemo(() => {
+    return categories
+      .filter(cat => activeCategory === 'all' || cat.id === activeCategory)
+      .map(cat => ({
+        ...cat,
+        products: cat.products.filter(p => {
+          const matchesSearch =
+            searchQuery === '' ||
+            p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            p.varieties.some(v => v.toLowerCase().includes(searchQuery.toLowerCase())) ||
+            p.origin.some(o => o.toLowerCase().includes(searchQuery.toLowerCase()));
+
+          const matchesAvailability =
+            activeAvailability === 'all' ||
+            (activeAvailability === 'Year-round' && p.availability.toLowerCase().includes('year-round')) ||
+            (activeAvailability === 'Seasonal' && !p.availability.toLowerCase().includes('year-round'));
+
+          return matchesSearch && matchesAvailability;
+        }),
+      }))
+      .filter(cat => cat.products.length > 0);
+  }, [searchQuery, activeCategory, activeAvailability]);
+
+  const totalFiltered = filteredCategories.reduce((sum, cat) => sum + cat.products.length, 0);
+  const totalProducts = categories.reduce((sum, cat) => sum + cat.products.length, 0);
+  const hasActiveFilters = searchQuery !== '' || activeCategory !== 'all' || activeAvailability !== 'all';
+
+  const clearFilters = () => {
+    setSearchQuery('');
+    setActiveCategory('all');
+    setActiveAvailability('all');
+  };
+
   return (
     <div className="pt-24">
       <PageHero
@@ -501,35 +552,124 @@ export default function BusinessSegmentsPage() {
         ]}
       />
 
-      {/* Categories */}
-      {categories.map((category, index) => (
-        <CategorySection key={category.id} category={category} index={index} />
-      ))}
+      {/* Sticky Filter Bar */}
+      <div className="sticky top-[60px] z-30 bg-card/95 backdrop-blur-md border-b border-border shadow-sm">
+        <div className="container mx-auto px-4 py-3 sm:py-4">
+          <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
+            {/* Search */}
+            <div className="relative flex-1 max-w-md">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search products, varieties, regions..."
+                className="w-full pl-9 pr-9 py-2.5 rounded-xl bg-secondary border border-border text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+
+            {/* Category chips */}
+            <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-1 sm:pb-0">
+              <button
+                onClick={() => setActiveCategory('all')}
+                className={cn(
+                  'px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all border',
+                  activeCategory === 'all'
+                    ? 'bg-primary text-primary-foreground border-primary'
+                    : 'bg-secondary text-muted-foreground border-border hover:border-primary/40'
+                )}
+              >
+                All Products
+              </button>
+              {categories.map(cat => (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveCategory(activeCategory === cat.id ? 'all' : cat.id)}
+                  className={cn(
+                    'px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all border',
+                    activeCategory === cat.id
+                      ? 'bg-primary text-primary-foreground border-primary'
+                      : 'bg-secondary text-muted-foreground border-border hover:border-primary/40'
+                  )}
+                >
+                  {cat.name}
+                </button>
+              ))}
+            </div>
+
+            {/* Availability filter */}
+            <div className="flex gap-2">
+              {availabilityOptions.map(opt => (
+                <button
+                  key={opt}
+                  onClick={() => setActiveAvailability(activeAvailability === opt ? 'all' : opt)}
+                  className={cn(
+                    'px-3 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-all border',
+                    activeAvailability === opt
+                      ? 'bg-accent text-accent-foreground border-accent'
+                      : 'bg-secondary text-muted-foreground border-border hover:border-accent/40'
+                  )}
+                >
+                  {opt === 'all' ? '📅 Any time' : opt === 'Year-round' ? '🌍 Year-round' : '🌤 Seasonal'}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Results count & clear */}
+          {hasActiveFilters && (
+            <div className="flex items-center justify-between mt-2 pt-2 border-t border-border/50">
+              <p className="text-xs text-muted-foreground">
+                Showing <span className="font-bold text-foreground">{totalFiltered}</span> of {totalProducts} products
+              </p>
+              <button
+                onClick={clearFilters}
+                className="flex items-center gap-1 text-xs font-medium text-primary hover:underline"
+              >
+                <X className="w-3 h-3" />
+                Clear filters
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Filtered Categories */}
+      {filteredCategories.length > 0 ? (
+        filteredCategories.map((category, index) => (
+          <CategorySection key={category.id} category={category} index={index} />
+        ))
+      ) : (
+        <section className="py-24 bg-background">
+          <div className="container mx-auto px-4 text-center space-y-4">
+            <div className="w-16 h-16 mx-auto rounded-full bg-secondary flex items-center justify-center">
+              <Filter className="w-7 h-7 text-muted-foreground" />
+            </div>
+            <h3 className="text-xl font-bold text-foreground">No products found</h3>
+            <p className="text-muted-foreground text-sm max-w-md mx-auto">
+              Try adjusting your filters or search query to find what you're looking for.
+            </p>
+            <Button variant="outline" onClick={clearFilters} className="mt-2">
+              Clear all filters
+            </Button>
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
-      <section className="py-16 bg-primary">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-3">
-            Can't Find What You Need?
-          </h2>
-          <p className="text-primary-foreground/80 mb-6 max-w-xl mx-auto text-sm">
-            We source a wide range of fresh produce across East Africa. Contact our export team for custom sourcing, bulk pricing, and logistics support.
-          </p>
-          <a
-            href={getWhatsAppLink(whatsAppMessages.general)}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button variant="whatsapp" size="lg" className="gap-2">
-              <MessageCircle className="w-5 h-5" />
-              Contact Export Team
-            </Button>
-          </a>
-          <p className="text-primary-foreground/60 text-[10px] mt-4">
-            *All prices are indicative and subject to T&Cs. Final pricing depends on volume, season, delivery terms, and market conditions.
-          </p>
-        </div>
-      </section>
+      <PageCTA
+        title="Can't Find What You Need?"
+        subtitle="We source a wide range of fresh produce across East Africa. Contact our export team for custom sourcing, bulk pricing, and logistics support."
+        whatsappMessage="Hello Shiloh Fresh Exporters, I'd like to inquire about custom sourcing."
+      />
     </div>
   );
 }
