@@ -11,7 +11,7 @@ const navLinks = [
   { name: 'About Us', href: '/about' },
   { name: 'Products & Services', href: '/products' },
   { name: 'Export & Logistics', href: '/export-logistics' },
-  { name: 'Certifications', href: '/certifications' },
+  { name: 'Certifications & Blog', href: '/certifications' },
   { name: 'Contact Us', href: '/contact' },
 ];
 
