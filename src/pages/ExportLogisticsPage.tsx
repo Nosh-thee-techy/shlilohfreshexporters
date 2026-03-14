@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import { PageCTA } from '@/components/layout/PageCTA';
+import { PageHero } from '@/components/layout/PageHero';
 import { Search, Filter, Package, Truck, Snowflake, CheckCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
-import heroImage from '@/assets/hero-farm.jpg';
+import heroLogisticsImg from '@/assets/hero/hero-logistics.jpg';
+import coldchainImg from '@/assets/process/coldchain.jpg';
+import packagingImg from '@/assets/process/packaging.jpg';
+import sortingImg from '@/assets/process/sorting.jpg';
 
 interface ProcessStep {
   id: string;
