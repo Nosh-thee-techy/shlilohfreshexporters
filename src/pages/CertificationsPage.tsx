@@ -15,7 +15,7 @@ import { getWhatsAppLink, whatsAppMessages } from '@/data/products';
 import heroAboutImg from '@/assets/hero/hero-about.jpg';
 import companyRegCert from '@/assets/certifications/company-registration.jpg';
 import fpcMembershipCert from '@/assets/certifications/fpc-membership.jpg';
-import hcdaLicenseCert from '@/assets/certifications/hcda-license.jpg';
+import hcdaLicenseCert from '@/assets/certifications/hcda-export-license.jpg';
 import globalgapCert from '@/assets/certifications/globalgap-cert.jpg';
 
 // Blog images
@@ -75,17 +75,17 @@ const certifications: Certification[] = [
   },
   {
     id: 'hcda',
-    name: 'Horticultural Crops Directorate',
-    shortName: 'HCDA',
+    name: 'Agriculture and Food Authority — Horticultural Crops Directorate',
+    shortName: 'AFA-HCD Export License',
     icon: Leaf,
     category: 'trade',
-    description: 'Official registration for horticultural export operations.',
-    fullDescription: 'The Horticultural Crops Directorate Authority (HCDA) registration certifies that Shiloh Fresh Exporters is an authorized exporter of horticultural products from Kenya, complying with all regulatory requirements.',
+    description: 'Licensed by the Horticultural Crops Directorate to export fruits, herbs & spices under the Crops Act 2013.',
+    fullDescription: 'Shiloh Fresh Exporters Limited holds an official Export License issued by the Agriculture and Food Authority (AFA) — Horticultural Crops Directorate. This license authorizes the export of horticultural produce including Avocado, Mango, Basil, Mint, and Rosemary as specified under the Crops Act 2013.',
     benefits: [
-      'Authorized export operations',
-      'Regulatory compliance',
-      'Market access facilitation',
-      'Industry best practices',
+      'Licensed to export fruits (Avocado, Mango)',
+      'Licensed for herbs & spices (Basil, Mint, Rosemary)',
+      'Issued under the Crops Act 2013',
+      'Full regulatory compliance with AFA-HCD',
     ],
     certificateImage: hcdaLicenseCert,
   },
