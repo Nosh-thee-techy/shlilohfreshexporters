@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Users, Target, Heart, ArrowRight, MessageCircle, Mail } from 'lucide-react';
 import { PageCTA } from '@/components/layout/PageCTA';
+import passionfruitCharacter from '@/assets/cta/passionfruit-character.png';
 import { PageHero } from '@/components/layout/PageHero';
 import { Button } from '@/components/ui/button';
 import {
@@ -230,6 +231,7 @@ export default function AboutPage() {
       </section>
 
       <PageCTA
+        characterImage={passionfruitCharacter}
         title="Want to Know More About Us?"
         subtitle="Learn how Shiloh Fresh Exporters can be your trusted partner for premium East African produce. Let's connect."
       />

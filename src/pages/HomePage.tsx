@@ -1151,10 +1151,12 @@ function FAQSection() {
 
 // 8️⃣ CALL TO ACTION SECTION — uses shared PageCTA
 import { PageCTA } from '@/components/layout/PageCTA';
+import pineappleCharacterHome from '@/assets/cta/pineapple-character.png';
 
 function CTASection() {
   return (
     <PageCTA
+      characterImage={pineappleCharacterHome}
       title="Partner With Shiloh Fresh Exporters"
       subtitle="Whether you are an importer, distributor, or wholesaler, we are ready to supply premium produce that meets your market needs."
     />

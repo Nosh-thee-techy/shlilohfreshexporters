@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { PageCTA } from '@/components/layout/PageCTA';
+import pineappleCharacter from '@/assets/cta/pineapple-character.png';
 import { PageHero } from '@/components/layout/PageHero';
 import { Search, Filter, Package, Truck, Snowflake, CheckCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
@@ -272,7 +273,8 @@ export default function ExportLogisticsPage() {
       </section>
 
       <PageCTA
-        variant="green"
+        variant="gold"
+        characterImage={pineappleCharacter}
         title="Ready to Ship Your Products?"
         subtitle="Our logistics team ensures your fresh produce reaches global markets in perfect condition. Get started today."
         whatsappMessage="Hello Shiloh Fresh, I'd like to discuss shipping and logistics for fresh produce exports."

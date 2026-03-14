@@ -6,6 +6,7 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { PageHero } from '@/components/layout/PageHero';
 import { PageCTA } from '@/components/layout/PageCTA';
 import { cn } from '@/lib/utils';
+import frenchbeanCharacter from '@/assets/cta/frenchbean-character.png';
 import { getWhatsAppLink, whatsAppMessages } from '@/data/products';
 import heroFruitsImg from '@/assets/hero/hero-fruits.jpg';
 
@@ -667,6 +668,7 @@ export default function BusinessSegmentsPage() {
       {/* CTA */}
       <PageCTA
         variant="green"
+        characterImage={frenchbeanCharacter}
         title="Can't Find What You Need?"
         subtitle="We source a wide range of fresh produce across East Africa. Contact our export team for custom sourcing, bulk pricing, and logistics support."
         whatsappMessage="Hello Shiloh Fresh Exporters, I'd like to inquire about custom sourcing."

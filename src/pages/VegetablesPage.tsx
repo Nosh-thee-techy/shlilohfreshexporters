@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { MessageCircle } from 'lucide-react';
 import { PageCTA } from '@/components/layout/PageCTA';
+import carrotCharacter from '@/assets/cta/carrot-character.png';
 import { PageHero } from '@/components/layout/PageHero';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/products/ProductCard';
@@ -169,6 +170,7 @@ export default function VegetablesPage() {
 
       <PageCTA
         variant="green"
+        characterImage={carrotCharacter}
         title="Need Fresh Vegetables for Export?"
         subtitle="We source additional vegetable varieties based on your market requirements. Contact our team for custom orders."
         whatsappMessage="Hello Shiloh Fresh Exporters, I would like to request pricing and availability for your vegetable exports."

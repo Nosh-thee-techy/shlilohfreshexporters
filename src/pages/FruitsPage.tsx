@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { MessageCircle } from 'lucide-react';
 import { PageCTA } from '@/components/layout/PageCTA';
+import mangoCharacter from '@/assets/cta/mango-character.png';
 import { PageHero } from '@/components/layout/PageHero';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/products/ProductCard';
@@ -168,6 +169,7 @@ export default function FruitsPage() {
 
       <PageCTA
         variant="green"
+        characterImage={mangoCharacter}
         title="Looking for Premium Fruits?"
         subtitle="We source the finest export-grade fruits from East Africa. Contact us for pricing, availability, and custom orders."
         whatsappMessage="Hello Shiloh Fresh Exporters, I am interested in your fruit exports. Please share available varieties, prices, and minimum order quantities."

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { PageCTA } from '@/components/layout/PageCTA';
+import chiliCharacter from '@/assets/cta/chili-character.png';
 import { PageHero } from '@/components/layout/PageHero';
 import { Mail, Phone, MapPin, Clock, MessageCircle, Send, CheckCircle, HelpCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -292,6 +293,8 @@ export default function ContactPage() {
       {/* Map Placeholder */}
       {/* Map placeholder removed, replaced by CTA */}
       <PageCTA
+        variant="green"
+        characterImage={chiliCharacter}
         title="Let's Do Business Together"
         subtitle="From sourcing to delivery, we handle it all. Reach out and let's discuss how we can meet your fresh produce needs."
         whatsappMessage="Hello Shiloh Fresh Exporters, I'd like to discuss a potential business partnership."

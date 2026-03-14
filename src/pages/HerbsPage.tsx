@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { MessageCircle } from 'lucide-react';
 import { PageCTA } from '@/components/layout/PageCTA';
+import basilCharacter from '@/assets/cta/basil-character.png';
 import { PageHero } from '@/components/layout/PageHero';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/products/ProductCard';
@@ -186,6 +187,7 @@ export default function HerbsPage() {
 
       <PageCTA
         variant="green"
+        characterImage={basilCharacter}
         title="Looking for Premium Fresh Herbs?"
         subtitle="We work with specialized growers to source a wide range of culinary herbs. Contact us for custom requirements."
         whatsappMessage="Hello Shiloh Fresh Exporters, I am interested in your fresh herbs for export. Please share pricing, availability, and shelf life details."
