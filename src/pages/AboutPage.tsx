@@ -53,21 +53,18 @@ export default function AboutPage() {
 
   return (
     <div className="pt-24">
-      {/* Hero */}
-      <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img src={heroImage} alt="Farm" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-primary/85" />
-        </div>
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4 animate-fade-in-down">
-            About Shiloh Fresh
-          </h1>
-          <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto animate-fade-in-up">
-            Connecting Kenya's finest produce to the world, one shipment at a time.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title="About Shiloh Fresh"
+        subtitle="Connecting Kenya's finest produce to the world, one shipment at a time."
+        backgroundImage={heroAboutImg}
+        badge="Our Story"
+        floatingImages={[
+          { src: avocadoImg, alt: 'Avocados' },
+          { src: frenchBeansImg, alt: 'French Beans' },
+          { src: basilImg, alt: 'Basil' },
+          { src: mangoesImg, alt: 'Mangoes' },
+        ]}
+      />
 
       {/* Mission & Dedication */}
       <section ref={missionRef} className="py-20 bg-background">

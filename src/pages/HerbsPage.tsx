@@ -106,33 +106,29 @@ export default function HerbsPage() {
 
   return (
     <div className="pt-24">
-      {/* Hero */}
-      <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img src={heroImage} alt="Fresh herbs farm" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-emerald-800/90 to-emerald-700/70" />
-        </div>
-        <div className="relative z-10 container mx-auto px-4">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4 animate-fade-in-down">
-              Fresh Culinary Herbs, Grown for Export
-            </h1>
-            <p className="text-xl text-primary-foreground/90 mb-8 animate-fade-in-up">
-              Aromatic, carefully handled herbs grown under controlled practices to preserve flavor, freshness, and shelf life.
-            </p>
-            <a
-              href={getWhatsAppLink(whatsAppMessages.herbs)}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="whatsapp" size="lg" className="animate-fade-in">
-                <MessageCircle className="w-5 h-5" />
-                Request Herbs Catalogue
-              </Button>
-            </a>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Fresh Culinary Herbs, Grown for Export"
+        subtitle="Aromatic, carefully handled herbs grown under controlled practices to preserve flavor, freshness, and shelf life."
+        backgroundImage={heroHerbsImg}
+        badge="Premium Herbs"
+        floatingImages={[
+          { src: basilImg, alt: 'Basil' },
+          { src: rosemaryImg, alt: 'Rosemary' },
+          { src: mintImg, alt: 'Mint' },
+          { src: thymeImg, alt: 'Thyme' },
+        ]}
+      >
+        <a
+          href={getWhatsAppLink(whatsAppMessages.herbs)}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button variant="whatsapp" size="lg">
+            <MessageCircle className="w-5 h-5" />
+            Request Herbs Catalogue
+          </Button>
+        </a>
+      </PageHero>
 
       {/* Filters */}
       <ProductFilters

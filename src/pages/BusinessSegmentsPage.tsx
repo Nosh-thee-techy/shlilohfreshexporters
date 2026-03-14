@@ -488,21 +488,18 @@ function CategorySection({ category, index }: { category: ProductCategory; index
 export default function BusinessSegmentsPage() {
   return (
     <div className="pt-24">
-      {/* Hero */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img src={heroImage} alt="Fresh produce farm" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-primary/85" />
-        </div>
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground mb-4 animate-fade-in-down">
-            Products & Services Offered
-          </h1>
-          <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto animate-fade-in-up">
-            Export-grade fresh produce sourced from Kenya, Uganda & Tanzania — organized by category with transparent pricing.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title="Products & Services Offered"
+        subtitle="Export-grade fresh produce sourced from Kenya, Uganda & Tanzania — organized by category with transparent pricing."
+        backgroundImage={heroFruitsImg}
+        badge="Our Products"
+        floatingImages={[
+          { src: avocadoHarvest, alt: 'Avocado Harvest' },
+          { src: frenchBeansImg, alt: 'French Beans' },
+          { src: basilImg, alt: 'Basil' },
+          { src: mangoesImg, alt: 'Mangoes' },
+        ]}
+      />
 
       {/* Categories */}
       {categories.map((category, index) => (

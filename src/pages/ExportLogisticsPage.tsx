@@ -206,21 +206,17 @@ export default function ExportLogisticsPage() {
 
   return (
     <div className="pt-24">
-      {/* Hero */}
-      <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img src={heroImage} alt="Export logistics" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-primary/85" />
-        </div>
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4 animate-fade-in-down">
-            Export & Logistics
-          </h1>
-          <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto animate-fade-in-up">
-            From farm to global markets — discover our streamlined export process.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title="Export & Logistics"
+        subtitle="From farm to global markets — discover our streamlined export process."
+        backgroundImage={heroLogisticsImg}
+        badge="Our Process"
+        floatingImages={[
+          { src: coldchainImg, alt: 'Cold Chain' },
+          { src: packagingImg, alt: 'Packaging' },
+          { src: sortingImg, alt: 'Sorting' },
+        ]}
+      />
 
       {/* Process Timeline */}
       <section ref={ref} className="py-20 bg-background">

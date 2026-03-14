@@ -145,21 +145,12 @@ export default function ContactPage() {
 
   return (
     <div className="pt-24">
-      {/* Hero */}
-      <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img src={heroImage} alt="Contact Shiloh Fresh" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-primary/85" />
-        </div>
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4 animate-fade-in-down">
-            Contact Us
-          </h1>
-          <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto animate-fade-in-up">
-            Get in touch with our team for inquiries, quotes, or partnerships.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title="Contact Us"
+        subtitle="Get in touch with our team for inquiries, quotes, or partnerships."
+        backgroundImage={heroContactImg}
+        badge="Get In Touch"
+      />
 
       {/* Contact Section */}
       <section ref={ref} className="py-20 bg-background">
