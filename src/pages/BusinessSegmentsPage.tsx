@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { MessageCircle, MapPin, ChevronDown, ChevronUp, Tag, Hash, DollarSign, Info } from 'lucide-react';
+import { useState, useMemo } from 'react';
+import { MessageCircle, MapPin, ChevronDown, ChevronUp, Tag, Hash, DollarSign, Info, Search, X, Filter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
