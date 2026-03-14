@@ -172,27 +172,11 @@ export default function VegetablesPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 bg-secondary">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-            Looking for Specific Vegetable Varieties?
-          </h2>
-          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            We can source additional vegetable varieties based on your market requirements. Contact our team for custom orders.
-          </p>
-          <a
-            href={getWhatsAppLink(whatsAppMessages.vegetables)}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button variant="whatsapp" size="lg">
-              <MessageCircle className="w-5 h-5" />
-              Contact Export Team
-            </Button>
-          </a>
-        </div>
-      </section>
+      <PageCTA
+        title="Need Fresh Vegetables for Export?"
+        subtitle="We source additional vegetable varieties based on your market requirements. Contact our team for custom orders."
+        whatsappMessage="Hello Shiloh Fresh Exporters, I would like to request pricing and availability for your vegetable exports."
+      />
 
       <ProductDetailModal
         product={selectedProduct}
