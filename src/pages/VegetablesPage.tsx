@@ -170,6 +170,7 @@ export default function VegetablesPage() {
 
       <PageCTA
         variant="green"
+        characterImage={carrotCharacter}
         title="Need Fresh Vegetables for Export?"
         subtitle="We source additional vegetable varieties based on your market requirements. Contact our team for custom orders."
         whatsappMessage="Hello Shiloh Fresh Exporters, I would like to request pricing and availability for your vegetable exports."

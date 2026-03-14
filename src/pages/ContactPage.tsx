@@ -293,6 +293,8 @@ export default function ContactPage() {
       {/* Map Placeholder */}
       {/* Map placeholder removed, replaced by CTA */}
       <PageCTA
+        variant="green"
+        characterImage={chiliCharacter}
         title="Let's Do Business Together"
         subtitle="From sourcing to delivery, we handle it all. Reach out and let's discuss how we can meet your fresh produce needs."
         whatsappMessage="Hello Shiloh Fresh Exporters, I'd like to discuss a potential business partnership."

@@ -667,6 +667,7 @@ export default function BusinessSegmentsPage() {
       {/* CTA */}
       <PageCTA
         variant="green"
+        characterImage={frenchbeanCharacter}
         title="Can't Find What You Need?"
         subtitle="We source a wide range of fresh produce across East Africa. Contact our export team for custom sourcing, bulk pricing, and logistics support."
         whatsappMessage="Hello Shiloh Fresh Exporters, I'd like to inquire about custom sourcing."
