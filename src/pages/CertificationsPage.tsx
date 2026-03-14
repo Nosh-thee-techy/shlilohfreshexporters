@@ -87,6 +87,7 @@ const certifications: Certification[] = [
       'Industry best practices',
     ],
     certificateImage: hcdaLicenseCert,
+  },
   {
     id: 'globalGap',
     name: 'GlobalG.A.P Certification',
@@ -101,6 +102,7 @@ const certifications: Certification[] = [
       'Environmental sustainability',
       'Worker welfare standards',
     ],
+    certificateImage: globalgapCert,
   },
 ];
 
