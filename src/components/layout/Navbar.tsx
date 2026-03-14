@@ -9,7 +9,7 @@ import shilohLogo from '@/assets/logos/shiloh-fresh-logo.png';
 const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'About Us', href: '/about' },
-  { name: 'Business Segments', href: '/products' },
+  { name: 'Products & Services', href: '/products' },
   { name: 'Export & Logistics', href: '/export-logistics' },
   { name: 'Certifications', href: '/certifications' },
   { name: 'Contact Us', href: '/contact' },
