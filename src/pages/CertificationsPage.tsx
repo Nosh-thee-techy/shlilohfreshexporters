@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Award, Shield, Leaf, FileCheck, ExternalLink, X } from 'lucide-react';
+import { Award, Shield, Leaf, FileCheck, ExternalLink, Building2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -10,6 +10,7 @@ import {
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
 import heroImage from '@/assets/hero-farm.jpg';
+import companyRegCert from '@/assets/certifications/company-registration.jpg';
 
 interface Certification {
   id: string;
@@ -19,6 +20,7 @@ interface Certification {
   description: string;
   fullDescription: string;
   benefits: string[];
+  certificateImage?: string;
 }
 
 const certifications: Certification[] = [
@@ -78,6 +80,21 @@ const certifications: Certification[] = [
       'Pre-export inspections',
     ],
   },
+  {
+    id: 'company-registration',
+    name: 'Certificate of Incorporation',
+    shortName: 'Company Registration',
+    icon: Building2,
+    description: 'Officially incorporated as a Private Limited Company under the Companies Act, 2015.',
+    fullDescription: 'Shiloh Fresh Exporters Limited is officially incorporated under the Companies Act, 2015 as a Private Limited Company. This certificate, issued by the Registrar of Companies on 16 August 2023, confirms our legal status and authorization to operate as a registered business entity in Kenya.',
+    benefits: [
+      'Legally registered business entity',
+      'Private Limited Company status',
+      'Incorporated under Companies Act, 2015',
+      'Authorized to conduct export operations',
+    ],
+    certificateImage: companyRegCert,
+  },
 ];
 
 function CertificationCard({
@@ -130,6 +147,18 @@ function CertificationModal({
         </DialogHeader>
 
         <div className="space-y-6">
+          {cert.certificateImage && (
+            <div className="rounded-xl overflow-hidden border border-border">
+              <img
+                src={cert.certificateImage}
+                alt={`${cert.shortName} certificate`}
+                className="w-full h-auto select-none pointer-events-none"
+                draggable={false}
+                onContextMenu={(e) => e.preventDefault()}
+              />
+            </div>
+          )}
+
           <div>
             <p className="text-primary font-medium mb-2">{cert.name}</p>
             <p className="text-muted-foreground leading-relaxed">{cert.fullDescription}</p>
