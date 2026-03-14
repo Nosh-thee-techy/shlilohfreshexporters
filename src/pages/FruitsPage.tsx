@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { MessageCircle } from 'lucide-react';
 import { PageCTA } from '@/components/layout/PageCTA';
+import { PageHero } from '@/components/layout/PageHero';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/products/ProductCard';
 import { ProductDetailModal } from '@/components/products/ProductDetailModal';
@@ -14,7 +15,7 @@ import {
   whatsAppMessages,
   regionOptions 
 } from '@/data/products';
-import heroImage from '@/assets/hero-farm.jpg';
+import heroFruitsImg from '@/assets/hero/hero-fruits.jpg';
 import avocadoImg from '@/assets/products/avocado.jpg';
 import mangoesImg from '@/assets/products/mangoes.jpg';
 import passionFruitImg from '@/assets/products/passion-fruit.jpg';
@@ -102,33 +103,29 @@ export default function FruitsPage() {
 
   return (
     <div className="pt-24">
-      {/* Hero */}
-      <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img src={heroImage} alt="Fresh fruits farm" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/70" />
-        </div>
-        <div className="relative z-10 container mx-auto px-4">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4 animate-fade-in-down">
-              Fresh Fruits for Global Markets
-            </h1>
-            <p className="text-xl text-primary-foreground/90 mb-8 animate-fade-in-up">
-              Export-grade fruits sourced directly from trusted Kenyan farmers, handled with care to meet international standards.
-            </p>
-            <a
-              href={getWhatsAppLink(whatsAppMessages.fruits)}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="whatsapp" size="lg" className="animate-fade-in">
-                <MessageCircle className="w-5 h-5" />
-                Request Price List
-              </Button>
-            </a>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Fresh Fruits for Global Markets"
+        subtitle="Export-grade fruits sourced directly from trusted Kenyan farmers, handled with care to meet international standards."
+        backgroundImage={heroFruitsImg}
+        badge="Premium Fruits"
+        floatingImages={[
+          { src: avocadoImg, alt: 'Avocados' },
+          { src: mangoesImg, alt: 'Mangoes' },
+          { src: passionFruitImg, alt: 'Passion Fruit' },
+          { src: pineappleImg, alt: 'Pineapple' },
+        ]}
+      >
+        <a
+          href={getWhatsAppLink(whatsAppMessages.fruits)}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button variant="whatsapp" size="lg">
+            <MessageCircle className="w-5 h-5" />
+            Request Price List
+          </Button>
+        </a>
+      </PageHero>
 
       {/* Filters */}
       <ProductFilters

@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { MessageCircle } from 'lucide-react';
 import { PageCTA } from '@/components/layout/PageCTA';
+import { PageHero } from '@/components/layout/PageHero';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/products/ProductCard';
 import { ProductDetailModal } from '@/components/products/ProductDetailModal';
@@ -13,7 +14,7 @@ import {
   getWhatsAppLink, 
   whatsAppMessages,
 } from '@/data/products';
-import heroImage from '@/assets/hero-farm.jpg';
+import heroVegetablesImg from '@/assets/hero/hero-vegetables.jpg';
 import frenchBeansImg from '@/assets/products/french-beans.jpg';
 import carrotsImg from '@/assets/products/carrots.jpg';
 import chiliPeppersImg from '@/assets/products/chili-peppers.jpg';
@@ -103,35 +104,29 @@ export default function VegetablesPage() {
 
   return (
     <div className="pt-24">
-      {/* Hero */}
-      <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img src={heroImage} alt="Fresh vegetables farm" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-green-800/90 to-green-700/70" />
-        </div>
-        <div className="relative z-10 container mx-auto px-4">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4 animate-fade-in-down">
-              Fresh Vegetables for Global Markets
-            </h1>
-            <p className="text-xl text-primary-foreground/90 mb-8 animate-fade-in-up">
-              Export-grade vegetables sourced from trusted Kenyan farms, handled with strict quality control and delivered to meet international market standards.
-            </p>
-            <div className="flex flex-wrap gap-4 animate-fade-in">
-              <a
-                href={getWhatsAppLink(whatsAppMessages.vegetables)}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button variant="whatsapp" size="lg">
-                  <MessageCircle className="w-5 h-5" />
-                  Request Vegetable Price List
-                </Button>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Fresh Vegetables for Global Markets"
+        subtitle="Export-grade vegetables sourced from trusted Kenyan farms, handled with strict quality control and delivered to meet international market standards."
+        backgroundImage={heroVegetablesImg}
+        badge="Premium Vegetables"
+        floatingImages={[
+          { src: frenchBeansImg, alt: 'French Beans' },
+          { src: chiliPeppersImg, alt: 'Chili Peppers' },
+          { src: snowPeasImg, alt: 'Snow Peas' },
+          { src: springOnionsImg, alt: 'Spring Onions' },
+        ]}
+      >
+        <a
+          href={getWhatsAppLink(whatsAppMessages.vegetables)}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button variant="whatsapp" size="lg">
+            <MessageCircle className="w-5 h-5" />
+            Request Vegetable Price List
+          </Button>
+        </a>
+      </PageHero>
 
       {/* Filters */}
       <ProductFilters

@@ -8,10 +8,11 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
+import { PageHero } from '@/components/layout/PageHero';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
 import { getWhatsAppLink, whatsAppMessages } from '@/data/products';
-import heroImage from '@/assets/hero-farm.jpg';
+import heroAboutImg from '@/assets/hero/hero-about.jpg';
 import companyRegCert from '@/assets/certifications/company-registration.jpg';
 import fpcMembershipCert from '@/assets/certifications/fpc-membership.jpg';
 import hcdaLicenseCert from '@/assets/certifications/hcda-license.jpg';
@@ -383,40 +384,32 @@ export default function CertificationsPage() {
   return (
     <div className="pt-24">
       {/* Hero */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img src={heroImage} alt="Certifications & Blog" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-primary/85" />
+      <PageHero
+        title="Certifications & Blog"
+        subtitle="Our quality credentials and expert insights on fresh produce exporting from East Africa."
+        backgroundImage={heroAboutImg}
+        badge="Quality & Knowledge"
+      >
+        {/* Tab Switcher */}
+        <div className="flex justify-center gap-2 mt-4">
+          <Button
+            variant={activeTab === 'certifications' ? 'default' : 'outline'}
+            onClick={() => setActiveTab('certifications')}
+            className={cn(activeTab !== 'certifications' && 'bg-background/20 border-background/30 text-primary-foreground hover:bg-background/30')}
+          >
+            <Award className="w-4 h-4 mr-2" />
+            Certifications
+          </Button>
+          <Button
+            variant={activeTab === 'blog' ? 'default' : 'outline'}
+            onClick={() => setActiveTab('blog')}
+            className={cn(activeTab !== 'blog' && 'bg-background/20 border-background/30 text-primary-foreground hover:bg-background/30')}
+          >
+            <BookOpen className="w-4 h-4 mr-2" />
+            Export Blog
+          </Button>
         </div>
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground mb-4 animate-fade-in-down">
-            Certifications & Blog
-          </h1>
-          <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto animate-fade-in-up">
-            Our quality credentials and expert insights on fresh produce exporting from East Africa.
-          </p>
-
-          {/* Tab Switcher */}
-          <div className="flex justify-center gap-2 mt-8">
-            <Button
-              variant={activeTab === 'certifications' ? 'default' : 'outline'}
-              onClick={() => setActiveTab('certifications')}
-              className={cn(activeTab !== 'certifications' && 'bg-background/20 border-background/30 text-primary-foreground hover:bg-background/30')}
-            >
-              <Award className="w-4 h-4 mr-2" />
-              Certifications
-            </Button>
-            <Button
-              variant={activeTab === 'blog' ? 'default' : 'outline'}
-              onClick={() => setActiveTab('blog')}
-              className={cn(activeTab !== 'blog' && 'bg-background/20 border-background/30 text-primary-foreground hover:bg-background/30')}
-            >
-              <BookOpen className="w-4 h-4 mr-2" />
-              Export Blog
-            </Button>
-          </div>
-        </div>
-      </section>
+      </PageHero>
 
       {/* Certifications Section */}
       {activeTab === 'certifications' && (

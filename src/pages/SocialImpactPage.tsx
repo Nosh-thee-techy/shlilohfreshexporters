@@ -10,9 +10,10 @@ import {
   Mail
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { PageHero } from '@/components/layout/PageHero';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
-import heroImage from '@/assets/hero-farm.jpg';
+import heroAboutImg from '@/assets/hero/hero-about.jpg';
 
 const csrPillars = [
   {
@@ -58,28 +59,12 @@ export default function SocialImpactPage() {
 
   return (
     <div className="pt-24">
-      {/* Hero */}
-      <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img src={heroImage} alt="Community impact" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 to-primary/75" />
-        </div>
-        <div className="relative z-10 container mx-auto px-4">
-          <Link 
-            to="/about" 
-            className="inline-flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground mb-6 transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to About
-          </Link>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-4 animate-fade-in-down">
-            Corporate Social Responsibility
-          </h1>
-          <p className="text-xl md:text-2xl text-primary-foreground/90 max-w-3xl animate-fade-in-up">
-            Driving Positive & Sustainable Change
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title="Corporate Social Responsibility"
+        subtitle="Driving Positive & Sustainable Change"
+        backgroundImage={heroAboutImg}
+        badge="Our Impact"
+      />
 
       {/* Introduction */}
       <section ref={heroRef} className="py-20 bg-background">
