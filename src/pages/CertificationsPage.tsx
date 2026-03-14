@@ -20,6 +20,7 @@ interface Certification {
   description: string;
   fullDescription: string;
   benefits: string[];
+  certificateImage?: string;
 }
 
 const certifications: Certification[] = [
