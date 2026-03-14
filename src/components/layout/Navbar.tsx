@@ -49,16 +49,14 @@ export function Navbar() {
             to="/"
             className="flex items-center gap-2 group"
           >
-            <div className={cn(
-              'flex items-center justify-center rounded-xl transition-all duration-300',
-              isScrolled ? 'w-10 h-10' : 'w-12 h-12',
-              'bg-primary text-primary-foreground'
-            )}>
-              <Leaf className={cn(
-                'transition-all duration-300 group-hover:rotate-12',
-                isScrolled ? 'w-5 h-5' : 'w-6 h-6'
-              )} />
-            </div>
+            <img
+              src={shilohLogo}
+              alt="Shiloh Fresh Exporters"
+              className={cn(
+                'rounded-xl transition-all duration-300 object-cover',
+                isScrolled ? 'w-10 h-10' : 'w-14 h-14'
+              )}
+            />
             <div className="flex flex-col">
               <span className={cn(
                 'font-bold text-primary transition-all duration-300',
@@ -67,7 +65,7 @@ export function Navbar() {
                 Shiloh Fresh
               </span>
               <span className={cn(
-                'text-muted-foreground transition-all duration-300',
+                'text-accent font-medium transition-all duration-300',
                 isScrolled ? 'text-[10px]' : 'text-xs'
               )}>
                 Exporters
