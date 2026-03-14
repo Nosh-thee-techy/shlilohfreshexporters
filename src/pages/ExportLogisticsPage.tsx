@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { PageCTA } from '@/components/layout/PageCTA';
 import { Search, Filter, Package, Truck, Snowflake, CheckCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
