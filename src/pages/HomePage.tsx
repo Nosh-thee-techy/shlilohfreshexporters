@@ -338,7 +338,65 @@ function HeroSection() {
   );
 }
 
-// 2️⃣ VALUE HIGHLIGHTS
+// 2️⃣ VISION & MISSION
+function VisionMissionSection() {
+  const { ref, isVisible } = useScrollAnimation<HTMLElement>();
+
+  return (
+    <section ref={ref} className="py-16 sm:py-20 lg:py-24 bg-background">
+      <div className="container mx-auto px-5 sm:px-6">
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-10 max-w-5xl mx-auto">
+          {/* Vision */}
+          <div
+            className={cn(
+              'relative p-8 sm:p-10 rounded-3xl bg-primary text-primary-foreground overflow-hidden transition-all duration-700',
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            )}
+          >
+            <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary-foreground/5 rounded-full translate-y-1/2 -translate-x-1/2" />
+            <div className="relative z-10 space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
+                  <Target className="w-6 h-6 text-accent" />
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-extrabold">Our Vision</h3>
+              </div>
+              <p className="text-primary-foreground/80 text-base sm:text-lg leading-relaxed">
+                To be East Africa's most trusted fresh produce exporter — known for quality, integrity, and empowering farming communities across the region.
+              </p>
+            </div>
+          </div>
+
+          {/* Mission */}
+          <div
+            className={cn(
+              'relative p-8 sm:p-10 rounded-3xl bg-accent text-foreground overflow-hidden transition-all duration-700',
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            )}
+            style={{ transitionDelay: '150ms' }}
+          >
+            <div className="absolute top-0 left-0 w-28 h-28 bg-foreground/5 rounded-full -translate-y-1/2 -translate-x-1/2" />
+            <div className="absolute bottom-0 right-0 w-20 h-20 bg-foreground/5 rounded-full translate-y-1/2 translate-x-1/2" />
+            <div className="relative z-10 space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl bg-foreground/10 flex items-center justify-center">
+                  <Heart className="w-6 h-6 text-foreground" />
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-extrabold">Our Mission</h3>
+              </div>
+              <p className="text-foreground/80 text-base sm:text-lg leading-relaxed">
+                Our mission is to deliver the finest, ethically sourced fruits to global markets while empowering local farmers and promoting sustainable agricultural practices. Through integrity, innovation, and excellence, we aim to build long-term partnerships that enrich both people and the planet.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// 3️⃣ VALUE HIGHLIGHTS
 function ValueHighlights() {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>();
 
