@@ -86,7 +86,7 @@ const certifications: Certification[] = [
       'Market access facilitation',
       'Industry best practices',
     ],
-  },
+    certificateImage: hcdaLicenseCert,
   {
     id: 'globalGap',
     name: 'GlobalG.A.P Certification',
