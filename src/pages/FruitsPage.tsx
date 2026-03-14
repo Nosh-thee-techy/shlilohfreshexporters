@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { MessageCircle } from 'lucide-react';
+import { PageCTA } from '@/components/layout/PageCTA';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/products/ProductCard';
 import { ProductDetailModal } from '@/components/products/ProductDetailModal';
