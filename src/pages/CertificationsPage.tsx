@@ -80,6 +80,21 @@ const certifications: Certification[] = [
       'Pre-export inspections',
     ],
   },
+  {
+    id: 'company-registration',
+    name: 'Certificate of Incorporation',
+    shortName: 'Company Registration',
+    icon: Building2,
+    description: 'Officially incorporated as a Private Limited Company under the Companies Act, 2015.',
+    fullDescription: 'Shiloh Fresh Exporters Limited is officially incorporated under the Companies Act, 2015 as a Private Limited Company. This certificate, issued by the Registrar of Companies on 16 August 2023, confirms our legal status and authorization to operate as a registered business entity in Kenya.',
+    benefits: [
+      'Legally registered business entity',
+      'Private Limited Company status',
+      'Incorporated under Companies Act, 2015',
+      'Authorized to conduct export operations',
+    ],
+    certificateImage: companyRegCert,
+  },
 ];
 
 function CertificationCard({
