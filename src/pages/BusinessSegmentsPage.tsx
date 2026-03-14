@@ -178,7 +178,7 @@ const categories: ProductCategory[] = [
         id: 'chili-peppers',
         serialNo: 'SFE-VEG-003',
         name: 'Chili Peppers',
-        images: [greenChiliesImg, chiliPeppersImg, chiliFarmImg],
+        images: [greenChiliesImg, chiliPeppersImg, chiliFarmImg, chiliBirdseyeBox, chiliPackedPunnets],
         varieties: ["Bird's Eye", 'Cayenne', 'Demon F1', 'Habanero'],
         origin: ['Kenya — Machakos, Makueni, Kirinyaga, Kajiado'],
         availability: 'Year-round',
