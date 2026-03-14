@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
-import shilohLogo from '@/assets/logos/shiloh-fresh-logo.jpeg';
+import shilohLogo from '@/assets/logos/shiloh-fresh-logo.png';
 
 const usefulLinks = [
   { name: 'Our Produce', href: '/products' },

@@ -4,7 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { DarkModeToggle } from '@/components/theme/DarkModeToggle';
 import { cn } from '@/lib/utils';
-import shilohLogo from '@/assets/logos/shiloh-fresh-logo.jpeg';
+import shilohLogo from '@/assets/logos/shiloh-fresh-logo.png';
 
 const navLinks = [
   { name: 'Home', href: '/' },
