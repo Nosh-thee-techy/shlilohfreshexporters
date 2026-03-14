@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { MessageCircle } from 'lucide-react';
 import { PageCTA } from '@/components/layout/PageCTA';
+import { PageHero } from '@/components/layout/PageHero';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/products/ProductCard';
 import { ProductDetailModal } from '@/components/products/ProductDetailModal';
@@ -13,7 +14,7 @@ import {
   getWhatsAppLink, 
   whatsAppMessages,
 } from '@/data/products';
-import heroImage from '@/assets/hero-farm.jpg';
+import heroHerbsImg from '@/assets/hero/hero-herbs.jpg';
 import basilImg from '@/assets/products/basil.jpg';
 import rosemaryImg from '@/assets/products/rosemary.jpg';
 import mintImg from '@/assets/products/mint.jpg';
