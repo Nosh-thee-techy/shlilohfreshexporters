@@ -74,7 +74,7 @@ const categories: ProductCategory[] = [
         id: 'avocado',
         serialNo: 'SFE-FRT-001',
         name: 'Avocado',
-        images: [avocadoExportBox, avocadoHarvest, avocadoVarieties, avocadoHalved, avocadoFuerteHalved, avocadoOnTree, avocadoCloseup, avocadoExportBoxes],
+        images: [avocadoExportBox, avocadoHarvest, avocadoVarieties, avocadoHalved, avocadoFuerteHalved, avocadoOnTree, avocadoCloseup, avocadoExportBoxes, avocadoFuerteGrass, avocadoFuerteBox],
         varieties: ['Hass', 'Fuerte', 'Jumbo Hass'],
         origin: ['Kenya — Murang\'a, Kiambu, Embu', 'Tanzania — Arusha, Mbeya'],
         availability: 'March – September (Peak), Year-round limited',
