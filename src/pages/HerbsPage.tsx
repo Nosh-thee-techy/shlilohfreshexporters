@@ -185,6 +185,7 @@ export default function HerbsPage() {
       </section>
 
       <PageCTA
+        variant="green"
         title="Looking for Premium Fresh Herbs?"
         subtitle="We work with specialized growers to source a wide range of culinary herbs. Contact us for custom requirements."
         whatsappMessage="Hello Shiloh Fresh Exporters, I am interested in your fresh herbs for export. Please share pricing, availability, and shelf life details."

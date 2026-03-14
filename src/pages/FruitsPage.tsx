@@ -167,6 +167,7 @@ export default function FruitsPage() {
       </section>
 
       <PageCTA
+        variant="green"
         title="Looking for Premium Fruits?"
         subtitle="We source the finest export-grade fruits from East Africa. Contact us for pricing, availability, and custom orders."
         whatsappMessage="Hello Shiloh Fresh Exporters, I am interested in your fruit exports. Please share available varieties, prices, and minimum order quantities."
