@@ -36,6 +36,10 @@ import mintImg from '@/assets/products/mint.jpg';
 import thymeImg from '@/assets/products/thyme.jpg';
 import corianderImg from '@/assets/products/coriander.jpg';
 import parsleyImg from '@/assets/products/parsley.jpg';
+import avocadoFuerteGrass from '@/assets/products/avocado-fuerte-grass.jpg';
+import avocadoFuerteBox from '@/assets/products/avocado-fuerte-box.jpg';
+import chiliBirdseyeBox from '@/assets/products/chili-birdseye-box.jpg';
+import chiliPackedPunnets from '@/assets/products/chili-packed-punnets.jpg';
 
 // === Data ===
 interface ProductItem {
@@ -70,7 +74,7 @@ const categories: ProductCategory[] = [
         id: 'avocado',
         serialNo: 'SFE-FRT-001',
         name: 'Avocado',
-        images: [avocadoExportBox, avocadoHarvest, avocadoVarieties, avocadoHalved, avocadoFuerteHalved, avocadoOnTree, avocadoCloseup, avocadoExportBoxes],
+        images: [avocadoExportBox, avocadoHarvest, avocadoVarieties, avocadoHalved, avocadoFuerteHalved, avocadoOnTree, avocadoCloseup, avocadoExportBoxes, avocadoFuerteGrass, avocadoFuerteBox],
         varieties: ['Hass', 'Fuerte', 'Jumbo Hass'],
         origin: ['Kenya — Murang\'a, Kiambu, Embu', 'Tanzania — Arusha, Mbeya'],
         availability: 'March – September (Peak), Year-round limited',
@@ -174,7 +178,7 @@ const categories: ProductCategory[] = [
         id: 'chili-peppers',
         serialNo: 'SFE-VEG-003',
         name: 'Chili Peppers',
-        images: [greenChiliesImg, chiliPeppersImg, chiliFarmImg],
+        images: [greenChiliesImg, chiliPeppersImg, chiliFarmImg, chiliBirdseyeBox, chiliPackedPunnets],
         varieties: ["Bird's Eye", 'Cayenne', 'Demon F1', 'Habanero'],
         origin: ['Kenya — Machakos, Makueni, Kirinyaga, Kajiado'],
         availability: 'Year-round',
