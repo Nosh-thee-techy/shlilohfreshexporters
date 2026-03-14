@@ -18,7 +18,9 @@ import {
   MessageCircle,
   Mail,
   Quote,
-  Star
+  Star,
+  Target,
+  Heart
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useScrollAnimation, useParallax } from '@/hooks/useScrollAnimation';
