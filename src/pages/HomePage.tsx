@@ -1165,6 +1165,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <VisionMissionSection />
       <ValueHighlights />
       <JourneySection />
       <StatsSection />
