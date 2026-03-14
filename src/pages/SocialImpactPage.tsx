@@ -10,9 +10,10 @@ import {
   Mail
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { PageHero } from '@/components/layout/PageHero';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
-import heroImage from '@/assets/hero-farm.jpg';
+import heroAboutImg from '@/assets/hero/hero-about.jpg';
 
 const csrPillars = [
   {
