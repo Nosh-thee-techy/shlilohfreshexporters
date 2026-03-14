@@ -428,6 +428,39 @@ function StatsSection() {
   );
 }
 
+// Testimonials data
+const testimonialsData = [
+  {
+    quote: "Shiloh Fresh has consistently delivered premium quality avocados. Their reliability and professionalism make them our preferred supplier.",
+    author: "James van der Berg",
+    role: "Import Manager",
+    company: "European Fresh Produce Ltd.",
+    rating: 5,
+  },
+  {
+    quote: "The traceability and food safety standards at Shiloh Fresh exceed our expectations. A trusted partner for our supply chain.",
+    author: "Sarah Mitchell",
+    role: "Procurement Director",
+    company: "Global Foods Distribution",
+    rating: 5,
+  },
+  {
+    quote: "Excellent cold chain management and timely deliveries. Shiloh Fresh understands the importance of freshness in our business.",
+    author: "Ahmed Hassan",
+    role: "Operations Head",
+    company: "Middle East Fresh Markets",
+    rating: 5,
+  },
+];
+
+const partnerLogos = [
+  { name: 'KEBS', logo: kebsLogo },
+  { name: 'HCDA', logo: hcdaLogo },
+  { name: 'Keitt', logo: keittLogo },
+  { name: 'GlobalG.A.P', logo: globalgapLogo },
+  { name: 'Phytosanitary', logo: phytoLogo },
+];
+
 // 5️⃣ SHILOH'S WAY - Curved Process Flow
 const processSteps = [
   { id: 'variety', step: 1, stage: 'Grower', title: 'Variety Selection & Trials', description: 'Careful selection and testing of crop varieties best suited for export markets and local growing conditions.', image: varietyImg },
