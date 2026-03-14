@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Award, Shield, Leaf, FileCheck, ExternalLink, X } from 'lucide-react';
+import { Award, Shield, Leaf, FileCheck, ExternalLink, Building2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
