@@ -272,7 +272,7 @@ export default function ContactPage() {
               {/* Quick Actions */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <a
-                  href="https://wa.me/254702339421?text=Hello%20Shiloh%20Fresh%20Exporters%2C%20I%27d%20like%20to%20inquire."
+                  href="https://wa.me/254735497573?text=Hello%20Shiloh%20Fresh%20Exporters%2C%20I%27d%20like%20to%20inquire."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1"

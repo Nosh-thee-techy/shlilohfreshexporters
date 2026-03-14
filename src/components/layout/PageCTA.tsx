@@ -24,7 +24,7 @@ export function PageCTA({
   const { ref, isVisible } = useScrollAnimation<HTMLElement>();
 
   const waLink = whatsappMessage
-    ? `https://wa.me/254702339421?text=${encodeURIComponent(whatsappMessage)}`
+    ? `https://wa.me/254735497573?text=${encodeURIComponent(whatsappMessage)}`
     : WHATSAPP_LINK;
 
   return (

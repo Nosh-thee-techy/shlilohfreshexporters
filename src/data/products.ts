@@ -27,7 +27,7 @@ export interface Product {
   category: 'fruits' | 'vegetables' | 'herbs';
 }
 
-export const WHATSAPP_NUMBER = '254702339421';
+export const WHATSAPP_NUMBER = '254735497573';
 
 export const getWhatsAppLink = (message: string) => 
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
