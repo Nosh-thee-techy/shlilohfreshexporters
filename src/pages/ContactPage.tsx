@@ -230,8 +230,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground">Phone</h3>
-                    <a href="tel:+254702339421" className="text-muted-foreground hover:text-primary transition-colors">
-                      +254 702 339 421
+                    <a href="tel:+254735497573" className="text-muted-foreground hover:text-primary transition-colors">
+                      +254 735 497 573
                     </a>
                   </div>
                 </div>
