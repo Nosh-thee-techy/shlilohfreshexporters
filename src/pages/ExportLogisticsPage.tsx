@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { PageCTA } from '@/components/layout/PageCTA';
 import { Search, Filter, Package, Truck, Snowflake, CheckCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
@@ -269,6 +270,12 @@ export default function ExportLogisticsPage() {
           </div>
         </div>
       </section>
+
+      <PageCTA
+        title="Ready to Ship Your Products?"
+        subtitle="Our logistics team ensures your fresh produce reaches global markets in perfect condition. Get started today."
+        whatsappMessage="Hello Shiloh Fresh, I'd like to discuss shipping and logistics for fresh produce exports."
+      />
     </div>
   );
 }

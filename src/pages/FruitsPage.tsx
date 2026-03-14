@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { MessageCircle } from 'lucide-react';
+import { PageCTA } from '@/components/layout/PageCTA';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/products/ProductCard';
 import { ProductDetailModal } from '@/components/products/ProductDetailModal';
@@ -168,27 +169,11 @@ export default function FruitsPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 bg-secondary">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-            Looking for Specific Fruit Varieties?
-          </h2>
-          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            We can source additional fruit varieties based on your market requirements. Contact our team for custom orders.
-          </p>
-          <a
-            href={getWhatsAppLink(whatsAppMessages.fruits)}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button variant="whatsapp" size="lg">
-              <MessageCircle className="w-5 h-5" />
-              Contact Export Team
-            </Button>
-          </a>
-        </div>
-      </section>
+      <PageCTA
+        title="Looking for Premium Fruits?"
+        subtitle="We source the finest export-grade fruits from East Africa. Contact us for pricing, availability, and custom orders."
+        whatsappMessage="Hello Shiloh Fresh Exporters, I am interested in your fruit exports. Please share available varieties, prices, and minimum order quantities."
+      />
 
       <ProductDetailModal
         product={selectedProduct}

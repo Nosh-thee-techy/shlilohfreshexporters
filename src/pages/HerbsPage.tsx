@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { MessageCircle } from 'lucide-react';
+import { PageCTA } from '@/components/layout/PageCTA';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/products/ProductCard';
 import { ProductDetailModal } from '@/components/products/ProductDetailModal';
@@ -186,27 +187,11 @@ export default function HerbsPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 bg-secondary">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-            Looking for Specific Herb Varieties?
-          </h2>
-          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            We work with specialized growers to source a wide range of culinary herbs. Contact us for custom requirements.
-          </p>
-          <a
-            href={getWhatsAppLink(whatsAppMessages.herbs)}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button variant="whatsapp" size="lg">
-              <MessageCircle className="w-5 h-5" />
-              Contact Export Team
-            </Button>
-          </a>
-        </div>
-      </section>
+      <PageCTA
+        title="Looking for Premium Fresh Herbs?"
+        subtitle="We work with specialized growers to source a wide range of culinary herbs. Contact us for custom requirements."
+        whatsappMessage="Hello Shiloh Fresh Exporters, I am interested in your fresh herbs for export. Please share pricing, availability, and shelf life details."
+      />
 
       <ProductDetailModal
         product={selectedProduct}
