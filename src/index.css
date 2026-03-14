@@ -205,7 +205,7 @@
 
   /* Glow effect */
   .glow-primary {
-    box-shadow: 0 0 20px hsl(153 71% 32% / 0.4);
+    box-shadow: 0 0 20px hsl(145 55% 28% / 0.4);
   }
 
   .glow-accent {
