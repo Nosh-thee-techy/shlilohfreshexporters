@@ -92,8 +92,8 @@ export function PageCTA({
                   className={cn(
                     'group rounded-full px-6 font-bold w-full sm:w-auto',
                     isGold
-                      ? 'bg-foreground text-accent-foreground hover:bg-foreground/90'
-                      : 'bg-accent text-accent-foreground hover:bg-accent/90'
+                      ? 'bg-primary text-primary-foreground hover:bg-primary/90'
+                      : 'bg-accent text-foreground hover:bg-accent/90'
                   )}
                 >
                   <Mail className="w-4 h-4" />
