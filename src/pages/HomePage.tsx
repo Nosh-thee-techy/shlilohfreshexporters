@@ -428,24 +428,6 @@ function StatsSection() {
   );
 }
 
-// 5️⃣ SHILOH'S WAY - Interactive Process Flow
-const processFlowData = {
-  grower: [
-    { id: 'variety', title: 'Variety Selection & Trials', description: 'Careful selection and testing of crop varieties best suited for export markets and local growing conditions.', image: varietyImg },
-    { id: 'propagation', title: 'Propagation & Planting', description: 'Professional propagation techniques ensuring healthy seedlings and optimal planting practices.', image: propagationImg },
-    { id: 'agronomy', title: 'Good Agronomy Practices', description: 'Implementation of sustainable farming methods, soil management, and responsible pest control.', image: agronomyImg },
-  ],
-  packhouse: [
-    { id: 'sorting', title: 'Sorting & Quality Checks', description: 'Rigorous inspection and grading of produce to meet international quality standards.', image: sortingImg },
-    { id: 'packaging', title: 'Export Packaging', description: 'Professional packaging designed to maintain freshness and meet destination market requirements.', image: packagingImg },
-  ],
-  logistics: [
-    { id: 'coldchain', title: 'Cold Chain Management', description: 'Temperature-controlled storage and handling from packhouse to final destination.', image: coldchainImg },
-    { id: 'sea', title: 'Sea Logistics', description: 'Cost-effective ocean freight for large volume shipments with maintained cold chain.', image: seaLogisticsImg },
-    { id: 'air', title: 'Air Logistics', description: 'Rapid air freight for time-sensitive produce ensuring maximum freshness on arrival.', image: airLogisticsImg },
-  ],
-};
-
 // Testimonials data
 const testimonialsData = [
   {
@@ -479,260 +461,174 @@ const partnerLogos = [
   { name: 'Phytosanitary', logo: phytoLogo },
 ];
 
-function ProcessNode({ 
-  item, 
-  index, 
-  isVisible, 
-  onHover, 
-  onLeave, 
-  onClick, 
-  isHovered 
-}: { 
-  item: { id: string; title: string; description: string; image: string }; 
-  index: number; 
-  isVisible: boolean; 
-  onHover: () => void; 
-  onLeave: () => void; 
-  onClick: () => void;
-  isHovered: boolean;
-}) {
-  return (
-    <div
-      className={cn(
-        'group relative cursor-pointer transition-all duration-500',
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-      )}
-      style={{ transitionDelay: `${index * 150}ms` }}
-      onMouseEnter={onHover}
-      onMouseLeave={onLeave}
-      onClick={onClick}
-    >
-      <div className={cn(
-        'w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 rounded-full border-2 sm:border-3 border-dashed border-primary/50 flex items-center justify-center mx-auto transition-all duration-300 overflow-hidden p-1 sm:p-1.5',
-        isHovered && 'border-solid border-accent shadow-[0_0_40px_rgba(255,200,87,0.5)] scale-110'
-      )}>
-        <img 
-          src={item.image} 
-          alt={item.title}
-          className="w-full h-full rounded-full object-cover"
-        />
-      </div>
-      <p className={cn(
-        'text-xs sm:text-sm md:text-base text-center mt-2 sm:mt-4 text-primary-foreground/80 font-medium max-w-[100px] sm:max-w-[160px] mx-auto transition-colors duration-300 leading-tight',
-        isHovered && 'text-accent'
-      )}>
-        {item.title}
-      </p>
-      
-      {/* Hover tooltip - hidden on mobile, show on tap */}
-      <div className={cn(
-        'absolute z-20 left-1/2 -translate-x-1/2 top-full mt-2 w-40 sm:w-48 p-2 sm:p-3 bg-card rounded-lg shadow-xl border border-border transition-all duration-300 pointer-events-none hidden sm:block',
-        isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'
-      )}>
-        <p className="text-[10px] sm:text-xs text-muted-foreground">{item.description}</p>
-      </div>
-    </div>
-  );
-}
+// 5️⃣ SHILOH'S WAY - Curved Process Flow
+const processSteps = [
+  { id: 'variety', step: 1, stage: 'Grower', title: 'Variety Selection & Trials', description: 'Careful selection and testing of crop varieties best suited for export markets and local growing conditions.', image: varietyImg },
+  { id: 'propagation', step: 2, stage: 'Grower', title: 'Propagation & Planting', description: 'Professional propagation techniques ensuring healthy seedlings and optimal planting practices.', image: propagationImg },
+  { id: 'agronomy', step: 3, stage: 'Grower', title: 'Good Agronomy Practices', description: 'Implementation of sustainable farming methods, soil management, and responsible pest control.', image: agronomyImg },
+  { id: 'sorting', step: 4, stage: 'Packhouse', title: 'Sorting & Quality Checks', description: 'Rigorous inspection and grading of produce to meet international quality standards.', image: sortingImg },
+  { id: 'packaging', step: 5, stage: 'Packhouse', title: 'Export Packaging', description: 'Professional packaging designed to maintain freshness and meet destination market requirements.', image: packagingImg },
+  { id: 'coldchain', step: 6, stage: 'Logistics', title: 'Cold Chain Management', description: 'Temperature-controlled storage and handling from packhouse to final destination.', image: coldchainImg },
+  { id: 'sea', step: 7, stage: 'Logistics', title: 'Sea Logistics', description: 'Cost-effective ocean freight for large volume shipments with maintained cold chain.', image: seaLogisticsImg },
+  { id: 'air', step: 8, stage: 'Logistics', title: 'Air Logistics', description: 'Rapid air freight for time-sensitive produce ensuring maximum freshness on arrival.', image: airLogisticsImg },
+];
 
 function ShilohWaySection() {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>();
-  const [hoveredNode, setHoveredNode] = useState<string | null>(null);
-  const [selectedNode, setSelectedNode] = useState<{ id: string; title: string; description: string } | null>(null);
+  const [selectedNode, setSelectedNode] = useState<typeof processSteps[0] | null>(null);
 
   return (
-    <section ref={ref} className="py-24 bg-[hsl(var(--primary)/0.95)] relative overflow-hidden">
-      {/* Animated background pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at 25% 25%, hsl(var(--accent)) 1px, transparent 1px), radial-gradient(circle at 75% 75%, hsl(var(--accent)) 1px, transparent 1px)',
-          backgroundSize: '50px 50px'
-        }} />
-      </div>
-
+    <section ref={ref} className="py-16 sm:py-24 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        {/* Header - Left aligned like reference */}
+        <div className="max-w-3xl mb-12 sm:mb-20">
           <span className={cn(
-            'inline-block px-3 py-1 bg-primary-foreground/10 text-primary-foreground rounded-full text-sm font-medium mb-4 transition-all duration-500 border border-primary-foreground/20',
+            'inline-block text-accent font-semibold text-sm tracking-widest uppercase mb-4 transition-all duration-500',
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           )}>
-            Shiloh's Way
+            Shiloh's Way — From Farm to Market
           </span>
           <h2 className={cn(
-            'text-3xl md:text-4xl font-bold text-primary-foreground mb-6 transition-all duration-700',
+            'text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6 transition-all duration-700',
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           )}>
-            From Farm to <span className="text-accent">Global Markets</span>
+            We have the best team<br />
+            and <span className="text-primary">best process</span>
           </h2>
           <p className={cn(
-            'text-primary-foreground/80 leading-relaxed text-lg transition-all duration-700 delay-100',
+            'text-muted-foreground text-base sm:text-lg leading-relaxed max-w-xl transition-all duration-700 delay-100',
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           )}>
-            With a strong commitment to quality, traceability, and food safety, Shiloh Fresh Exporters manages every stage of fresh produce sourcing, handling, and export using good agronomy practices and responsible pest management.
+            With a strong commitment to quality, traceability, and food safety, we manage every stage of fresh produce sourcing, handling, and export.
           </p>
+          <Link to="/products" className="inline-block mt-6">
+            <Button variant="cta" size="lg" className={cn(
+              'rounded-full transition-all duration-700 delay-200',
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            )}>
+              Get Started
+            </Button>
+          </Link>
         </div>
 
-        {/* Process Flow - Desktop */}
-        <div className="hidden lg:block max-w-6xl mx-auto">
-          <div className="grid grid-cols-3 gap-8">
-            {/* Grower Column */}
-            <div className="space-y-4">
-              <h3 className={cn(
-                'text-center text-lg font-semibold text-accent mb-8 transition-all duration-500',
-                isVisible ? 'opacity-100' : 'opacity-0'
-              )}>
-                🌱 Grower
-              </h3>
-              <div className="relative flex flex-col items-center gap-8">
-                {processFlowData.grower.map((item, index) => (
-                  <React.Fragment key={item.id}>
-                    <ProcessNode
-                      item={item}
-                      index={index}
-                      isVisible={isVisible}
-                      onHover={() => setHoveredNode(item.id)}
-                      onLeave={() => setHoveredNode(null)}
-                      onClick={() => setSelectedNode(item)}
-                      isHovered={hoveredNode === item.id}
-                    />
-                    {index < processFlowData.grower.length - 1 && (
-                      <div className="h-6 w-0.5 border-l-2 border-dashed border-primary-foreground/30 animate-pulse" />
-                    )}
-                  </React.Fragment>
-                ))}
-                {/* Arrow to Packhouse */}
-                <div className="absolute -right-4 top-1/2 -translate-y-1/2 text-accent animate-pulse">
-                  →
-                </div>
-              </div>
-            </div>
+        {/* Desktop: Curved flowing path */}
+        <div className="hidden lg:block relative">
+          {/* SVG Curved Path */}
+          <svg
+            className="absolute inset-0 w-full h-full pointer-events-none"
+            viewBox="0 0 1200 900"
+            fill="none"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M 100 100 Q 300 100, 400 200 Q 500 300, 600 250 Q 700 200, 800 300 Q 900 400, 1000 350 Q 1100 300, 1100 450 Q 1100 600, 900 650 Q 700 700, 500 650 Q 300 600, 200 700 Q 100 800, 300 850"
+              stroke="hsl(var(--accent))"
+              strokeWidth="3"
+              strokeDasharray="8 6"
+              className="opacity-40"
+            />
+          </svg>
 
-            {/* Packhouse Column */}
-            <div className="space-y-4">
-              <h3 className={cn(
-                'text-center text-lg font-semibold text-accent mb-8 transition-all duration-500',
-                isVisible ? 'opacity-100' : 'opacity-0'
-              )}>
-                🏭 Packhouse
-              </h3>
-              <div className="relative flex flex-col items-center justify-center h-full gap-8 py-12">
-                {processFlowData.packhouse.map((item, index) => (
-                  <React.Fragment key={item.id}>
-                    <ProcessNode
-                      item={item}
-                      index={index + 3}
-                      isVisible={isVisible}
-                      onHover={() => setHoveredNode(item.id)}
-                      onLeave={() => setHoveredNode(null)}
-                      onClick={() => setSelectedNode(item)}
-                      isHovered={hoveredNode === item.id}
-                    />
-                    {index < processFlowData.packhouse.length - 1 && (
-                      <div className="h-6 w-0.5 border-l-2 border-dashed border-primary-foreground/30 animate-pulse" />
-                    )}
-                  </React.Fragment>
-                ))}
-                {/* Arrow to Logistics */}
-                <div className="absolute -right-4 top-1/2 -translate-y-1/2 text-accent animate-pulse">
-                  →
-                </div>
-              </div>
-            </div>
+          {/* Process Steps */}
+          <div className="relative" style={{ minHeight: '900px' }}>
+            {processSteps.map((step, index) => {
+              // Position each step along a flowing S-curve
+              const positions = [
+                { top: '0%', left: '5%', align: 'left' },
+                { top: '8%', left: '35%', align: 'left' },
+                { top: '18%', left: '60%', align: 'right' },
+                { top: '30%', left: '80%', align: 'right' },
+                { top: '45%', left: '55%', align: 'right' },
+                { top: '55%', left: '25%', align: 'left' },
+                { top: '68%', left: '10%', align: 'left' },
+                { top: '80%', left: '40%', align: 'left' },
+              ];
+              const pos = positions[index];
 
-            {/* Logistics Column */}
-            <div className="space-y-4">
-              <h3 className={cn(
-                'text-center text-lg font-semibold text-accent mb-8 transition-all duration-500',
-                isVisible ? 'opacity-100' : 'opacity-0'
-              )}>
-                🚢 Logistics
-              </h3>
-              <div className="flex flex-col items-center gap-8">
-                {processFlowData.logistics.map((item, index) => (
-                  <React.Fragment key={item.id}>
-                    <ProcessNode
-                      item={item}
-                      index={index + 5}
-                      isVisible={isVisible}
-                      onHover={() => setHoveredNode(item.id)}
-                      onLeave={() => setHoveredNode(null)}
-                      onClick={() => setSelectedNode(item)}
-                      isHovered={hoveredNode === item.id}
-                    />
-                    {index < processFlowData.logistics.length - 1 && (
-                      <div className="h-6 w-0.5 border-l-2 border-dashed border-primary-foreground/30 animate-pulse" />
-                    )}
-                  </React.Fragment>
-                ))}
-              </div>
-            </div>
+              return (
+                <div
+                  key={step.id}
+                  className={cn(
+                    'absolute group cursor-pointer transition-all duration-700',
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                  )}
+                  style={{
+                    top: pos.top,
+                    left: pos.left,
+                    transitionDelay: `${index * 120}ms`,
+                  }}
+                  onClick={() => setSelectedNode(step)}
+                >
+                  {/* Large background number */}
+                  <span className="absolute -top-6 -left-4 text-[120px] font-extrabold text-muted/60 leading-none select-none pointer-events-none z-0">
+                    {step.step}
+                  </span>
+
+                  <div className="relative z-10 flex items-start gap-5">
+                    {/* Dot on the path */}
+                    <div className="relative mt-1 shrink-0">
+                      <div className="w-5 h-5 rounded-full bg-accent border-4 border-background shadow-lg group-hover:scale-125 transition-transform duration-300" />
+                      <div className="absolute inset-0 w-5 h-5 rounded-full bg-accent/30 animate-ping" style={{ animationDuration: '2s' }} />
+                    </div>
+
+                    {/* Content */}
+                    <div className="max-w-[280px]">
+                      <span className="text-[10px] uppercase tracking-widest text-accent font-semibold mb-1 block">
+                        {step.stage}
+                      </span>
+                      <h4 className="text-lg font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
+                        {step.title}
+                      </h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
-        {/* Process Flow - Mobile */}
-        <div className="lg:hidden space-y-6 sm:space-y-8">
-          {/* Grower */}
-          <div>
-            <h3 className="text-center text-base sm:text-lg font-semibold text-accent mb-4 sm:mb-6">🌱 Grower</h3>
-            <div className="flex justify-center gap-2 sm:gap-4 flex-wrap">
-              {processFlowData.grower.map((item, index) => (
-                <ProcessNode
-                  key={item.id}
-                  item={item}
-                  index={index}
-                  isVisible={isVisible}
-                  onHover={() => setHoveredNode(item.id)}
-                  onLeave={() => setHoveredNode(null)}
-                  onClick={() => setSelectedNode(item)}
-                  isHovered={hoveredNode === item.id}
-                />
-              ))}
-            </div>
-          </div>
-          
-          <div className="flex justify-center">
-            <div className="w-0.5 h-6 sm:h-8 border-l-2 border-dashed border-primary-foreground/30" />
-          </div>
+        {/* Mobile: Vertical timeline */}
+        <div className="lg:hidden">
+          <div className="relative">
+            {/* Vertical line */}
+            <div className="absolute left-[14px] top-0 bottom-0 w-0.5 bg-accent/30" />
 
-          {/* Packhouse */}
-          <div>
-            <h3 className="text-center text-base sm:text-lg font-semibold text-accent mb-4 sm:mb-6">🏭 Packhouse</h3>
-            <div className="flex justify-center gap-2 sm:gap-4 flex-wrap">
-              {processFlowData.packhouse.map((item, index) => (
-                <ProcessNode
-                  key={item.id}
-                  item={item}
-                  index={index + 3}
-                  isVisible={isVisible}
-                  onHover={() => setHoveredNode(item.id)}
-                  onLeave={() => setHoveredNode(null)}
-                  onClick={() => setSelectedNode(item)}
-                  isHovered={hoveredNode === item.id}
-                />
-              ))}
-            </div>
-          </div>
+            <div className="space-y-10">
+              {processSteps.map((step, index) => (
+                <div
+                  key={step.id}
+                  className={cn(
+                    'relative pl-12 cursor-pointer group transition-all duration-500',
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  )}
+                  style={{ transitionDelay: `${index * 80}ms` }}
+                  onClick={() => setSelectedNode(step)}
+                >
+                  {/* Step number circle */}
+                  <div className="absolute left-0 top-0 w-7 h-7 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-xs font-bold z-10 group-hover:scale-110 transition-transform">
+                    {step.step}
+                  </div>
 
-          <div className="flex justify-center">
-            <div className="w-0.5 h-6 sm:h-8 border-l-2 border-dashed border-primary-foreground/30" />
-          </div>
+                  {/* Large background number */}
+                  <span className="absolute -top-3 left-6 text-[60px] font-extrabold text-muted/40 leading-none select-none pointer-events-none z-0">
+                    {step.step}
+                  </span>
 
-          {/* Logistics */}
-          <div>
-            <h3 className="text-center text-base sm:text-lg font-semibold text-accent mb-4 sm:mb-6">🚢 Logistics</h3>
-            <div className="flex justify-center gap-2 sm:gap-4 flex-wrap">
-              {processFlowData.logistics.map((item, index) => (
-                <ProcessNode
-                  key={item.id}
-                  item={item}
-                  index={index + 5}
-                  isVisible={isVisible}
-                  onHover={() => setHoveredNode(item.id)}
-                  onLeave={() => setHoveredNode(null)}
-                  onClick={() => setSelectedNode(item)}
-                  isHovered={hoveredNode === item.id}
-                />
+                  <div className="relative z-10">
+                    <span className="text-[10px] uppercase tracking-widest text-accent font-semibold mb-1 block">
+                      {step.stage}
+                    </span>
+                    <h4 className="text-base font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
+                      {step.title}
+                    </h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
@@ -743,8 +639,8 @@ function ShilohWaySection() {
           <DialogContent className="sm:max-w-md">
             <DialogHeader>
               <DialogTitle className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Leaf className="w-5 h-5 text-primary" />
+                <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-accent-foreground font-bold">
+                  {selectedNode?.step}
                 </div>
                 {selectedNode?.title}
               </DialogTitle>
@@ -752,6 +648,11 @@ function ShilohWaySection() {
                 {selectedNode?.description}
               </DialogDescription>
             </DialogHeader>
+            {selectedNode?.image && (
+              <div className="rounded-xl overflow-hidden mt-2">
+                <img src={selectedNode.image} alt={selectedNode.title} className="w-full h-48 object-cover" />
+              </div>
+            )}
           </DialogContent>
         </Dialog>
       </div>
