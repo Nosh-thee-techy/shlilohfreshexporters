@@ -13,6 +13,7 @@ import { cn } from '@/lib/utils';
 import { getWhatsAppLink, whatsAppMessages } from '@/data/products';
 import heroImage from '@/assets/hero-farm.jpg';
 import companyRegCert from '@/assets/certifications/company-registration.jpg';
+import fpcMembershipCert from '@/assets/certifications/fpc-membership.jpg';
 
 // Blog images
 import exportWhyImg from '@/assets/blog/export-why.jpg';
