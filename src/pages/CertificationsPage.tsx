@@ -10,6 +10,7 @@ import {
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
 import heroImage from '@/assets/hero-farm.jpg';
+import companyRegCert from '@/assets/certifications/company-registration.jpg';
 
 interface Certification {
   id: string;
