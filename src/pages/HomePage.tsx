@@ -24,6 +24,11 @@ import { Button } from '@/components/ui/button';
 import { useScrollAnimation, useParallax } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
 import heroImage from '@/assets/hero-farm.jpg';
+import avocadoImg from '@/assets/products/avocado.jpg';
+import mangoesImg from '@/assets/products/mangoes.jpg';
+import frenchBeansImg from '@/assets/products/french-beans.jpg';
+import basilImg from '@/assets/products/basil.jpg';
+import passionFruitImg from '@/assets/products/passion-fruit.jpg';
 // Process flow images
 import varietyImg from '@/assets/process/variety-selection.jpg';
 import propagationImg from '@/assets/process/propagation.jpg';
@@ -173,58 +178,164 @@ function ScrollIndicator() {
   );
 }
 
-// 1️⃣ HERO SECTION
+// 1️⃣ HERO SECTION — Starbucks-inspired layout
 function HeroSection() {
-  const parallaxOffset = useParallax(0.3);
+  const parallaxOffset = useParallax(0.15);
+  const [activeThumb, setActiveThumb] = useState(0);
+
+  const heroProducts = [
+    { src: avocadoImg, name: 'Hass Avocado', label: 'AVOCADO' },
+    { src: mangoesImg, name: 'Kent Mangoes', label: 'MANGOES' },
+    { src: frenchBeansImg, name: 'French Beans', label: 'FRENCH BEANS' },
+    { src: basilImg, name: 'Sweet Basil', label: 'BASIL' },
+    { src: passionFruitImg, name: 'Passion Fruit', label: 'PASSION FRUIT' },
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveThumb((prev) => (prev + 1) % heroProducts.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen overflow-hidden bg-primary">
+      {/* Background image with blur overlay */}
       <div
         className="absolute inset-0 z-0"
         style={{ transform: `translateY(${parallaxOffset}px)` }}
       >
         <img
           src={heroImage}
-          alt="Kenyan farmland with fresh produce"
-          className="w-full h-[120%] object-cover"
+          alt="Kenyan farmland"
+          className="w-full h-[120%] object-cover opacity-30 blur-[2px]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/60 to-primary/90" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/80 to-primary/60" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-20 sm:py-32 text-center">
-        <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
-          <div className="space-y-4 animate-fade-in-down">
-            <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full text-primary-foreground text-xs sm:text-sm font-medium border border-primary-foreground/20">
-              Premium Fresh Produce from Kenya
-            </span>
-          </div>
-          
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-primary-foreground leading-tight animate-fade-in-up">
-            From Africa{' '}
-            <span className="text-accent">to the World</span>
-          </h1>
-          
-          <p className="text-base sm:text-lg md:text-xl text-primary-foreground/90 max-w-3xl mx-auto animate-fade-in-up delay-200 leading-relaxed px-2">
-            Our promise, <strong>From Africa to the World</strong>, represents Shiloh Fresh Exporters' commitment to delivering premium, ethically sourced produce from Kenyan farms to global markets. Through sustainable farming practices and modern export systems, we ensure that every shipment reflects the quality, freshness, and authenticity of African agriculture.
-          </p>
+      {/* Vertical text — right side (desktop only) */}
+      <div className="hidden lg:flex absolute right-0 top-0 bottom-0 w-24 xl:w-32 z-[3] items-center justify-center">
+        <div className="relative h-full flex items-center">
+          {/* Accent stripe */}
+          <div className="absolute right-0 top-[15%] bottom-[15%] w-20 xl:w-24 rounded-l-3xl bg-accent/20 backdrop-blur-sm" />
+          <span
+            className="relative text-primary-foreground/20 font-bold text-5xl xl:text-7xl tracking-[0.3em] uppercase"
+            style={{
+              writingMode: 'vertical-rl',
+              textOrientation: 'mixed',
+            }}
+          >
+            {heroProducts[activeThumb].label}
+          </span>
+        </div>
+      </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-4 animate-fade-in-up delay-300 px-4 sm:px-0">
-            <Link to="/products">
-              <Button variant="hero" size="lg" className="group w-full sm:w-auto">
-                Explore Our Produce
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-            <a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
+      {/* Main content grid */}
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 min-h-screen flex items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-4 items-center w-full py-28 sm:py-32 lg:py-20">
+          
+          {/* Left: Typography & CTAs */}
+          <div className="space-y-6 sm:space-y-8 text-center lg:text-left order-2 lg:order-1">
+            <div className="space-y-2 animate-fade-in-down">
+              <p className="text-accent font-semibold text-sm sm:text-base tracking-wider uppercase">
+                Shiloh Fresh Exporters is...
+              </p>
+            </div>
+
+            <h1 className="animate-fade-in-up">
+              <span className="block text-primary-foreground/90 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light leading-tight">
+                Pure{' '}
+                <strong className="font-extrabold text-primary-foreground">Freshness</strong>
+              </span>
+              <span className="block text-primary-foreground/90 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light leading-tight">
+                from{' '}
+                <span className="text-accent font-extrabold">Africa</span>
+              </span>
+            </h1>
+
+            {/* Badges */}
+            <div className="flex flex-wrap gap-3 justify-center lg:justify-start animate-fade-in-up delay-200">
+              <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-accent text-accent-foreground font-bold text-sm shadow-lg">
+                <Globe2 className="w-4 h-4" />
+                10+ Markets
+              </div>
+              <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground font-semibold text-sm border border-primary-foreground/20">
+                <Truck className="w-4 h-4" />
+                Export Ready
+              </div>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start animate-fade-in-up delay-300">
+              <Link to="/products">
+                <Button variant="hero" size="lg" className="group w-full sm:w-auto">
+                  Explore Our Produce
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                <Button variant="whatsapp" size="lg" className="w-full sm:w-auto">
+                  <MessageCircle className="w-5 h-5" />
+                  WhatsApp Us
+                </Button>
+              </a>
+            </div>
+
+            {/* Product thumbnails */}
+            <div className="pt-4 animate-fade-in-up delay-400">
+              <div className="flex gap-3 justify-center lg:justify-start">
+                {heroProducts.map((product, index) => (
+                  <button
+                    key={product.name}
+                    onClick={() => setActiveThumb(index)}
+                    className={cn(
+                      'w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden border-2 transition-all duration-300 hover:scale-110',
+                      activeThumb === index
+                        ? 'border-accent shadow-glow scale-110'
+                        : 'border-primary-foreground/20 opacity-60 hover:opacity-100'
+                    )}
+                  >
+                    <img src={product.src} alt={product.name} className="w-full h-full object-cover" />
+                  </button>
+                ))}
+              </div>
+              <p className="text-primary-foreground/50 text-xs mt-2 tracking-widest uppercase font-medium">
+                Shiloh Fresh · Kenya
+              </p>
+            </div>
+          </div>
+
+          {/* Right: Hero product image */}
+          <div className="relative flex items-center justify-center order-1 lg:order-2 animate-fade-in">
+            {/* Glow background circle */}
+            <div className="absolute w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] lg:w-[450px] lg:h-[450px] rounded-full bg-accent/10 blur-3xl" />
+            
+            {/* Main product image */}
+            <div
+              className="relative w-[260px] h-[320px] sm:w-[320px] sm:h-[400px] lg:w-[400px] lg:h-[500px] xl:w-[440px] xl:h-[550px] rounded-3xl overflow-hidden shadow-2xl border-2 border-primary-foreground/10 transition-all duration-700"
+              style={{
+                transform: `rotate(3deg) perspective(800px) rotateY(-5deg)`,
+              }}
             >
-              <Button variant="whatsapp" size="lg" className="w-full sm:w-auto">
-                <MessageCircle className="w-5 h-5" />
-                Chat with Us on WhatsApp
-              </Button>
-            </a>
+              <img
+                src={heroProducts[activeThumb].src}
+                alt={heroProducts[activeThumb].name}
+                className="w-full h-full object-cover transition-all duration-700"
+              />
+              {/* Glass overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-primary-foreground/5" />
+              
+              {/* Product label */}
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="bg-primary-foreground/10 backdrop-blur-md rounded-2xl px-4 py-3 border border-primary-foreground/20">
+                  <p className="text-primary-foreground font-bold text-lg">{heroProducts[activeThumb].name}</p>
+                  <p className="text-primary-foreground/70 text-xs">Premium Export Quality</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Decorative floating accent */}
+            <div className="absolute -bottom-4 -right-4 w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-accent/20 backdrop-blur-sm rotate-12 animate-float hidden sm:block" />
           </div>
         </div>
       </div>
