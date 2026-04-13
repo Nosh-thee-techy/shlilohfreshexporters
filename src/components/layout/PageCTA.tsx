@@ -69,7 +69,7 @@ export function PageCTA({
       {/* Content */}
       <div
         className={cn(
-          'relative z-10 container mx-auto px-5 sm:px-6 py-14 sm:py-16 lg:py-20 pr-28 sm:pr-40 md:pr-52 lg:pr-64 transition-all duration-700',
+          'relative z-10 container mx-auto px-5 sm:px-6 py-14 sm:py-16 lg:py-20 pr-24 sm:pr-40 md:pr-52 lg:pr-64 transition-all duration-700',
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         )}
       >
