@@ -184,6 +184,20 @@ function ScrollIndicator() {
 function HeroSection() {
   const parallaxOffset = useParallax(0.15);
   const [activeThumb, setActiveThumb] = useState(0);
+  const [currentVideo, setCurrentVideo] = useState(0);
+
+  const heroVideos = [
+    '/videos/video-1.mp4',
+    '/videos/video-2.mp4',
+    '/videos/video-3.mp4',
+  ];
+
+  useEffect(() => {
+    const videoInterval = setInterval(() => {
+      setCurrentVideo((prev) => (prev + 1) % heroVideos.length);
+    }, 8000);
+    return () => clearInterval(videoInterval);
+  }, []);
 
   const heroProducts = [
     { src: avocadoImg, name: 'Hass Avocado', label: 'AVOCADO' },
