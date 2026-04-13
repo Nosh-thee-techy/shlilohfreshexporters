@@ -184,6 +184,20 @@ function ScrollIndicator() {
 function HeroSection() {
   const parallaxOffset = useParallax(0.15);
   const [activeThumb, setActiveThumb] = useState(0);
+  const [currentVideo, setCurrentVideo] = useState(0);
+
+  const heroVideos = [
+    '/videos/video-1.mp4',
+    '/videos/video-2.mp4',
+    '/videos/video-3.mp4',
+  ];
+
+  useEffect(() => {
+    const videoInterval = setInterval(() => {
+      setCurrentVideo((prev) => (prev + 1) % heroVideos.length);
+    }, 8000);
+    return () => clearInterval(videoInterval);
+  }, []);
 
   const heroProducts = [
     { src: avocadoImg, name: 'Hass Avocado', label: 'AVOCADO' },
@@ -202,16 +216,22 @@ function HeroSection() {
 
   return (
     <section className="relative min-h-[100svh] overflow-hidden bg-primary">
-      {/* Background */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{ transform: `translateY(${parallaxOffset}px)` }}
-      >
-        <img
-          src={heroImage}
-          alt="Kenyan farmland"
-          className="w-full h-[120%] object-cover opacity-15"
-        />
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        {heroVideos.map((video, index) => (
+          <video
+            key={video}
+            src={video}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className={cn(
+              'absolute inset-0 w-full h-full object-cover transition-opacity duration-1000',
+              currentVideo === index ? 'opacity-20' : 'opacity-0'
+            )}
+          />
+        ))}
         <div className="absolute inset-0 bg-gradient-to-b from-primary/90 via-primary/80 to-primary/95" />
       </div>
 
