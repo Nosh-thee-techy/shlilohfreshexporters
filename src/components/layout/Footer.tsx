@@ -25,7 +25,7 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative bg-[hsl(150_60%_12%)] text-[hsl(40_30%_96%)] dark:bg-[hsl(40_10%_5%)] dark:text-[hsl(40_15%_90%)] overflow-hidden">
+    <footer className="relative bg-primary text-primary-foreground overflow-hidden">
       {/* Decorative top accent bar */}
       <div className="h-1 bg-gradient-to-r from-primary via-accent to-primary" />
 
