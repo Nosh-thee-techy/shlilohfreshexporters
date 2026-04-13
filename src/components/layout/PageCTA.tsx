@@ -44,12 +44,12 @@ export function PageCTA({
       )}
     >
       {/* Character — top right */}
-      <div className="absolute -top-10 -right-4 sm:-top-14 sm:-right-6 md:-top-16 md:-right-4 z-20 pointer-events-none">
+      <div className="absolute -top-6 -right-2 sm:-top-14 sm:-right-6 md:-top-16 md:-right-4 z-20 pointer-events-none">
         <img
           src={character}
           alt="Fun fruit character"
           className={cn(
-            'w-32 h-32 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-64 lg:h-64 xl:w-72 xl:h-72 object-contain drop-shadow-2xl transition-all duration-700',
+            'w-24 h-24 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-64 lg:h-64 xl:w-72 xl:h-72 object-contain drop-shadow-2xl transition-all duration-700',
             isVisible ? 'scale-100 rotate-0 opacity-100' : 'scale-50 rotate-12 opacity-0'
           )}
           style={{ transitionDelay: '300ms' }}

@@ -48,17 +48,27 @@ export function ProductFilters({
       className
     )}>
       <div className="container mx-auto px-4">
-        <div className="flex flex-wrap items-center gap-3">
-          <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
-            <Filter className="w-4 h-4" />
-            Filters:
-          </div>
-
+        <div className="flex items-center gap-2 mb-3 sm:mb-0 text-sm font-medium text-muted-foreground">
+          <Filter className="w-4 h-4" />
+          Filters:
+          {hasActiveFilters && (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={onClearFilters}
+              className="gap-1.5 text-muted-foreground hover:text-foreground ml-auto sm:hidden"
+            >
+              <X className="w-4 h-4" />
+              Clear
+            </Button>
+          )}
+        </div>
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 sm:gap-3">
           <Select
             value={filters.variety}
             onValueChange={(value) => onFilterChange('variety', value)}
           >
-            <SelectTrigger className="w-[160px] bg-card">
+            <SelectTrigger className="w-full sm:w-[160px] bg-card">
               <SelectValue placeholder="Variety" />
             </SelectTrigger>
             <SelectContent>
@@ -74,7 +84,7 @@ export function ProductFilters({
             value={filters.region}
             onValueChange={(value) => onFilterChange('region', value)}
           >
-            <SelectTrigger className="w-[160px] bg-card">
+            <SelectTrigger className="w-full sm:w-[160px] bg-card">
               <SelectValue placeholder="Source Region" />
             </SelectTrigger>
             <SelectContent>
@@ -90,7 +100,7 @@ export function ProductFilters({
             value={filters.availability}
             onValueChange={(value) => onFilterChange('availability', value)}
           >
-            <SelectTrigger className="w-[140px] bg-card">
+            <SelectTrigger className="w-full sm:w-[140px] bg-card">
               <SelectValue placeholder="Availability" />
             </SelectTrigger>
             <SelectContent>
@@ -106,7 +116,7 @@ export function ProductFilters({
             value={filters.priceRange}
             onValueChange={(value) => onFilterChange('priceRange', value)}
           >
-            <SelectTrigger className="w-[150px] bg-card">
+            <SelectTrigger className="w-full sm:w-[150px] bg-card">
               <SelectValue placeholder="Price Range" />
             </SelectTrigger>
             <SelectContent>
@@ -123,7 +133,7 @@ export function ProductFilters({
               variant="ghost"
               size="sm"
               onClick={onClearFilters}
-              className="gap-1.5 text-muted-foreground hover:text-foreground"
+              className="hidden sm:flex gap-1.5 text-muted-foreground hover:text-foreground"
             >
               <X className="w-4 h-4" />
               Clear
