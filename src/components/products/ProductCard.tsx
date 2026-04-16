@@ -11,9 +11,12 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, onViewDetails, className }: ProductCardProps) {
+  const visibleVarieties = product.varieties.slice(0, 3);
+  const remainingVarieties = product.varieties.length - visibleVarieties.length;
+
   return (
     <div className={cn(
-      "group bg-card rounded-2xl overflow-hidden border border-border shadow-card hover-lift",
+      "group flex h-full flex-col bg-card rounded-2xl overflow-hidden border border-border shadow-card hover-lift",
       className
     )}>
       {/* Image */}
@@ -29,34 +32,41 @@ export function ProductCard({ product, onViewDetails, className }: ProductCardPr
         </div>
       </div>
       
-      <div className="p-5 space-y-4">
+      <div className="flex flex-1 flex-col p-5 space-y-4">
         {/* Varieties */}
         <div>
           <p className="text-xs text-muted-foreground mb-2 font-medium uppercase tracking-wide">Varieties</p>
           <div className="flex flex-wrap gap-1.5">
-            {product.varieties.map((variety) => (
+            {visibleVarieties.map((variety) => (
               <Badge key={variety} variant="secondary" className="text-xs">
                 {variety}
               </Badge>
             ))}
+            {remainingVarieties > 0 && (
+              <Badge variant="outline" className="text-xs">
+                +{remainingVarieties} more
+              </Badge>
+            )}
           </div>
         </div>
 
-        {/* Source Regions */}
-        <div className="flex items-start gap-2">
-          <MapPin className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-          <div>
-            <p className="text-xs text-muted-foreground font-medium">Sourced From</p>
-            <p className="text-sm text-foreground">{product.sourceRegions.join(', ')}</p>
+        <div className="grid sm:grid-cols-2 gap-3">
+          {/* Source Regions */}
+          <div className="flex items-start gap-2 rounded-xl bg-secondary/40 p-3">
+            <MapPin className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+            <div>
+              <p className="text-xs text-muted-foreground font-medium">Sourced From</p>
+              <p className="text-sm text-foreground line-clamp-2">{product.sourceRegions.join(', ')}</p>
+            </div>
           </div>
-        </div>
 
-        {/* Availability */}
-        <div className="flex items-start gap-2">
-          <Calendar className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-          <div>
-            <p className="text-xs text-muted-foreground font-medium">Availability</p>
-            <p className="text-sm text-foreground">{product.availability}</p>
+          {/* Availability */}
+          <div className="flex items-start gap-2 rounded-xl bg-secondary/40 p-3">
+            <Calendar className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+            <div>
+              <p className="text-xs text-muted-foreground font-medium">Availability</p>
+              <p className="text-sm text-foreground">{product.availability}</p>
+            </div>
           </div>
         </div>
 
@@ -65,7 +75,7 @@ export function ProductCard({ product, onViewDetails, className }: ProductCardPr
           <Award className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
           <div>
             <p className="text-xs text-muted-foreground font-medium">Export Grades</p>
-            <p className="text-sm text-foreground">{product.exportGrades.join(', ')}</p>
+            <p className="text-sm text-foreground line-clamp-2">{product.exportGrades.join(', ')}</p>
           </div>
         </div>
 
@@ -77,7 +87,7 @@ export function ProductCard({ product, onViewDetails, className }: ProductCardPr
         </div>
         
         {/* Actions */}
-        <div className="flex gap-3 pt-2">
+        <div className="mt-auto flex gap-3 pt-2">
           <Button
             variant="outline"
             size="sm"

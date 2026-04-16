@@ -10,6 +10,7 @@ export interface Product {
   name: string;
   image: string;
   images?: string[]; // Multiple images for gallery
+  videos?: string[];
   varieties: string[];
   sourceRegions: string[];
   availability: string;

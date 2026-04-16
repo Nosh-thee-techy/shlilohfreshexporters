@@ -138,6 +138,8 @@ export default function HerbsPage() {
         onClearFilters={clearFilters}
         varietyOptions={allVarieties}
         regionOptions={herbRegions}
+        resultCount={filteredHerbs.length}
+        totalCount={herbs.length}
       />
 
       {/* Products Grid */}

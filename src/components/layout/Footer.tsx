@@ -25,12 +25,19 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative bg-primary text-primary-foreground overflow-hidden">
+    <footer className="relative overflow-hidden border-t border-border bg-gradient-to-br from-primary via-primary to-accent text-primary-foreground">
       {/* Decorative top accent bar */}
-      <div className="h-1 bg-gradient-to-r from-accent via-primary-foreground/20 to-accent" />
+      <div className="h-1 bg-gradient-to-r from-[#22c55e] via-[#f59e0b] to-[#ef4444]" />
+
+      {/* Soft fruit glow */}
+      <div className="pointer-events-none absolute inset-0 opacity-35">
+        <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-[#22c55e]/40 blur-3xl" />
+        <div className="absolute -bottom-28 left-1/3 h-80 w-80 rounded-full bg-[#f59e0b]/45 blur-3xl" />
+        <div className="absolute -top-20 -right-24 h-72 w-72 rounded-full bg-[#ef4444]/35 blur-3xl" />
+      </div>
 
       {/* Main footer content */}
-      <div className="container mx-auto px-5 sm:px-6 pt-14 pb-8">
+      <div className="relative container mx-auto px-5 sm:px-6 pt-14 pb-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
 
           {/* Brand Column */}
@@ -58,7 +65,7 @@ export function Footer() {
                   aria-label={social.label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-xl bg-primary-foreground/10 flex items-center justify-center hover:bg-accent hover:text-primary transition-all duration-300 hover:scale-110"
+                  className="w-10 h-10 rounded-xl bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground hover:text-primary transition-all duration-300 hover:scale-110"
                 >
                   <social.icon className="w-4 h-4" />
                 </a>
@@ -68,13 +75,13 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-wider text-accent mb-5">Quick Links</h4>
+            <h4 className="font-bold text-sm uppercase tracking-wider text-primary-foreground mb-5">Quick Links</h4>
             <ul className="space-y-3">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-primary-foreground/60 hover:text-accent transition-colors duration-300 text-sm flex items-center gap-2 group"
+                    className="text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-300 text-sm flex items-center gap-2 group"
                   >
                     <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                     <span>{link.name}</span>
@@ -86,22 +93,22 @@ export function Footer() {
 
           {/* Products */}
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-wider text-accent mb-5">Our Products</h4>
+            <h4 className="font-bold text-sm uppercase tracking-wider text-primary-foreground mb-5">Our Products</h4>
             <ul className="space-y-3">
               {productLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-primary-foreground/60 hover:text-accent transition-colors duration-300 text-sm flex items-center gap-2 group"
+                    className="text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-300 text-sm flex items-center gap-2 group"
                   >
-                    <Leaf className="w-3 h-3 text-accent/60 group-hover:text-accent transition-opacity" />
+                    <Leaf className="w-3 h-3 text-primary-foreground/60 group-hover:text-primary-foreground transition-opacity" />
                     <span>{link.name}</span>
                   </Link>
                 </li>
               ))}
             </ul>
 
-            <div className="mt-6 p-4 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10">
+            <div className="mt-6 p-4 rounded-xl bg-primary-foreground/10 border border-primary-foreground/15 backdrop-blur-sm">
               <p className="text-[11px] text-primary-foreground/50 uppercase tracking-wider font-semibold mb-1">Export Regions</p>
               <p className="text-xs text-primary-foreground/70">Europe · Middle East · Asia · Africa</p>
             </div>
@@ -109,12 +116,12 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-wider text-accent mb-5">Get In Touch</h4>
+            <h4 className="font-bold text-sm uppercase tracking-wider text-primary-foreground mb-5">Get In Touch</h4>
             <ul className="space-y-4">
               <li>
                 <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 group">
-                  <div className="w-9 h-9 rounded-lg bg-primary-foreground/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors">
-                    <MapPin className="w-4 h-4 text-accent" />
+                  <div className="w-9 h-9 rounded-lg bg-primary-foreground/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary-foreground/20 transition-colors">
+                    <MapPin className="w-4 h-4 text-primary-foreground" />
                   </div>
                   <div>
                     <p className="text-sm text-primary-foreground/80">Nairobi, Kenya</p>
@@ -124,21 +131,21 @@ export function Footer() {
               </li>
               <li>
                 <a href="tel:+254735497573" className="flex items-center gap-3 group">
-                  <div className="w-9 h-9 rounded-lg bg-primary-foreground/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors">
-                    <Phone className="w-4 h-4 text-accent" />
+                  <div className="w-9 h-9 rounded-lg bg-primary-foreground/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary-foreground/20 transition-colors">
+                    <Phone className="w-4 h-4 text-primary-foreground" />
                   </div>
                   <div>
-                    <p className="text-sm text-primary-foreground/80 group-hover:text-accent transition-colors">+254 735 497 573</p>
+                    <p className="text-sm text-primary-foreground/80 group-hover:text-primary-foreground transition-colors">+254 735 497 573</p>
                   </div>
                 </a>
               </li>
               <li>
                 <a href="mailto:shilohfexports@gmail.com" className="flex items-center gap-3 group">
-                  <div className="w-9 h-9 rounded-lg bg-primary-foreground/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors">
-                    <Mail className="w-4 h-4 text-accent" />
+                  <div className="w-9 h-9 rounded-lg bg-primary-foreground/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary-foreground/20 transition-colors">
+                    <Mail className="w-4 h-4 text-primary-foreground" />
                   </div>
                   <div>
-                    <p className="text-sm text-primary-foreground/80 group-hover:text-accent transition-colors break-all">shilohfexports@gmail.com</p>
+                    <p className="text-sm text-primary-foreground/80 group-hover:text-primary-foreground transition-colors break-all">shilohfexports@gmail.com</p>
                   </div>
                 </a>
               </li>
@@ -147,12 +154,12 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-6 border-t border-primary-foreground/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-12 pt-6 border-t border-primary-foreground/15 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-primary-foreground/40 text-xs text-center sm:text-left">
             © {new Date().getFullYear()} Shiloh Fresh Exporters. All rights reserved.
           </p>
           <div className="flex items-center gap-1 text-xs text-primary-foreground/30">
-            <Leaf className="w-3 h-3 text-accent" />
+            <Leaf className="w-3 h-3 text-primary-foreground/70" />
             <span>Ethically sourced · Sustainably grown</span>
           </div>
         </div>

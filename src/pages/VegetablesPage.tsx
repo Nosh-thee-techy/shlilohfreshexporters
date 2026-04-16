@@ -136,6 +136,8 @@ export default function VegetablesPage() {
         onClearFilters={clearFilters}
         varietyOptions={allVarieties}
         regionOptions={vegRegions}
+        resultCount={filteredVegetables.length}
+        totalCount={vegetables.length}
       />
 
       {/* Products Grid */}

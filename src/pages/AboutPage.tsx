@@ -1,15 +1,9 @@
 import { Link } from 'react-router-dom';
-import { Users, Target, Heart, ArrowRight, MessageCircle, Mail } from 'lucide-react';
+import { Target, Heart, ArrowRight } from 'lucide-react';
 import { PageCTA } from '@/components/layout/PageCTA';
 import passionfruitCharacter from '@/assets/cta/passionfruit-character.png';
 import { PageHero } from '@/components/layout/PageHero';
 import { Button } from '@/components/ui/button';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
 import heroAboutImg from '@/assets/hero/hero-about.jpg';
@@ -17,6 +11,8 @@ import avocadoImg from '@/assets/products/avocado.jpg';
 import frenchBeansImg from '@/assets/products/french-beans.jpg';
 import basilImg from '@/assets/products/basil.jpg';
 import mangoesImg from '@/assets/products/mangoes.jpg';
+import { supabase } from '@/integrations/supabase/client';
+import { LEADERSHIP_IMAGE_BUCKET, leaderProfiles } from '@/data/leadership';
 
 const timeline = [
   { year: '2018', title: 'Company Founded', description: 'Shiloh Fresh Exporters was established with a vision to connect Kenyan farmers to global markets.' },
@@ -24,11 +20,6 @@ const timeline = [
   { year: '2020', title: 'GlobalG.A.P Certified', description: 'Achieved GlobalG.A.P certification, opening doors to more international markets.' },
   { year: '2021', title: 'Expanded Operations', description: 'Partnered with over 300 local farmers and expanded our product range.' },
   { year: '2023', title: 'Regional Leader', description: 'Became one of the leading fresh produce exporters in East Africa.' },
-];
-
-const teamMembers = [
-  { name: 'Sarah Mugo', role: 'Founder & CEO', bio: 'Visionary leader with deep expertise in agricultural exports and a passion for empowering Kenyan farmers.' },
-  { name: 'Easter Wega', role: 'Managing Director', bio: 'Experienced operations leader driving excellence in quality control and international market expansion.' },
 ];
 
 const stats = [
@@ -51,6 +42,11 @@ export default function AboutPage() {
   const { ref: missionRef, isVisible: missionVisible } = useScrollAnimation<HTMLElement>();
   const { ref: timelineRef, isVisible: timelineVisible } = useScrollAnimation<HTMLElement>();
   const { ref: statsRef, isVisible: statsVisible } = useScrollAnimation<HTMLElement>();
+  const getLeaderImage = (image?: string, storagePath?: string) => {
+    if (image) return image;
+    if (!storagePath) return null;
+    return supabase.storage.from(LEADERSHIP_IMAGE_BUCKET).getPublicUrl(storagePath).data.publicUrl;
+  };
 
   return (
     <div className="pt-24">
@@ -101,6 +97,82 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
+
+          {/* Meet the Team Section */}
+          <section className="mt-16 rounded-3xl bg-primary p-8 sm:p-10 border border-primary-foreground/10 overflow-hidden">
+            <div className="text-center mb-10">
+              <span className="inline-block px-4 py-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full text-primary-foreground text-sm font-medium mb-4 border border-primary-foreground/20">
+                Our Leadership
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
+                Meet the Team
+              </h2>
+              <p className="text-primary-foreground/80 max-w-xl mx-auto">
+                The dedicated leaders driving Shiloh Fresh Exporters' mission forward.
+              </p>
+            </div>
+
+            <div className="grid gap-8 max-w-5xl mx-auto">
+              {leaderProfiles.map((member, index) => {
+                const imageUrl = getLeaderImage(member.image, member.storagePath);
+                return (
+                  <div
+                    key={member.name}
+                    className={cn(
+                      "grid gap-6 items-center bg-primary-foreground/10 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border-2 border-primary-foreground/20 hover:border-accent transition-all duration-300 md:grid-cols-[220px_minmax(0,1fr)]",
+                      index % 2 === 1 && "md:grid-cols-[minmax(0,1fr)_220px]"
+                    )}
+                  >
+                    <div className={cn(index % 2 === 1 && "md:order-2")}>
+                      {imageUrl ? (
+                        <div className="overflow-hidden rounded-2xl border-4 border-accent bg-primary-foreground/10">
+                          <div className="h-64 sm:h-72 w-full">
+                            <img
+                              src={imageUrl}
+                              alt={`${member.name} portrait`}
+                              className="w-full h-full object-cover object-top"
+                            />
+                          </div>
+                          <div className="bg-[#7b5734] px-5 py-4 text-center">
+                            <h3 className="text-xl font-bold text-white">{member.name}</h3>
+                            <p className="mt-1 text-sm font-semibold text-[#f4d39b]">{member.role}</p>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="overflow-hidden rounded-2xl border-4 border-accent bg-accent/20">
+                          <div className="h-64 sm:h-72 w-full flex items-center justify-center">
+                            <span className="text-2xl font-bold text-accent">
+                              {member.name
+                                .split(' ')
+                                .map((part) => part[0])
+                                .join('')
+                                .slice(0, 2)}
+                            </span>
+                          </div>
+                          <div className="bg-[#7b5734] px-5 py-4 text-center">
+                            <h3 className="text-xl font-bold text-white">{member.name}</h3>
+                            <p className="mt-1 text-sm font-semibold text-[#f4d39b]">{member.role}</p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    <div className={cn("text-center md:text-left", index % 2 === 1 && "md:order-1")}>
+                      <span className="inline-block px-4 py-1.5 bg-accent text-primary rounded-full text-sm font-semibold mb-4">
+                        {member.role}
+                      </span>
+                      <p className="max-w-2xl text-lg text-primary-foreground/80 leading-relaxed">{member.bio}</p>
+                      <div className="mt-5 rounded-2xl bg-primary-foreground/10 px-5 py-4">
+                        <p className="text-sm uppercase tracking-[0.2em] text-primary-foreground/55">Leadership Focus</p>
+                        <p className="mt-2 text-base text-primary-foreground/88">
+                          Building trusted export partnerships, maintaining quality excellence, and supporting farmer-led growth.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
 
           {/* CSR CTA */}
           <div className={cn(
@@ -186,43 +258,6 @@ export default function AboutPage() {
                   </span>
                   <h3 className="text-xl font-semibold text-foreground mb-2">{item.title}</h3>
                   <p className="text-muted-foreground">{item.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Meet the Team Section */}
-      <section className="py-20 bg-primary">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <span className="inline-block px-4 py-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full text-primary-foreground text-sm font-medium mb-4 border border-primary-foreground/20">
-              Our Leadership
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-              Meet the Team
-            </h2>
-            <p className="text-primary-foreground/80 max-w-xl mx-auto">
-              The dedicated leaders driving Shiloh Fresh Exporters' mission forward.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
-            {teamMembers.map((member, index) => (
-              <div
-                key={member.name}
-                className="bg-primary-foreground/10 backdrop-blur-sm rounded-2xl p-8 border-2 border-primary-foreground/20 hover:border-accent transition-all duration-300 hover:scale-105"
-              >
-                <div className="w-24 h-24 rounded-full bg-accent/20 border-4 border-accent flex items-center justify-center mb-6 mx-auto">
-                  <Users className="w-12 h-12 text-accent" />
-                </div>
-                <div className="text-center">
-                  <h3 className="text-2xl font-bold text-primary-foreground mb-2">{member.name}</h3>
-                  <span className="inline-block px-4 py-1.5 bg-accent text-primary rounded-full text-sm font-semibold mb-4">
-                    {member.role}
-                  </span>
-                  <p className="text-primary-foreground/80 leading-relaxed">{member.bio}</p>
                 </div>
               </div>
             ))}
