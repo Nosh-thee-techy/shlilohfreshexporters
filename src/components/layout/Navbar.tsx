@@ -89,6 +89,11 @@ export function Navbar() {
                 {link.name}
               </Link>
             ))}
+            <Link to="/quote">
+              <Button size="sm" className="ml-2">
+                Request Quote
+              </Button>
+            </Link>
             <DarkModeToggle className="ml-2" />
           </nav>
 
@@ -169,7 +174,12 @@ export function Navbar() {
           </nav>
 
           {/* Mobile CTA */}
-          <div className="mt-auto pt-6 border-t border-border">
+          <div className="mt-auto pt-6 border-t border-border space-y-3">
+            <Link to="/quote">
+              <Button size="lg" className="w-full">
+                Request a Quote
+              </Button>
+            </Link>
             <a
               href="https://wa.me/254735497573?text=Hello%20Shiloh%20Fresh%20Exporters%2C%20I%27d%20like%20to%20inquire."
               target="_blank"

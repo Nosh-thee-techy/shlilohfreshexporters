@@ -28,6 +28,8 @@ export interface Product {
   category: 'fruits' | 'vegetables' | 'herbs';
 }
 
+export { COMPANY_EMAIL, getQuotePath } from '@/lib/contact';
+
 export const WHATSAPP_NUMBER = '254735497573';
 
 export const getWhatsAppLink = (message: string) => 
@@ -106,6 +108,34 @@ export const fruitsData: Omit<Product, 'image'>[] = [
     shelfLife: '21-28 days',
     moq: '500 kg',
     description: 'Extra sweet MD2 pineapples with golden flesh, harvested at peak ripeness.',
+    category: 'fruits',
+  },
+  {
+    id: 'tree-tomato',
+    name: 'Tree Tomato (Tamarillo)',
+    varieties: ['Red Tamarillo', 'Yellow Tamarillo'],
+    sourceRegions: ['Eldoret', 'Nyandarua', 'Nyeri'],
+    availability: 'March – October',
+    exportGrades: ['Premium', 'Standard'],
+    priceRange: 'USD 1.50 – 2.80 per kg',
+    packagingOptions: ['3kg cartons', '5kg cartons'],
+    shelfLife: '14-21 days',
+    moq: '300 kg',
+    description: 'Highland tree tomatoes with a tangy-sweet flavour, grown in Kenya\'s cooler elevations.',
+    category: 'fruits',
+  },
+  {
+    id: 'guava',
+    name: 'Guava',
+    varieties: ['White Guava', 'Pink Guava'],
+    sourceRegions: ['Meru', 'Embu', 'Machakos'],
+    availability: 'Year-round',
+    exportGrades: ['Class I', 'Class II'],
+    priceRange: 'USD 0.80 – 1.50 per kg',
+    packagingOptions: ['4kg cartons', 'Custom packaging'],
+    shelfLife: '10-14 days',
+    moq: '300 kg',
+    description: 'Aromatic guavas with sweet flesh, suitable for fresh markets and juice processing.',
     category: 'fruits',
   },
 ];

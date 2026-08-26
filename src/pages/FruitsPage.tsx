@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, MessageCircle, Play, ShieldCheck, Star, Truck, Headphones } from 'lucide-react';
 import { PageCTA } from '@/components/layout/PageCTA';
 import mangoCharacter from '@/assets/cta/mango-character.png';
@@ -13,6 +14,7 @@ import { cn } from '@/lib/utils';
 import { 
   Product, 
   fruitsData, 
+  getQuotePath,
   getWhatsAppLink, 
   whatsAppMessages
 } from '@/data/products';
@@ -20,11 +22,21 @@ import heroFruitsImg from '@/assets/hero/hero-fruits.jpg';
 import avocadoImg from '@/assets/products/avocado.jpg';
 import avocadoExportBoxImg from '@/assets/products/avocado-export-box.jpg';
 import avocadoHarvestImg from '@/assets/products/avocado-hass-harvest.jpg';
+import avocadoOnTreeImg from '@/assets/products/avocado-on-tree.jpg';
+import avocadoCloseupImg from '@/assets/products/avocado-hass-closeup.jpg';
+import avocadoHalvedImg from '@/assets/products/avocado-halved.jpg';
+import avocadoFuerteGrassImg from '@/assets/products/avocado-fuerte-grass.jpg';
 import mangoesImg from '@/assets/products/mangoes.jpg';
+import mangoTreeImg from '@/assets/products/mango-tree.jpg';
+import mangoHarvestImg from '@/assets/products/mango-harvest.jpg';
+import mangoPileImg from '@/assets/products/mango-pile.jpg';
 import passionFruitImg from '@/assets/products/passion-fruit.jpg';
 import pineappleImg from '@/assets/products/pineapple.jpg';
 import pineappleHarvestImg from '@/assets/products/pineapple-harvest.jpg';
+import pineapplePlantImg from '@/assets/products/pineapple-plant.jpg';
+import pineappleSlicedImg from '@/assets/products/pineapple-sliced.jpg';
 import guavaFreshImg from '@/assets/products/guava-fresh.jpg';
+import guavaTreeImg from '@/assets/products/guava-tree.jpg';
 import treeTomatoImg from '@/assets/products/tree-tomato.jpg';
 
 type MediaItem = {
@@ -36,24 +48,32 @@ type MediaItem = {
 
 const fruitMedia: Record<string, { image: string; images: string[]; videos?: string[] }> = {
   avocado: {
-    image: avocadoImg,
-    images: [avocadoImg, avocadoExportBoxImg, avocadoHarvestImg],
+    image: avocadoHarvestImg,
+    images: [avocadoHarvestImg, avocadoOnTreeImg, avocadoCloseupImg, avocadoHalvedImg, avocadoFuerteGrassImg, avocadoExportBoxImg],
     videos: ['/videos/video-1.mp4'],
   },
   mangoes: {
-    image: mangoesImg,
-    images: [mangoesImg, guavaFreshImg, treeTomatoImg],
+    image: mangoTreeImg,
+    images: [mangoTreeImg, mangoHarvestImg, mangoesImg, mangoPileImg],
     videos: ['/videos/video-2.mp4'],
   },
   'passion-fruit': {
     image: passionFruitImg,
-    images: [passionFruitImg, guavaFreshImg, treeTomatoImg],
+    images: [passionFruitImg],
     videos: ['/videos/video-3.mp4'],
   },
   pineapple: {
-    image: pineappleImg,
-    images: [pineappleImg, pineappleHarvestImg, pineappleImg],
+    image: pineappleHarvestImg,
+    images: [pineappleHarvestImg, pineapplePlantImg, pineappleImg, pineappleSlicedImg],
     videos: ['/videos/video-1.mp4'],
+  },
+  guava: {
+    image: guavaTreeImg,
+    images: [guavaTreeImg, guavaFreshImg],
+  },
+  'tree-tomato': {
+    image: treeTomatoImg,
+    images: [treeTomatoImg],
   },
 };
 
@@ -185,10 +205,10 @@ export default function FruitsPage() {
         backgroundImage={heroFruitsImg}
         badge="Premium Fruits"
         floatingImages={[
-          { src: avocadoImg, alt: 'Avocados' },
-          { src: mangoesImg, alt: 'Mangoes' },
+          { src: avocadoHarvestImg, alt: 'Avocados' },
+          { src: mangoTreeImg, alt: 'Mangoes' },
           { src: passionFruitImg, alt: 'Passion Fruit' },
-          { src: pineappleImg, alt: 'Pineapple' },
+          { src: pineappleHarvestImg, alt: 'Pineapple' },
         ]}
       >
         <a
@@ -356,13 +376,10 @@ export default function FruitsPage() {
                       </div>
 
                       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                        <Button
-                          size="lg"
-                          className="flex-1 rounded-xl bg-primary px-6"
-                          onClick={() => window.open(getWhatsAppLink(whatsAppMessages.quote(selectedProduct.name)), '_blank', 'noopener,noreferrer')}
-                        >
-                          <MessageCircle className="h-5 w-5" />
-                          Request Quote
+                        <Button asChild size="lg" className="flex-1 rounded-xl bg-primary px-6">
+                          <Link to={getQuotePath(selectedProduct.name)}>
+                            Request Quote
+                          </Link>
                         </Button>
                         <Button
                           size="lg"

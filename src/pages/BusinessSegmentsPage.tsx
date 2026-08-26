@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { MessageCircle, MapPin, ChevronDown, ChevronUp, Tag, Hash, DollarSign, Info, Search, X, Filter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -7,7 +8,7 @@ import { PageHero } from '@/components/layout/PageHero';
 import { PageCTA } from '@/components/layout/PageCTA';
 import { cn } from '@/lib/utils';
 import frenchbeanCharacter from '@/assets/cta/frenchbean-character.png';
-import { getWhatsAppLink, whatsAppMessages } from '@/data/products';
+import { getQuotePath, getWhatsAppLink, whatsAppMessages } from '@/data/products';
 import heroFruitsImg from '@/assets/hero/hero-fruits.jpg';
 
 // === Product Images ===
@@ -21,10 +22,16 @@ import avocadoExportBoxes from '@/assets/products/avocado-export-boxes.jpg';
 import avocadoVarieties from '@/assets/products/avocado-varieties-labeled.jpg';
 import pineappleHarvest from '@/assets/products/pineapple-harvest.jpg';
 import pineappleImg from '@/assets/products/pineapple.jpg';
+import pineapplePlant from '@/assets/products/pineapple-plant.jpg';
+import pineappleSliced from '@/assets/products/pineapple-sliced.jpg';
 import passionFruitImg from '@/assets/products/passion-fruit.jpg';
 import mangoesImg from '@/assets/products/mangoes.jpg';
+import mangoTreeImg from '@/assets/products/mango-tree.jpg';
+import mangoHarvestImg from '@/assets/products/mango-harvest.jpg';
+import mangoPileImg from '@/assets/products/mango-pile.jpg';
 import treeTomatoImg from '@/assets/products/tree-tomato.jpg';
 import guavaImg from '@/assets/products/guava-fresh.jpg';
+import guavaTreeImg from '@/assets/products/guava-tree.jpg';
 import frenchBeansImg from '@/assets/products/french-beans.jpg';
 import carrotsImg from '@/assets/products/carrots.jpg';
 import greenChiliesImg from '@/assets/products/green-chilies.jpg';
@@ -89,7 +96,7 @@ const categories: ProductCategory[] = [
         id: 'mangoes',
         serialNo: 'SFE-FRT-002',
         name: 'Mangoes',
-        images: [mangoesImg],
+        images: [mangoTreeImg, mangoHarvestImg, mangoesImg, mangoPileImg],
         varieties: ['Kent', 'Apple Mango', 'Ngowe', 'Tommy Atkins'],
         origin: ['Kenya — Machakos, Makueni, Mombasa', 'Tanzania — Dar es Salaam coast'],
         availability: 'November – March',
@@ -113,7 +120,7 @@ const categories: ProductCategory[] = [
         id: 'pineapple',
         serialNo: 'SFE-FRT-004',
         name: 'Pineapple',
-        images: [pineappleHarvest, pineappleImg],
+        images: [pineappleHarvest, pineapplePlant, pineappleImg, pineappleSliced],
         varieties: ['MD2 (Extra Sweet)', 'Smooth Cayenne'],
         origin: ['Kenya — Thika, Malindi, Kilifi', 'Uganda — Kayunga, Luwero'],
         availability: 'Year-round',
@@ -137,7 +144,7 @@ const categories: ProductCategory[] = [
         id: 'guava',
         serialNo: 'SFE-FRT-006',
         name: 'Guava',
-        images: [guavaImg],
+        images: [guavaTreeImg, guavaImg],
         varieties: ['White Guava', 'Pink Guava'],
         origin: ['Kenya — Meru, Embu, Machakos', 'Uganda — Eastern Region'],
         availability: 'Year-round',
@@ -414,17 +421,11 @@ function ProductCard({ product, index }: { product: ProductItem; index: number }
 
         {/* CTAs */}
         <div className="flex gap-2 pt-1">
-          <a
-            href={getWhatsAppLink(whatsAppMessages.quote(product.name))}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1"
-          >
-            <Button variant="whatsapp" size="sm" className="w-full gap-1.5 text-xs">
-              <MessageCircle className="w-3.5 h-3.5" />
+          <Button asChild variant="default" size="sm" className="flex-1 gap-1.5 text-xs">
+            <Link to={getQuotePath(product.name)}>
               Get a Quote
-            </Button>
-          </a>
+            </Link>
+          </Button>
           <a
             href={getWhatsAppLink(`Hello Shiloh Fresh, I'd like to get current pricing for ${product.name}. Ref: ${product.serialNo}`)}
             target="_blank"
@@ -549,7 +550,7 @@ export default function BusinessSegmentsPage() {
           { src: avocadoHarvest, alt: 'Avocado Harvest' },
           { src: frenchBeansImg, alt: 'French Beans' },
           { src: basilImg, alt: 'Basil' },
-          { src: mangoesImg, alt: 'Mangoes' },
+          { src: mangoTreeImg, alt: 'Mangoes' },
         ]}
       />
 

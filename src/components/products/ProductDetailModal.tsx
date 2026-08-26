@@ -1,4 +1,5 @@
 import { MessageCircle, MapPin, Calendar, Award, Package, Clock, Box } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -8,7 +9,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { SwipeableGallery } from '@/components/ui/SwipeableGallery';
-import { Product, getWhatsAppLink, whatsAppMessages } from '@/data/products';
+import { Product, getQuotePath, getWhatsAppLink, whatsAppMessages } from '@/data/products';
 
 interface ProductDetailModalProps {
   product: Product | null;
@@ -150,6 +151,11 @@ export function ProductDetailModal({ product, isOpen, onClose }: ProductDetailMo
             <p className="text-xs sm:text-sm text-muted-foreground mb-1">Indicative Price Range</p>
             <p className="text-xl sm:text-2xl font-bold text-primary mb-3 sm:mb-4">{product.priceRange}</p>
             
+            <Button asChild size="lg" className="w-full text-sm sm:text-base mb-3">
+              <Link to={getQuotePath(product.name)}>
+                Request Quote
+              </Link>
+            </Button>
             <a
               href={getWhatsAppLink(whatsAppMessages.quote(product.name))}
               target="_blank"
@@ -157,7 +163,7 @@ export function ProductDetailModal({ product, isOpen, onClose }: ProductDetailMo
             >
               <Button variant="whatsapp" size="lg" className="w-full text-sm sm:text-base">
                 <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
-                Request Quote on WhatsApp
+                WhatsApp
               </Button>
             </a>
           </div>

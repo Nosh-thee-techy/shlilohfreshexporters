@@ -12,9 +12,10 @@ const navLinks = [
 ];
 
 const productLinks = [
-  { name: 'Fresh Fruits', href: '/fruits' },
-  { name: 'Fresh Vegetables', href: '/vegetables' },
-  { name: 'Fresh Herbs', href: '/herbs' },
+  { name: 'Fresh Fruits', href: '/products/fruits' },
+  { name: 'Fresh Vegetables', href: '/products/vegetables' },
+  { name: 'Fresh Herbs', href: '/products/herbs' },
+  { name: 'Request a Quote', href: '/quote' },
 ];
 
 const socialLinks = [
@@ -140,12 +141,12 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:shilohfexports@gmail.com" className="flex items-center gap-3 group">
+                <a href="mailto:sarah@shilohfreshexporters.co.ke" className="flex items-center gap-3 group">
                   <div className="w-9 h-9 rounded-lg bg-primary-foreground/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary-foreground/20 transition-colors">
                     <Mail className="w-4 h-4 text-primary-foreground" />
                   </div>
                   <div>
-                    <p className="text-sm text-primary-foreground/80 group-hover:text-primary-foreground transition-colors break-all">shilohfexports@gmail.com</p>
+                    <p className="text-sm text-primary-foreground/80 group-hover:text-primary-foreground transition-colors break-all">sarah@shilohfreshexporters.co.ke</p>
                   </div>
                 </a>
               </li>

@@ -7,10 +7,10 @@ import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
 import heroAboutImg from '@/assets/hero/hero-about.jpg';
-import avocadoImg from '@/assets/products/avocado.jpg';
+import avocadoImg from '@/assets/products/avocado-hass-harvest.jpg';
 import frenchBeansImg from '@/assets/products/french-beans.jpg';
 import basilImg from '@/assets/products/basil.jpg';
-import mangoesImg from '@/assets/products/mangoes.jpg';
+import mangoesImg from '@/assets/products/mango-tree.jpg';
 import { supabase } from '@/integrations/supabase/client';
 import { LEADERSHIP_IMAGE_BUCKET, leaderProfiles } from '@/data/leadership';
 

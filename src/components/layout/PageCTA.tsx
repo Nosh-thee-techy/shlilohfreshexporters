@@ -88,7 +88,7 @@ export function PageCTA({
           </p>
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             {showQuoteButton && (
-              <Link to="/contact">
+              <Link to="/quote">
                 <Button
                   size="lg"
                   className={cn(

@@ -15,6 +15,7 @@ import HerbsPage from "./pages/HerbsPage";
 import ExportLogisticsPage from "./pages/ExportLogisticsPage";
 import CertificationsPage from "./pages/CertificationsPage";
 import ContactPage from "./pages/ContactPage";
+import QuotePage from "./pages/QuotePage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +39,7 @@ const App = () => (
             <Route path="/export-logistics" element={<ExportLogisticsPage />} />
             <Route path="/certifications" element={<CertificationsPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/quote" element={<QuotePage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>

@@ -6,6 +6,8 @@ import { Mail, Phone, MapPin, Clock, MessageCircle, Send, CheckCircle, HelpCircl
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Dialog,
   DialogContent,
@@ -16,6 +18,8 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 import heroContactImg from '@/assets/hero/hero-contact.jpg';
+import { QuoteRequestForm } from '@/components/forms/QuoteRequestForm';
+import { COMPANY_EMAIL, COMPANY_PHONE, sendInquiry } from '@/lib/contact';
 
 interface FAQ {
   question: string;
@@ -104,7 +108,7 @@ function ThankYouModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
           </div>
           <h2 className="text-2xl font-bold text-foreground">Thank You!</h2>
           <p className="text-muted-foreground">
-            Your message has been received. Our team will get back to you within 24 hours.
+            Your message has been sent to {COMPANY_EMAIL}. Our team will get back to you within 24 hours.
           </p>
           <Button onClick={onClose} className="mt-4">
             Close
@@ -115,8 +119,17 @@ function ThankYouModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
   );
 }
 
+const emptyContactForm = {
+  name: '',
+  company: '',
+  email: '',
+  phone: '',
+  message: '',
+  website: '',
+};
+
 export default function ContactPage() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState(emptyContactForm);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
   const [showFAQ, setShowFAQ] = useState(false);
@@ -125,23 +138,39 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       toast({
-        title: 'Please fill in all fields',
+        title: 'Please fill in all required fields',
         variant: 'destructive',
       });
       return;
     }
 
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsSubmitting(false);
-    setShowThankYou(true);
-    setFormData({ name: '', email: '', message: '' });
+
+    try {
+      await sendInquiry({
+        form_type: 'Website inquiry',
+        name: formData.name,
+        company: formData.company || 'Not provided',
+        email: formData.email,
+        phone: formData.phone || 'Not provided',
+        message: formData.message,
+        website: formData.website,
+        _subject: `Website inquiry from ${formData.name}`,
+      });
+      setShowThankYou(true);
+      setFormData(emptyContactForm);
+    } catch (error) {
+      toast({
+        title: 'Could not send message',
+        description: error instanceof Error ? error.message : `Please email ${COMPANY_EMAIL} directly.`,
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -153,61 +182,96 @@ export default function ContactPage() {
         badge="Get In Touch"
       />
 
-      {/* Contact Section */}
       <section ref={ref} className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
             <div
               className={cn(
                 'transition-all duration-700',
                 isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
               )}
             >
-              <h2 className="text-2xl font-bold text-foreground mb-6">Send us a Message</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Your Name
-                  </label>
-                  <Input
-                    placeholder="John Doe"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="h-12"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Email Address
-                  </label>
-                  <Input
-                    type="email"
-                    placeholder="john@example.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="h-12"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Message
-                  </label>
-                  <Textarea
-                    placeholder="Tell us about your requirements..."
-                    rows={5}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  />
-                </div>
-                <Button type="submit" size="lg" disabled={isSubmitting} className="w-full">
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                  <Send className="w-4 h-4" />
-                </Button>
-              </form>
+              <Tabs defaultValue="inquiry">
+                <TabsList className="mb-6 grid w-full grid-cols-2">
+                  <TabsTrigger value="inquiry">Send a message</TabsTrigger>
+                  <TabsTrigger value="quote">Request a quote</TabsTrigger>
+                </TabsList>
+
+                <TabsContent value="inquiry">
+                  <h2 className="text-2xl font-bold text-foreground mb-6">Send us a Message</h2>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <input
+                      type="text"
+                      name="website"
+                      value={formData.website}
+                      onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                      className="hidden"
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                    <div>
+                      <Label className="mb-2 block">Your Name *</Label>
+                      <Input
+                        placeholder="John Doe"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        className="h-12"
+                      />
+                    </div>
+                    <div>
+                      <Label className="mb-2 block">Company</Label>
+                      <Input
+                        placeholder="Your company"
+                        value={formData.company}
+                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                        className="h-12"
+                      />
+                    </div>
+                    <div>
+                      <Label className="mb-2 block">Email Address *</Label>
+                      <Input
+                        type="email"
+                        placeholder="john@example.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="h-12"
+                      />
+                    </div>
+                    <div>
+                      <Label className="mb-2 block">Phone</Label>
+                      <Input
+                        placeholder="+254 700 000 000"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className="h-12"
+                      />
+                    </div>
+                    <div>
+                      <Label className="mb-2 block">Message *</Label>
+                      <Textarea
+                        placeholder="Tell us about your requirements..."
+                        rows={5}
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      />
+                    </div>
+                    <Button type="submit" size="lg" disabled={isSubmitting} className="w-full">
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
+                      <Send className="w-4 h-4" />
+                    </Button>
+                  </form>
+                </TabsContent>
+
+                <TabsContent value="quote">
+                  <h2 className="text-2xl font-bold text-foreground mb-2">Request an export quote</h2>
+                  <p className="text-muted-foreground mb-6">
+                    Include volume, destination, and shipping terms so we can price accurately.
+                  </p>
+                  <QuoteRequestForm />
+                </TabsContent>
+              </Tabs>
             </div>
 
-            {/* Contact Info */}
             <div
               className={cn(
                 'space-y-8 transition-all duration-700 delay-200',
@@ -215,7 +279,7 @@ export default function ContactPage() {
               )}
             >
               <h2 className="text-2xl font-bold text-foreground mb-6">Get in Touch</h2>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start gap-4 p-6 bg-card rounded-2xl border border-border">
                   <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center flex-shrink-0">
@@ -223,8 +287,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground">Phone</h3>
-                    <a href="tel:+254735497573" className="text-muted-foreground hover:text-primary transition-colors">
-                      +254 735 497 573
+                    <a href={`tel:${COMPANY_PHONE.replace(/\s/g, '')}`} className="text-muted-foreground hover:text-primary transition-colors">
+                      {COMPANY_PHONE}
                     </a>
                   </div>
                 </div>
@@ -233,10 +297,10 @@ export default function ContactPage() {
                   <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center flex-shrink-0">
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
-                <div>
+                  <div>
                     <h3 className="font-semibold text-foreground">Email</h3>
-                    <a href="mailto:shilohfexports@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
-                      shilohfexports@gmail.com
+                    <a href={`mailto:${COMPANY_EMAIL}`} className="text-muted-foreground hover:text-primary transition-colors break-all">
+                      {COMPANY_EMAIL}
                     </a>
                   </div>
                 </div>
@@ -262,7 +326,6 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Quick Actions */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <a
                   href="https://wa.me/254735497573?text=Hello%20Shiloh%20Fresh%20Exporters%2C%20I%27d%20like%20to%20inquire."
@@ -290,8 +353,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map Placeholder */}
-      {/* Map placeholder removed, replaced by CTA */}
       <PageCTA
         variant="green"
         characterImage={chiliCharacter}

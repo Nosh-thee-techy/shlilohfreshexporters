@@ -1,8 +1,8 @@
 import { cn } from '@/lib/utils';
-import avocadoImg from '@/assets/products/avocado.jpg';
-import mangoesImg from '@/assets/products/mangoes.jpg';
+import avocadoImg from '@/assets/products/avocado-hass-harvest.jpg';
+import mangoesImg from '@/assets/products/mango-tree.jpg';
 import passionFruitImg from '@/assets/products/passion-fruit.jpg';
-import pineappleImg from '@/assets/products/pineapple.jpg';
+import pineappleImg from '@/assets/products/pineapple-harvest.jpg';
 
 const floatingFruits = [
   { src: avocadoImg, alt: 'Avocado', size: 80, left: '5%', delay: 0 },

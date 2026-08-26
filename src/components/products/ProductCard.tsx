@@ -1,7 +1,8 @@
-import { MessageCircle, MapPin, Calendar, Award, Package } from 'lucide-react';
+import { MapPin, Calendar, Award, Package } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Product, getWhatsAppLink, whatsAppMessages } from '@/data/products';
+import { Product, getQuotePath } from '@/data/products';
 import { cn } from '@/lib/utils';
 
 interface ProductCardProps {
@@ -96,17 +97,11 @@ export function ProductCard({ product, onViewDetails, className }: ProductCardPr
           >
             View Details
           </Button>
-          <a
-            href={getWhatsAppLink(whatsAppMessages.quote(product.name))}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1"
-          >
-            <Button variant="whatsapp" size="sm" className="w-full gap-1.5">
-              <MessageCircle className="w-4 h-4" />
+          <Button asChild size="sm" className="flex-1">
+            <Link to={getQuotePath(product.name)}>
               Quote
-            </Button>
-          </a>
+            </Link>
+          </Button>
         </div>
       </div>
     </div>
