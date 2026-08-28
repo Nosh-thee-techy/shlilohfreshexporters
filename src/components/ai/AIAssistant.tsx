@@ -95,7 +95,7 @@ export function AIAssistant() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          'w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110',
+          'w-11 h-11 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110',
           'bg-gradient-to-br from-primary to-primary/80 text-primary-foreground',
           isOpen && 'scale-0 opacity-0'
         )}
@@ -107,7 +107,7 @@ export function AIAssistant() {
       {/* Chat Panel */}
       <div
         className={cn(
-          'fixed right-2 sm:right-4 bottom-2 sm:bottom-4 z-[60] w-[calc(100vw-1rem)] sm:w-96 max-w-md h-[70vh] sm:h-[500px] max-h-[80vh] bg-card border border-border rounded-2xl shadow-2xl flex flex-col transition-all duration-300',
+          'fixed right-3 bottom-[max(0.5rem,env(safe-area-inset-bottom))] z-[60] flex h-[min(70vh,32rem)] w-[calc(100vw-1.5rem)] max-w-md flex-col rounded-2xl border border-border bg-card shadow-2xl transition-all duration-300 sm:right-4 sm:bottom-4 sm:h-[500px] sm:w-96 sm:max-h-[80vh]',
           isOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95 pointer-events-none'
         )}
       >

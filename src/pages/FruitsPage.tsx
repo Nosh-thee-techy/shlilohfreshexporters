@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, MessageCircle, Play, ShieldCheck, Star, Truck, Headphones } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MessageCircle, Play, ShieldCheck, Truck, Headphones } from 'lucide-react';
 import { PageCTA } from '@/components/layout/PageCTA';
 import mangoCharacter from '@/assets/cta/mango-character.png';
 import { PageHero } from '@/components/layout/PageHero';
@@ -248,15 +248,15 @@ export default function FruitsPage() {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
             )}>
               {selectedProduct && (
-                <div className="rounded-[2rem] border border-border bg-white p-5 shadow-card sm:p-8">
-                  <div className="mb-5 text-xs text-muted-foreground">
+                <div className="rounded-[1.5rem] border border-border bg-card p-3 shadow-card sm:rounded-[2rem] sm:p-8">
+                  <div className="mb-4 hidden text-xs text-muted-foreground sm:mb-5 sm:block">
                     Home / Shop / Fruits / <span className="font-semibold text-foreground">{selectedProduct.name}</span>
                   </div>
 
-                  <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-                    <div className="space-y-4">
-                      <div className="relative overflow-hidden rounded-[1.75rem] border border-border bg-[#f7f7f3] p-5">
-                        <div className="aspect-square overflow-hidden rounded-[1.5rem] bg-white">
+                  <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-8">
+                    <div className="space-y-3 sm:space-y-4">
+                      <div className="relative overflow-hidden rounded-[1.25rem] border border-border bg-muted/40 p-2 sm:rounded-[1.75rem] sm:p-5">
+                        <div className="aspect-square overflow-hidden rounded-[1rem] bg-card sm:rounded-[1.5rem]">
                           {currentMedia?.type === 'video' ? (
                             <video
                               src={currentMedia.src}
@@ -279,7 +279,7 @@ export default function FruitsPage() {
                               type="button"
                               variant="outline"
                               size="icon"
-                              className="absolute left-7 top-1/2 h-10 w-10 -translate-y-1/2 rounded-xl border-green-800 bg-green-800 text-white hover:bg-green-700 hover:text-white"
+                              className="absolute left-2 top-1/2 h-9 w-9 -translate-y-1/2 rounded-xl border-primary bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground sm:left-7 sm:h-10 sm:w-10"
                               onClick={() => changeMedia('prev')}
                             >
                               <ChevronLeft className="h-5 w-5" />
@@ -288,7 +288,7 @@ export default function FruitsPage() {
                               type="button"
                               variant="outline"
                               size="icon"
-                              className="absolute right-7 top-1/2 h-10 w-10 -translate-y-1/2 rounded-xl border-[#f4b431] bg-[#f4b431] text-primary hover:bg-[#e9a414] hover:text-primary"
+                              className="absolute right-2 top-1/2 h-9 w-9 -translate-y-1/2 rounded-xl border-accent bg-accent text-accent-foreground hover:bg-accent/90 hover:text-accent-foreground sm:right-7 sm:h-10 sm:w-10"
                               onClick={() => changeMedia('next')}
                             >
                               <ChevronRight className="h-5 w-5" />
@@ -297,7 +297,7 @@ export default function FruitsPage() {
                         )}
                       </div>
 
-                      <div className="grid grid-cols-4 gap-3">
+                      <div className="grid grid-cols-4 gap-2 sm:gap-3">
                         {selectedMedia.map((media, index) => (
                           <button
                             key={`${selectedProduct.id}-${index}`}
@@ -305,7 +305,7 @@ export default function FruitsPage() {
                             onClick={() => setSelectedMediaIndex(index)}
                             className={cn(
                               'relative overflow-hidden rounded-2xl border bg-background transition-all',
-                              index === selectedMediaIndex ? 'border-[#f4b431] ring-2 ring-[#f4b431]/30' : 'border-border hover:border-primary/40'
+                              index === selectedMediaIndex ? 'border-accent ring-2 ring-accent/30' : 'border-border hover:border-primary/40'
                             )}
                           >
                             <img
@@ -330,29 +330,25 @@ export default function FruitsPage() {
                         <p className="text-sm text-muted-foreground">Fruit</p>
                         <div>
                           <div className="flex flex-wrap items-center gap-3">
-                            <h2 className="text-3xl font-bold text-foreground sm:text-4xl">{selectedProduct.name}</h2>
-                            <Badge className="rounded-full bg-emerald-100 px-3 py-1 text-emerald-700 hover:bg-emerald-100">
-                              In Stock
+                            <h2 className="text-2xl font-bold text-foreground sm:text-4xl">{selectedProduct.name}</h2>
+                            <Badge className="rounded-full bg-primary/10 px-3 py-1 text-primary hover:bg-primary/10">
+                              Export ready
                             </Badge>
                           </div>
-                          <div className="mt-2 flex items-center gap-3 text-sm text-muted-foreground">
-                            <div className="flex items-center gap-1 text-[#f4b431]">
-                              <Star className="h-4 w-4 fill-current" />
-                              <span className="font-medium text-foreground">4.9</span>
-                            </div>
-                            <span>(Trusted export quality)</span>
-                          </div>
+                          <p className="mt-2 text-sm text-muted-foreground">
+                            {selectedProduct.sourceRegions.slice(0, 3).join(', ')}
+                          </p>
                         </div>
                         <div>
-                          <p className="text-3xl font-bold text-foreground">{selectedProduct.priceRange}</p>
-                          <p className="mt-1 text-sm text-muted-foreground line-through">Volume-based pricing available on request</p>
+                          <p className="text-2xl font-bold text-foreground sm:text-3xl">{selectedProduct.priceRange}</p>
+                          <p className="mt-1 text-sm text-muted-foreground">Volume-based pricing available on request</p>
                         </div>
                         <p className="text-base leading-relaxed text-muted-foreground">
                           {selectedProduct.description}
                         </p>
                       </div>
 
-                      <div className="grid gap-4 rounded-3xl border border-border bg-[#fbfaf7] p-5">
+                      <div className="grid gap-4 rounded-3xl border border-border bg-muted/40 p-5">
                         <div>
                           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Varieties</p>
                           <div className="mt-3 flex flex-wrap gap-2">
@@ -364,11 +360,11 @@ export default function FruitsPage() {
                           </div>
                         </div>
                         <div className="grid gap-3 sm:grid-cols-2">
-                          <div className="rounded-2xl border border-border bg-white p-4">
+                          <div className="rounded-2xl border border-border bg-card p-4">
                             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Availability</p>
                             <p className="mt-2 text-sm font-medium text-foreground">{selectedProduct.availability}</p>
                           </div>
-                          <div className="rounded-2xl border border-border bg-white p-4">
+                          <div className="rounded-2xl border border-border bg-card p-4">
                             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Minimum Order</p>
                             <p className="mt-2 text-sm font-medium text-foreground">{selectedProduct.moq ?? 'Available on request'}</p>
                           </div>
@@ -383,7 +379,8 @@ export default function FruitsPage() {
                         </Button>
                         <Button
                           size="lg"
-                          className="flex-1 rounded-xl border-[#f4b431] bg-[#f4b431] text-primary hover:bg-[#e9a414]"
+                          variant="outline"
+                          className="flex-1 rounded-xl"
                           onClick={() => {
                             const nextIndex = relatedFruits[0]?.id;
                             if (nextIndex) {
@@ -397,17 +394,17 @@ export default function FruitsPage() {
                       </div>
 
                       <div className="grid gap-3 sm:grid-cols-3">
-                        <div className="rounded-2xl border border-border bg-white p-4 text-center">
+                        <div className="rounded-2xl border border-border bg-card p-4 text-center">
                           <Truck className="mx-auto h-5 w-5 text-primary" />
                           <p className="mt-2 text-sm font-semibold text-foreground">Cold Chain</p>
                           <p className="mt-1 text-xs text-muted-foreground">Fresh handling for export transit.</p>
                         </div>
-                        <div className="rounded-2xl border border-border bg-white p-4 text-center">
+                        <div className="rounded-2xl border border-border bg-card p-4 text-center">
                           <ShieldCheck className="mx-auto h-5 w-5 text-primary" />
                           <p className="mt-2 text-sm font-semibold text-foreground">Quality Assured</p>
                           <p className="mt-1 text-xs text-muted-foreground">Sorted to export grade standards.</p>
                         </div>
-                        <div className="rounded-2xl border border-border bg-white p-4 text-center">
+                        <div className="rounded-2xl border border-border bg-card p-4 text-center">
                           <Headphones className="mx-auto h-5 w-5 text-primary" />
                           <p className="mt-2 text-sm font-semibold text-foreground">Buyer Support</p>
                           <p className="mt-1 text-xs text-muted-foreground">Fast response for enquiries and orders.</p>
@@ -416,11 +413,11 @@ export default function FruitsPage() {
                     </div>
                   </div>
 
-                  <Tabs defaultValue="description" className="mt-10">
-                    <TabsList className="h-auto flex-wrap gap-6 rounded-none bg-transparent p-0">
-                      <TabsTrigger value="description" className="rounded-xl px-5 py-2.5">Description</TabsTrigger>
-                      <TabsTrigger value="information" className="rounded-xl px-5 py-2.5">Additional Information</TabsTrigger>
-                      <TabsTrigger value="pricing" className="rounded-xl px-5 py-2.5">Review</TabsTrigger>
+                  <Tabs defaultValue="description" className="mt-8 sm:mt-10">
+                    <TabsList className="h-auto w-full justify-start gap-1 overflow-x-auto rounded-none bg-transparent p-0">
+                      <TabsTrigger value="description" className="shrink-0 rounded-xl px-3 py-2 text-sm sm:px-5 sm:py-2.5">Description</TabsTrigger>
+                      <TabsTrigger value="information" className="shrink-0 rounded-xl px-3 py-2 text-sm sm:px-5 sm:py-2.5">Specifications</TabsTrigger>
+                      <TabsTrigger value="pricing" className="shrink-0 rounded-xl px-3 py-2 text-sm sm:px-5 sm:py-2.5">Packaging</TabsTrigger>
                     </TabsList>
 
                     <TabsContent value="description" className="mt-6 rounded-2xl border border-border bg-background p-6">
@@ -434,8 +431,8 @@ export default function FruitsPage() {
                       <Table>
                         <TableBody>
                           <TableRow>
-                            <TableCell className="w-[32%] bg-[#f4b431] font-semibold text-primary">Feature</TableCell>
-                            <TableCell className="bg-[#f4b431] font-semibold text-primary">Description</TableCell>
+                            <TableCell className="w-[38%] bg-accent font-semibold text-accent-foreground sm:w-[32%]">Feature</TableCell>
+                            <TableCell className="bg-accent font-semibold text-accent-foreground">Description</TableCell>
                           </TableRow>
                           <TableRow>
                             <TableCell className="font-semibold text-foreground">Source Regions</TableCell>
@@ -490,17 +487,17 @@ export default function FruitsPage() {
               )}
 
               <div className="space-y-5">
-                <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                   <div>
-                    <p className="text-sm uppercase tracking-[0.25em] text-muted-foreground">Related Products</p>
-                    <h3 className="text-2xl font-bold text-foreground">Explore Related Fruits</h3>
+                    <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground sm:text-sm">Related Products</p>
+                    <h3 className="text-xl font-bold text-foreground sm:text-2xl">Explore Related Fruits</h3>
                   </div>
-                  <Badge variant="secondary" className="rounded-full px-3 py-1 text-xs">
+                  <Badge variant="secondary" className="w-fit rounded-full px-3 py-1 text-xs">
                     {filteredFruits.length} fruits available
                   </Badge>
                 </div>
 
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 xl:grid-cols-4">
                   {relatedFruits.map((fruit, index) => (
                     <div
                       key={fruit.id}
@@ -515,34 +512,28 @@ export default function FruitsPage() {
                         onClick={() => {
                           setSelectedProductId(fruit.id);
                           setSelectedMediaIndex(0);
-                          window.scrollTo({ top: 320, behavior: 'smooth' });
+                          window.scrollTo({ top: 280, behavior: 'smooth' });
                         }}
-                        className="group w-full overflow-hidden rounded-3xl border border-border bg-white text-left shadow-card transition-all hover:-translate-y-1 hover:shadow-hover"
+                        className="group w-full overflow-hidden rounded-2xl border border-border bg-card text-left shadow-card transition-all hover:-translate-y-1 hover:shadow-hover"
                       >
-                        <div className="relative overflow-hidden bg-[#f7f7f3] p-4">
-                          <div className="absolute left-4 top-4 rounded-full bg-green-900 px-3 py-1 text-xs font-semibold text-white">
+                        <div className="relative overflow-hidden bg-muted/40">
+                          <div className="absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
                             Export
                           </div>
                           <img
                             src={fruit.image}
                             alt={fruit.name}
-                            className="mx-auto aspect-square h-52 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            className="aspect-[4/3] h-auto w-full object-cover transition-transform duration-500 group-hover:scale-105 sm:aspect-square"
                           />
                         </div>
-                        <div className="space-y-3 p-5">
-                          <div className="flex items-center justify-between text-sm text-muted-foreground">
-                            <span>Fruit</span>
-                            <span className="flex items-center gap-1 text-[#f4b431]">
-                              <Star className="h-4 w-4 fill-current" />
-                              <span className="text-foreground">5.0</span>
-                            </span>
-                          </div>
+                        <div className="space-y-2 p-4 sm:space-y-3 sm:p-5">
+                          <p className="text-xs text-muted-foreground">{fruit.sourceRegions[0]}</p>
                           <div>
                             <h4 className="text-lg font-semibold text-foreground">{fruit.name}</h4>
                             <p className="mt-1 text-sm text-muted-foreground line-clamp-2">{fruit.description}</p>
                           </div>
                           <div>
-                            <p className="text-lg font-bold text-foreground">{fruit.priceRange}</p>
+                            <p className="text-base font-bold text-foreground sm:text-lg">{fruit.priceRange}</p>
                             <p className="text-sm text-muted-foreground">MOQ: {fruit.moq ?? 'On request'}</p>
                           </div>
                         </div>

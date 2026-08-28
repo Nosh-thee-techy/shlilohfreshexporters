@@ -43,13 +43,13 @@ export function PageCTA({
         isGold ? 'bg-accent' : 'bg-primary'
       )}
     >
-      {/* Character — top right */}
-      <div className="absolute -top-6 -right-2 sm:-top-14 sm:-right-6 md:-top-16 md:-right-4 z-20 pointer-events-none">
+      {/* Character — desktop only; on phones it collides with the headline */}
+      <div className="hidden sm:block absolute -top-14 -right-6 md:-top-16 md:-right-4 z-20 pointer-events-none">
         <img
           src={character}
-          alt="Fun fruit character"
+          alt=""
           className={cn(
-            'w-24 h-24 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-64 lg:h-64 xl:w-72 xl:h-72 object-contain drop-shadow-2xl transition-all duration-700',
+            'w-44 h-44 md:w-52 md:h-52 lg:w-64 lg:h-64 xl:w-72 xl:h-72 object-contain drop-shadow-2xl transition-all duration-700',
             isVisible ? 'scale-100 rotate-0 opacity-100' : 'scale-50 rotate-12 opacity-0'
           )}
           style={{ transitionDelay: '300ms' }}
@@ -69,7 +69,7 @@ export function PageCTA({
       {/* Content */}
       <div
         className={cn(
-          'relative z-10 container mx-auto px-5 sm:px-6 py-14 sm:py-16 lg:py-20 pr-24 sm:pr-40 md:pr-52 lg:pr-64 transition-all duration-700',
+          'relative z-10 container mx-auto px-5 sm:px-6 py-12 sm:py-16 lg:py-20 sm:pr-40 md:pr-52 lg:pr-64 transition-all duration-700',
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         )}
       >

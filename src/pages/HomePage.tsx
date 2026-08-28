@@ -173,7 +173,7 @@ const certifications = [
 
 function ScrollIndicator() {
   return (
-    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce-soft">
+    <div className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 animate-bounce-soft">
       <span className="text-primary-foreground/70 text-sm">Scroll to explore</span>
       <ChevronDown className="w-5 h-5 text-primary-foreground/70" />
     </div>
@@ -215,7 +215,7 @@ function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-[100svh] overflow-hidden bg-primary">
+    <section className="relative overflow-hidden bg-primary sm:min-h-[100svh]">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         {heroVideos.map((video, index) => (
@@ -249,34 +249,46 @@ function HeroSection() {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 container mx-auto px-5 sm:px-6 min-h-[100svh] flex items-center">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center w-full pt-28 pb-20 sm:pt-32 sm:pb-24 lg:py-20">
+      <div className="relative z-10 container mx-auto flex items-center px-5 sm:min-h-[100svh] sm:px-6">
+        <div className="grid w-full items-center gap-6 pt-[5.5rem] pb-10 sm:gap-8 sm:pt-32 sm:pb-24 lg:grid-cols-2 lg:gap-10 lg:py-20">
 
           {/* Left: Bold Typography & CTAs */}
-          <div className="space-y-6 text-center lg:text-left">
-            <p className="text-accent font-bold text-xs sm:text-sm tracking-[0.2em] uppercase animate-fade-in-down">
-              🌿 Shiloh Fresh Exporters
+          <div className="space-y-4 text-center sm:space-y-6 lg:text-left">
+            <p className="text-accent font-bold text-[11px] sm:text-sm tracking-[0.2em] uppercase animate-fade-in-down">
+              Shiloh Fresh Exporters
             </p>
 
             <h1 className="animate-fade-in-up">
-              <span className="block text-primary-foreground text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] tracking-tight">
+              <span className="block text-primary-foreground text-[2.05rem] sm:text-5xl md:text-6xl xl:text-7xl font-extrabold leading-[1.1] tracking-tight">
                 Pure{' '}
                 <span className="relative inline-block">
                   Freshness
                   <span className="absolute -bottom-1 left-0 right-0 h-1.5 bg-accent/60 rounded-full" />
                 </span>
               </span>
-              <span className="block text-primary-foreground text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] tracking-tight mt-1">
+              <span className="block text-primary-foreground text-[2.05rem] sm:text-5xl md:text-6xl xl:text-7xl font-extrabold leading-[1.1] tracking-tight mt-1">
                 from <span className="text-accent">Africa</span>
               </span>
             </h1>
 
-            <p className="text-primary-foreground/70 text-base sm:text-lg max-w-lg mx-auto lg:mx-0 animate-fade-in-up delay-100">
-              Premium fruits, vegetables & herbs — ethically sourced from Kenya's finest farms and exported worldwide.
+            <p className="text-primary-foreground/75 text-[15px] sm:text-lg max-w-lg mx-auto lg:mx-0 animate-fade-in-up delay-100">
+              Premium fruits, vegetables and herbs from Kenyan farms, packed for export.
             </p>
 
-            {/* Badges */}
-            <div className="flex flex-wrap gap-3 justify-center lg:justify-start animate-fade-in-up delay-200">
+            {/* Mobile product preview */}
+            <div className="sm:hidden mx-auto w-full max-w-[18rem] overflow-hidden rounded-2xl border border-primary-foreground/15 shadow-2xl">
+              <img
+                src={heroProducts[activeThumb].src}
+                alt={heroProducts[activeThumb].name}
+                className="h-40 w-full object-cover"
+              />
+              <div className="flex items-center justify-between bg-primary-foreground/10 px-3 py-2">
+                <p className="text-sm font-semibold text-primary-foreground">{heroProducts[activeThumb].name}</p>
+                <p className="text-[11px] text-primary-foreground/60">Export grade</p>
+              </div>
+            </div>
+
+            <div className="hidden sm:flex flex-wrap gap-3 justify-center lg:justify-start animate-fade-in-up delay-200">
               <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-accent-foreground font-bold text-sm shadow-lg">
                 <Globe2 className="w-4 h-4" />
                 10+ Markets
@@ -288,32 +300,45 @@ function HeroSection() {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start animate-fade-in-up delay-300">
-              <Link to="/products">
-                <Button variant="hero" size="lg" className="group w-full sm:w-auto text-base px-8">
-                  Explore Our Produce
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-row sm:justify-center lg:justify-start animate-fade-in-up delay-300">
+              <Link to="/products" className="min-w-0">
+                <Button variant="hero" size="lg" className="group h-11 w-full px-3 text-sm sm:h-auto sm:w-auto sm:px-8 sm:text-base">
+                  View Produce
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                <Button variant="whatsapp" size="lg" className="w-full sm:w-auto text-base px-8">
-                  <MessageCircle className="w-5 h-5" />
-                  WhatsApp Us
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="min-w-0">
+                <Button variant="whatsapp" size="lg" className="h-11 w-full px-3 text-sm sm:h-auto sm:w-auto sm:px-8 sm:text-base">
+                  <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+                  WhatsApp
                 </Button>
               </a>
             </div>
 
-            {/* Product thumbnails */}
-            <div className="pt-3 animate-fade-in-up delay-400">
-              <div className="flex gap-2.5 justify-center lg:justify-start">
+            {/* Product thumbnails — desktop; dots on phone */}
+            <div className="pt-1 sm:pt-3 animate-fade-in-up delay-400">
+              <div className="flex justify-center gap-1.5 sm:hidden">
                 {heroProducts.map((product, index) => (
                   <button
                     key={product.name}
                     onClick={() => setActiveThumb(index)}
                     className={cn(
-                      'w-13 h-13 sm:w-14 sm:h-14 rounded-xl overflow-hidden border-2 transition-all duration-300 hover:scale-110',
+                      'h-1.5 rounded-full transition-all',
+                      activeThumb === index ? 'w-6 bg-accent' : 'w-1.5 bg-primary-foreground/30'
+                    )}
+                    aria-label={product.name}
+                  />
+                ))}
+              </div>
+              <div className="hidden sm:flex gap-2.5 justify-center lg:justify-start">
+                {heroProducts.map((product, index) => (
+                  <button
+                    key={product.name}
+                    onClick={() => setActiveThumb(index)}
+                    className={cn(
+                      'w-14 h-14 rounded-xl overflow-hidden border-2 transition-all duration-300 hover:scale-110',
                       activeThumb === index
-                        ? 'border-accent shadow-glow scale-110 ring-2 ring-accent/40'
+                        ? 'border-accent shadow-glow scale-105 ring-2 ring-accent/40'
                         : 'border-primary-foreground/20 opacity-50 hover:opacity-100'
                     )}
                   >
@@ -321,8 +346,8 @@ function HeroSection() {
                   </button>
                 ))}
               </div>
-              <p className="text-primary-foreground/35 text-[11px] mt-2 tracking-[0.25em] uppercase font-semibold">
-                Shiloh Fresh · Kenya
+              <p className="hidden sm:block text-primary-foreground/50 text-[11px] mt-2 tracking-[0.2em] uppercase font-semibold">
+                {heroProducts[activeThumb].name}
               </p>
             </div>
           </div>
@@ -371,7 +396,7 @@ function VisionMissionSection() {
           {/* Vision */}
           <div
             className={cn(
-              'relative p-8 sm:p-10 rounded-3xl bg-primary text-primary-foreground overflow-hidden transition-all duration-700',
+              'relative overflow-hidden rounded-2xl bg-primary p-6 text-primary-foreground transition-all duration-700 sm:rounded-3xl sm:p-10',
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             )}
           >
@@ -393,7 +418,7 @@ function VisionMissionSection() {
           {/* Mission */}
           <div
             className={cn(
-              'relative p-8 sm:p-10 rounded-3xl bg-accent text-foreground overflow-hidden transition-all duration-700',
+              'relative overflow-hidden rounded-2xl bg-accent p-6 text-foreground transition-all duration-700 sm:rounded-3xl sm:p-10',
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             )}
             style={{ transitionDelay: '150ms' }}
@@ -453,7 +478,7 @@ function JourneySection() {
   const [expandedYear, setExpandedYear] = useState<string | null>(null);
 
   return (
-    <section ref={ref} className="py-24 bg-background">
+    <section ref={ref} className="py-14 sm:py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className={cn(
@@ -512,15 +537,12 @@ function JourneySection() {
                       )} />
                     </div>
                     <h3 className="text-lg font-semibold text-foreground mb-2">{item.title}</h3>
-                    <div className={cn(
-                      'overflow-hidden transition-all duration-300',
-                      expandedYear === item.year ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
+                    <p className={cn(
+                      'text-muted-foreground leading-relaxed transition-all duration-300',
+                      expandedYear === item.year ? 'line-clamp-none' : 'line-clamp-2'
                     )}>
-                      <p className="text-muted-foreground leading-relaxed">{item.description}</p>
-                    </div>
-                    {expandedYear !== item.year && (
-                      <p className="text-muted-foreground text-sm">Click to expand</p>
-                    )}
+                      {item.description}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -918,7 +940,7 @@ function CertificationsSection() {
   const [selectedCert, setSelectedCert] = useState<typeof certifications[0] | null>(null);
 
   return (
-    <section ref={ref} className="py-24 bg-background">
+    <section ref={ref} className="py-14 sm:py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className={cn(
@@ -1107,7 +1129,7 @@ function FAQSection() {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>();
 
   return (
-    <section ref={ref} className="py-24 bg-background">
+    <section ref={ref} className="py-14 sm:py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className={cn(

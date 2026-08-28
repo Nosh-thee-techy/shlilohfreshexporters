@@ -67,7 +67,7 @@ export function PageHero({
       ref={heroRef}
       className={cn(
         'relative overflow-hidden',
-        size === 'tall' ? 'py-32 md:py-40' : 'py-24 md:py-32'
+        size === 'tall' ? 'py-16 sm:py-24 md:py-40' : 'py-14 sm:py-24 md:py-32'
       )}
       style={{ perspective: '1000px' }}
     >
@@ -93,7 +93,7 @@ export function PageHero({
 
       {/* Scrolling Image Strip (horizontal auto-scroll) */}
       {floatingImages.length >= 3 && (
-        <div className="absolute bottom-0 left-0 right-0 z-[1] overflow-hidden h-20 md:h-28 opacity-30">
+        <div className="absolute bottom-0 left-0 right-0 z-[1] hidden h-28 overflow-hidden opacity-30 md:block">
           <div
             className="flex gap-4 animate-scroll-strip"
             style={{ width: `${floatingImages.length * 2 * 200}px` }}
@@ -161,10 +161,10 @@ export function PageHero({
               {badge}
             </span>
           )}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground animate-fade-in-down">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground animate-fade-in-down leading-tight">
             {title}
           </h1>
-          <p className="text-lg md:text-xl text-primary-foreground/85 max-w-2xl mx-auto animate-fade-in-up">
+          <p className="text-base md:text-xl text-primary-foreground/85 max-w-2xl mx-auto animate-fade-in-up">
             {subtitle}
           </p>
           {children && (

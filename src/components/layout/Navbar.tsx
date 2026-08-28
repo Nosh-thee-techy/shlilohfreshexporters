@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { DarkModeToggle } from '@/components/theme/DarkModeToggle';
+import { AccessibilityToggle } from '@/components/accessibility/AccessibilityToggle';
 import { cn } from '@/lib/utils';
 import shilohLogo from '@/assets/logos/shiloh-fresh-logo.png';
 
@@ -33,17 +34,24 @@ export function Navbar() {
     setIsMobileMenuOpen(false);
   }, [location]);
 
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <>
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
+          'fixed top-0 left-0 right-0 z-50 pt-[env(safe-area-inset-top)] transition-all duration-500',
           isScrolled
-            ? 'bg-card/98 backdrop-blur-md shadow-soft py-2 border-b border-border'
-            : 'bg-card/80 backdrop-blur-sm py-4'
+            ? 'border-b border-border bg-card/98 py-2 shadow-soft backdrop-blur-md'
+            : 'bg-card/90 py-2.5 backdrop-blur-sm sm:py-3'
         )}
       >
-        <div className="container mx-auto px-4 flex items-center justify-between">
+        <div className="container mx-auto flex items-center justify-between px-4">
           {/* Logo */}
           <Link
             to="/"
@@ -54,13 +62,13 @@ export function Navbar() {
               alt="Shiloh Fresh Exporters"
               className={cn(
                 'rounded-xl transition-all duration-300 object-cover',
-                isScrolled ? 'w-10 h-10' : 'w-14 h-14'
+                isScrolled ? 'w-9 h-9 sm:w-10 sm:h-10' : 'w-11 h-11 sm:w-14 sm:h-14'
               )}
             />
             <div className="flex flex-col">
               <span className={cn(
                 'font-bold text-primary transition-all duration-300',
-                isScrolled ? 'text-lg' : 'text-xl'
+                isScrolled ? 'text-base sm:text-lg' : 'text-lg sm:text-xl'
               )}>
                 Shiloh Fresh
               </span>
@@ -95,10 +103,12 @@ export function Navbar() {
               </Button>
             </Link>
             <DarkModeToggle className="ml-2" />
+            <AccessibilityToggle />
           </nav>
 
           {/* Mobile Actions */}
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-1 lg:hidden">
+            <AccessibilityToggle />
             <DarkModeToggle />
             <Button
               variant="ghost"
@@ -137,11 +147,11 @@ export function Navbar() {
       {/* Mobile Menu Panel */}
       <div
         className={cn(
-          'fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-card z-50 lg:hidden transition-transform duration-500 ease-out shadow-2xl',
+          'fixed top-0 right-0 bottom-0 z-50 flex w-80 max-w-[85vw] flex-col bg-card shadow-2xl transition-transform duration-500 ease-out lg:hidden',
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         )}
       >
-        <div className="flex flex-col h-full p-6">
+        <div className="flex h-full flex-col p-6 pt-[max(1.5rem,env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))]">
           {/* Close Button */}
           <div className="flex justify-end mb-8">
             <Button

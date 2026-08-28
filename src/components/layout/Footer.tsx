@@ -26,15 +26,12 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-border bg-gradient-to-br from-primary via-primary to-accent text-primary-foreground">
-      {/* Decorative top accent bar */}
-      <div className="h-1 bg-gradient-to-r from-[#22c55e] via-[#f59e0b] to-[#ef4444]" />
+    <footer className="relative overflow-hidden border-t border-border bg-primary text-primary-foreground pb-24 sm:pb-0">
+      <div className="h-1 bg-accent" />
 
-      {/* Soft fruit glow */}
-      <div className="pointer-events-none absolute inset-0 opacity-35">
-        <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-[#22c55e]/40 blur-3xl" />
-        <div className="absolute -bottom-28 left-1/3 h-80 w-80 rounded-full bg-[#f59e0b]/45 blur-3xl" />
-        <div className="absolute -top-20 -right-24 h-72 w-72 rounded-full bg-[#ef4444]/35 blur-3xl" />
+      <div className="pointer-events-none absolute inset-0 opacity-40">
+        <div className="absolute -top-24 -left-16 h-64 w-64 rounded-full bg-accent/20 blur-3xl" />
+        <div className="absolute -bottom-28 right-0 h-72 w-72 rounded-full bg-primary-foreground/5 blur-3xl" />
       </div>
 
       {/* Main footer content */}

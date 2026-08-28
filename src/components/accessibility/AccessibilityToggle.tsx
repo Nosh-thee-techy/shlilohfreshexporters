@@ -5,7 +5,7 @@ import { Switch } from '@/components/ui/switch';
 import { useAccessibility } from '@/contexts/AccessibilityContext';
 import { cn } from '@/lib/utils';
 
-export function AccessibilityToggle() {
+export function AccessibilityToggle({ className }: { className?: string }) {
   const [isOpen, setIsOpen] = useState(false);
   const { settings, toggleSetting, resetSettings } = useAccessibility();
 
@@ -38,55 +38,56 @@ export function AccessibilityToggle() {
 
   return (
     <>
-      {/* Toggle Button - relative positioning for stacked layout */}
-      <button
+      <Button
+        variant="ghost"
+        size="icon"
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          'w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110',
-          'bg-secondary text-foreground border border-border',
-          isOpen && 'rotate-12 bg-primary text-primary-foreground'
+          'relative h-9 w-9 rounded-lg',
+          isOpen && 'bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground',
+          className
         )}
         aria-label="Accessibility settings"
+        aria-expanded={isOpen}
       >
-        <Accessibility className="w-5 h-5 sm:w-6 sm:h-6" />
-      </button>
+        <Accessibility className="h-5 w-5" />
+      </Button>
 
-      {/* Panel - positioned from bottom right */}
       <div
         className={cn(
-          'fixed right-4 bottom-36 sm:bottom-40 z-[60] w-[calc(100vw-2rem)] sm:w-80 max-w-sm bg-card border border-border rounded-2xl shadow-2xl transition-all duration-300',
-          isOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95 pointer-events-none'
+          'fixed left-3 right-3 top-[4.75rem] z-[60] max-h-[min(70vh,32rem)] overflow-y-auto rounded-2xl border border-border bg-card shadow-2xl transition-all duration-300 sm:left-auto sm:right-4 sm:w-80',
+          isOpen ? 'translate-y-0 scale-100 opacity-100' : 'pointer-events-none translate-y-2 scale-95 opacity-0'
         )}
       >
-        <div className="p-3 sm:p-4 border-b border-border flex items-center justify-between">
+        <div className="flex items-center justify-between border-b border-border p-3 sm:p-4">
           <div className="flex items-center gap-2">
-            <Accessibility className="w-5 h-5 text-primary" />
-            <h3 className="font-semibold text-foreground text-sm sm:text-base">Accessibility</h3>
+            <Accessibility className="h-5 w-5 text-primary" />
+            <h3 className="text-sm font-semibold text-foreground sm:text-base">Accessibility</h3>
           </div>
           <Button
             variant="ghost"
             size="icon"
             onClick={() => setIsOpen(false)}
-            className="w-8 h-8"
+            className="h-8 w-8"
           >
-            <X className="w-4 h-4" />
+            <X className="h-4 w-4" />
           </Button>
         </div>
 
-        <div className="p-3 sm:p-4 space-y-3 max-h-[50vh] overflow-y-auto">
+        <div className="space-y-3 p-3 sm:p-4">
           {accessibilityOptions.map((option) => {
             const Icon = option.icon;
             return (
               <div
                 key={option.key}
-                className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors"
+                className="flex items-start gap-2 rounded-xl bg-secondary/50 p-2 transition-colors hover:bg-secondary sm:gap-3 sm:p-3"
               >
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 sm:h-10 sm:w-10">
+                  <Icon className="h-4 w-4 text-primary sm:h-5 sm:w-5" />
                 </div>
-                <div className="flex-1 min-w-0">
+                <div className="min-w-0 flex-1">
                   <div className="flex items-center justify-between gap-2">
-                    <label htmlFor={option.key} className="font-medium text-foreground text-xs sm:text-sm cursor-pointer">
+                    <label htmlFor={option.key} className="cursor-pointer text-xs font-medium text-foreground sm:text-sm">
                       {option.label}
                     </label>
                     <Switch
@@ -95,7 +96,7 @@ export function AccessibilityToggle() {
                       onCheckedChange={() => toggleSetting(option.key)}
                     />
                   </div>
-                  <p className="text-[10px] sm:text-xs text-muted-foreground mt-0.5 sm:mt-1 hidden sm:block">
+                  <p className="mt-0.5 hidden text-[10px] text-muted-foreground sm:mt-1 sm:block sm:text-xs">
                     {option.description}
                   </p>
                 </div>
@@ -104,14 +105,14 @@ export function AccessibilityToggle() {
           })}
         </div>
 
-        <div className="p-3 sm:p-4 border-t border-border">
+        <div className="border-t border-border p-3 sm:p-4">
           <Button
             variant="outline"
             size="sm"
             onClick={resetSettings}
             className="w-full gap-2 text-xs sm:text-sm"
           >
-            <RotateCcw className="w-3 h-3 sm:w-4 sm:h-4" />
+            <RotateCcw className="h-3 w-3 sm:h-4 sm:w-4" />
             Reset to Defaults
           </Button>
         </div>
