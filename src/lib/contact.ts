@@ -1,6 +1,7 @@
 export const COMPANY_EMAIL = 'sarah@shilohfreshexporters.co.ke';
-export const COMPANY_PHONE = '+254 735 497 573';
-export const COMPANY_WHATSAPP = '254735497573';
+export const COMPANY_PHONE = '0786 381 259';
+export const COMPANY_TEL = '+254786381259';
+export const COMPANY_WHATSAPP = '254786381259';
 export const SITE_URL = 'https://shilohfreshexporters.co.ke';
 
 export const getQuotePath = (productName?: string) =>

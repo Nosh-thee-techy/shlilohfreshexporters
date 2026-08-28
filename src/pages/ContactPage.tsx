@@ -19,7 +19,7 @@ import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 import heroContactImg from '@/assets/hero/hero-contact.jpg';
 import { QuoteRequestForm } from '@/components/forms/QuoteRequestForm';
-import { COMPANY_EMAIL, COMPANY_PHONE, sendInquiry } from '@/lib/contact';
+import { COMPANY_EMAIL, COMPANY_PHONE, COMPANY_TEL, sendInquiry } from '@/lib/contact';
 
 interface FAQ {
   question: string;
@@ -287,7 +287,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground">Phone</h3>
-                    <a href={`tel:${COMPANY_PHONE.replace(/\s/g, '')}`} className="text-muted-foreground hover:text-primary transition-colors">
+                    <a href={`tel:${COMPANY_TEL}`} className="text-muted-foreground hover:text-primary transition-colors">
                       {COMPANY_PHONE}
                     </a>
                   </div>
@@ -328,7 +328,7 @@ export default function ContactPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <a
-                  href="https://wa.me/254735497573?text=Hello%20Shiloh%20Fresh%20Exporters%2C%20I%27d%20like%20to%20inquire."
+                  href="https://wa.me/254786381259?text=Hello%20Shiloh%20Fresh%20Exporters%2C%20I%27d%20like%20to%20inquire."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1"

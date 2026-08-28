@@ -201,7 +201,7 @@ export function AIAssistant() {
           <p className="text-[10px] sm:text-xs text-muted-foreground mt-2 text-center">
             Or chat via{' '}
             <a
-              href="https://wa.me/254735497573"
+              href="https://wa.me/254786381259"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:underline"

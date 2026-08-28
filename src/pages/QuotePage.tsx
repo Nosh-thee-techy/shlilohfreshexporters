@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import avocadoCharacter from '@/assets/cta/avocado-character.png';
 import heroContactImg from '@/assets/hero/hero-contact.jpg';
 import { getWhatsAppLink, whatsAppMessages } from '@/data/products';
-import { COMPANY_EMAIL, COMPANY_PHONE } from '@/lib/contact';
+import { COMPANY_EMAIL, COMPANY_PHONE, COMPANY_TEL } from '@/lib/contact';
 
 export default function QuotePage() {
   const [params] = useSearchParams();
@@ -50,7 +50,7 @@ export default function QuotePage() {
                   <Mail className="w-5 h-5 text-primary" />
                   {COMPANY_EMAIL}
                 </a>
-                <a href={`tel:${COMPANY_PHONE.replace(/\s/g, '')}`} className="flex items-center gap-3 text-muted-foreground hover:text-primary">
+                <a href={`tel:${COMPANY_TEL}`} className="flex items-center gap-3 text-muted-foreground hover:text-primary">
                   <Phone className="w-5 h-5 text-primary" />
                   {COMPANY_PHONE}
                 </a>

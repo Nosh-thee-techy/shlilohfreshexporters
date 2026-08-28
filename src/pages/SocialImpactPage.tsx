@@ -291,7 +291,7 @@ export default function SocialImpactPage() {
                 </Button>
               </Link>
               <a
-                href="https://wa.me/254735497573?text=Hello%20Shiloh%20Fresh%2C%20I%27m%20interested%20in%20partnering%20on%20social%20impact%20initiatives."
+                href="https://wa.me/254786381259?text=Hello%20Shiloh%20Fresh%2C%20I%27m%20interested%20in%20partnering%20on%20social%20impact%20initiatives."
                 target="_blank"
                 rel="noopener noreferrer"
               >

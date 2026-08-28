@@ -5,7 +5,7 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
 import avocadoCharacter from '@/assets/cta/avocado-character.png';
 
-const WHATSAPP_LINK = "https://wa.me/254735497573?text=Hello%20Shiloh%20Fresh%20Exporters%2C%20I%27d%20like%20to%20inquire.";
+const WHATSAPP_LINK = "https://wa.me/254786381259?text=Hello%20Shiloh%20Fresh%20Exporters%2C%20I%27d%20like%20to%20inquire.";
 
 interface PageCTAProps {
   title?: string;
@@ -29,7 +29,7 @@ export function PageCTA({
   const { ref, isVisible } = useScrollAnimation<HTMLElement>();
 
   const waLink = whatsappMessage
-    ? `https://wa.me/254735497573?text=${encodeURIComponent(whatsappMessage)}`
+    ? `https://wa.me/254786381259?text=${encodeURIComponent(whatsappMessage)}`
     : WHATSAPP_LINK;
 
   const isGold = variant === 'gold';

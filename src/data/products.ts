@@ -30,7 +30,7 @@ export interface Product {
 
 export { COMPANY_EMAIL, getQuotePath } from '@/lib/contact';
 
-export const WHATSAPP_NUMBER = '254735497573';
+export const WHATSAPP_NUMBER = '254786381259';
 
 export const getWhatsAppLink = (message: string) => 
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;

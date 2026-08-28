@@ -128,12 +128,12 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="tel:+254735497573" className="flex items-center gap-3 group">
+                <a href="tel:+254786381259" className="flex items-center gap-3 group">
                   <div className="w-9 h-9 rounded-lg bg-primary-foreground/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary-foreground/20 transition-colors">
                     <Phone className="w-4 h-4 text-primary-foreground" />
                   </div>
                   <div>
-                    <p className="text-sm text-primary-foreground/80 group-hover:text-primary-foreground transition-colors">+254 735 497 573</p>
+                    <p className="text-sm text-primary-foreground/80 group-hover:text-primary-foreground transition-colors">0786 381 259</p>
                   </div>
                 </a>
               </li>

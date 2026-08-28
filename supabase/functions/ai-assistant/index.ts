@@ -13,7 +13,7 @@ About the company:
 - We hold certifications including KEBS, HCDA, GlobalG.A.P., and Phytosanitary compliance
 - Export grades: Class I and Class II for most products
 - We offer cold chain logistics for both air and sea freight
-- WhatsApp contact: +254 735 497 573
+- WhatsApp contact: 0786 381 259 (+254 786 381 259)
 - Email: sarah@shilohfreshexporters.co.ke
 - Buyers can request a formal quote on the website quote form with product, volume, destination market, and Incoterms
 
