@@ -65,10 +65,7 @@ export function PageHero({
   return (
     <section
       ref={heroRef}
-      className={cn(
-        'relative overflow-hidden',
-        size === 'tall' ? 'py-16 sm:py-24 md:py-40' : 'py-14 sm:py-24 md:py-32'
-      )}
+      className="relative flex min-h-[calc(100svh-5.5rem)] items-center overflow-hidden py-20 sm:py-24"
       style={{ perspective: '1000px' }}
     >
       {/* Parallax Background */}
@@ -93,7 +90,7 @@ export function PageHero({
 
       {/* Scrolling Image Strip (horizontal auto-scroll) */}
       {floatingImages.length >= 3 && (
-        <div className="absolute bottom-0 left-0 right-0 z-[1] hidden h-28 overflow-hidden opacity-30 md:block">
+        <div className="absolute bottom-0 left-0 right-0 z-[1] h-20 overflow-hidden opacity-25 sm:h-28 sm:opacity-30">
           <div
             className="flex gap-4 animate-scroll-strip"
             style={{ width: `${floatingImages.length * 2 * 200}px` }}
@@ -111,7 +108,7 @@ export function PageHero({
       )}
 
       {/* 3D Floating Product Images */}
-      <div className="absolute inset-0 z-[2] pointer-events-none hidden lg:block">
+      <div className="absolute inset-0 z-[2] pointer-events-none hidden md:block">
         {floatingImages.slice(0, 4).map((img, index) => {
           const pos = floatPositions[index];
           const depthFactor = (index + 1) * 0.5;
